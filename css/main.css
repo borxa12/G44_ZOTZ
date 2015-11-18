@@ -1,0 +1,291 @@
+#cabecera {
+	background: url("../img/header.png");
+	height: 140px;
+}
+
+#logo {
+	height: 180px;
+	position: absolute;
+	top: -15px;
+	left: 60px;
+}
+
+.menu_principal {
+	background-color: transparent;
+	border-color: transparent;
+	position: absolute;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #786c38;
+	top: 40px;
+	left: 275px;
+}
+
+@media (max-width: 768px) {
+	#mini_menu {
+		background-color: #7d0d0b;
+		border-color: #352c2c;
+		position: absolute;
+		top: -15px;
+		left: -150px;
+	}
+	
+	.mini_menu {
+		background-color: #7d0d0b;
+		border-color: #352c2c;
+		position: absolute;
+		top: -30px;
+		left: -210px;
+	}
+}
+
+#main {
+	background: url(../img/content.png) repeat-y;
+	z-index: -1;
+/* 	background-color: #ede4bb; */
+}
+
+@media (max-width: 768px) {
+	#menuActor {
+		padding-top: 20px;
+		padding-bottom: 20px;
+/* 		padding-right: 380px; */
+		position: relative;
+		left: 20px;
+/* 		background-color: grey; */
+	}
+
+	#contenido {
+		padding-top: 20px;
+		padding-bottom: 50px;
+		position: relative;
+		left: 20px;
+		background-color: #ede4bb;
+	}
+}
+
+@media (min-width: 768px) {
+	#menuActor {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		position: relative;
+		left: 20px;
+/* 		background-color: red; */
+	}
+
+	#contenido {
+		padding-top: 20px;
+		padding-bottom: 50px;
+		padding-left: 90px;
+/* 		position: relative; */
+/* 		left: 90px; */
+/* 		background-color: blue; */
+	}
+}
+
+@media (min-width: 992px) {
+	#menuActor {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-right: 50px;
+		position: relative;
+		left: 30px;
+/* 		background-color: white; */
+	}
+
+	#contenido {
+		padding-top: 20px;
+		padding-left: 70px;
+/* 		position: relative; */
+/* 		left: 5vmin; */
+/* 		background-color: yellow; */
+	}
+}
+
+@media (min-width: 1074px) {
+	#contenido {
+		padding-top: 20px;
+		padding-left: 60px;
+/* 		position: relative; */
+/* 		left: 5vmin; */
+/* 		background-color: yellow; */
+	}
+}
+
+p {
+	font-size: 10px;
+}
+
+h1 {
+	padding-bottom: 10px;
+	font-size: 8vmin;
+	color: black;
+/* 	text-align: justify; */
+}
+
+h2 {
+	font-size: 2.5vmin;
+	color: #666;
+	text-align: justify;
+	margin-bottom: 3vmin;
+}
+
+h3 {
+	padding-bottom: 10px;
+	font-size: 3vmin;
+	color: black;
+	text-align: justify;
+}
+
+h4 {
+	font-size: 16px;
+	margin: 10px 10px 10px 0px;
+}
+
+h5 {
+	font-size: 20px;
+	color: #666;
+}
+
+h6 {
+	color: #352c2c;
+/* 	font-style: bold; */
+	font-size: 40px;
+	position: absolute;
+	top: 80px;
+	left: 150px;
+}
+
+h6:hover {
+	color: #7d0d0b;
+}
+
+.footer-autores {
+/*    margin: 5vmin;*/
+    color: darkgray;
+    font-size: 10pt;
+}
+
+#code {
+    text-align: center;
+}
+
+.btn-register {
+    float: right;
+    background-color: white;
+    color: black;
+    border-color: #842d85;
+}
+
+.btn-register:hover {
+    background-color: #842d85;
+    color: white;
+}
+
+.btn-login {
+    display: inline-block;
+    background-color: #842d85;
+    color: white;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-login:hover {
+    background-color: #840085;
+    color: white;
+}
+
+.btn-login:active {
+    background-color: #511c52;
+    color: white;
+}
+
+.clear {
+	clear: left;
+}
+
+@media (max-width: 992px) {
+	.completar {
+		background: url(../img/content.png) repeat-y;
+		z-index: -1;
+	}
+}
+
+.categories_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.categories_list li {
+	margin: 0;
+	padding: 0;
+}
+
+.categories_list li a {
+	display: block;
+	margin-bottom: 5px;
+	padding: 3px 0 3px 20px;
+	background: url(../img/list.png) left center no-repeat;
+	color: #7c0d0b;
+}
+
+a:link {
+	    color: #7c0d0b;
+	    font-weight: 700;
+}
+
+.button {
+	margin: 2px;
+	color: #7c0d0b;
+    font-weight: 700;
+}
+
+.img {
+    width: 170px;
+    height: 100px;
+    padding: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.registrarestablecimiento{
+    padding: 5px;
+    margin: 30px;
+    font-size: 25px;
+    background-color: #785358;
+    color: #C97900;
+    text-align: center;
+}
+
+.product_box {
+	float: left;
+	width: 220px;
+	margin: 0 20px 20px 0;
+}
+
+templatemo_form{
+	margin: .4em 0;
+}
+
+div label {
+	font-size: 2.5vmin;
+	width: 25%;
+	float: left;
+}
+
+textarea {
+	resize: vertical;
+	width: 70vmin;
+}
