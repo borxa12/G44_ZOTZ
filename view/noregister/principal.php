@@ -1,3 +1,8 @@
+
+<?php
+    require_once './view/header.php';
+    require_once './menus/nomenu.html';
+?>
 <!-- Contenido principal de la página -->
 <h1>XXVII Concurso de Tapas de Ourense</h1>
 <h3>Outro ano máis, como non nos chegaba con IU, temos que volvernos locos programando en PHP porque non aprendimos nada co "genio" do Rodeiro. Gran persona, mellor profesor.</h3>
@@ -7,3 +12,4 @@
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
+<?php   require_once '../footer.php'; ?>
