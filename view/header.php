@@ -5,11 +5,11 @@
 	<meta name="ABP_G44" content="ABP_G44">
 
 	<title>ZOTZ</title> <!-- Titulo de la pestaña -->
-	<link rel="shortcut icon" href="../img/zotz.ico" /> <!-- Icono de la pestaña -->
+	<link rel="shortcut icon" href="http://127.0.0.1/Zotz/img/zotz.ico" /> <!-- Icono de la pestaña -->
 
 	<!-- Bootstrap CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="http://127.0.0.1/Zotz/css/main.css">
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -22,7 +22,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-1"></div>
 		<div id="cabecera" class="col-xs-12 col-sm-12 col-md-10">
 			<a href="index.html">
-				<img id="logo" src="./img/zotz.png">
+				<img id="logo" src="http://127.0.0.1/Zotz/img/zotz.png">
 				<h6>ZOTZ</h6>
 			</a>
 			<!-- Barra de Navegación Principal con Menú desplegable lateral -->
@@ -40,11 +40,11 @@
 				<!-- Menú Principal -->
 				<div id="mini_menu" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="./view/noregister/pinchos.html">Pinchos</a></li>
-						<li><a href="./view/noregister/establecimientos.html">Establecimientos</a></li> <!-- ./view/noregister/establecimientos.html -->
-						<li><a href="./view/noregister/juradoprofesional.html">Jurado</a></li>
-						<li><a href="./view/noregister/mapa.html">Mapa</a></li>
-						<li><a href="./view/noregister/folleto.html">Folleto</a></li>
+						<li><a href="http://127.0.0.1/Zotz/view/noregister/pinchos.php">Pinchos</a></li>
+						<li><a href="http://127.0.0.1/Zotz/view/noregister/establecimientos.php">Establecimientos</a></li> <!-- ./view/noregister/establecimientos.html -->
+						<li><a href="http://127.0.0.1/Zotz/view/noregister/juradoprofesional.php">Jurado</a></li>
+						<li><a href="http://127.0.0.1/Zotz/view/noregister/mapa.php">Mapa</a></li>
+						<li><a href="http://127.0.0.1/Zotz/view/noregister/folleto.php">Folleto</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#login">Registrarse</a></li>
 					</ul>
 
