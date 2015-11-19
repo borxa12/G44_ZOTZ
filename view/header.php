@@ -5,11 +5,11 @@
 	<meta name="ABP_G44" content="ABP_G44">
 
 	<title>ZOTZ</title> <!-- Titulo de la pestaña -->
-	<link rel="shortcut icon" href="img/zotz.ico" /> <!-- Icono de la pestaña -->
+	<link rel="shortcut icon" href="../img/zotz.ico" /> <!-- Icono de la pestaña -->
 
 	<!-- Bootstrap CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="../css/main.css">
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
