@@ -1,5 +1,5 @@
 <?php
-    include("./BD.php");
+    include("../model/BD.php");
 
     class Sesion {
 

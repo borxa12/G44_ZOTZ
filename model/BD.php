@@ -2,23 +2,24 @@
 
 	class BD {
 
-		var $connection;
+		private $connection;
 
 		/* Constructor de la clase.
 		*  Los parametros estás predefinidos.
 		*/
-		public function __construct($host="127.0.0.1",$user="zotz",$pass="zotz",$db="g44_zotz") {
+		public function __construct($host="127.0.0.1",$user="zotz",$pass="zotz",$db="g44_zotz") {;
 			$this->connection = new mysqli($host,$user,$pass,$db);
+			return $this->connection;
 		}
 
-		/* Método para la realización de consultas SQL.
+		/* Método para la realización de consultas SQL parametrizadas.
 		*  String $query - String con la sentencia SQL PreparedStatement
 		*  String $type - Cadena con los tipos de cada parametro (s = string, i = integer, d = double, b = blob)
 		*  String[] $param - Array de Strings con los parametros necesarios
 		*  Ejemplo de llamada a la función:
 		*		$var = new BD();
 		*		$var->consultar("SELECT * FROM usuarios WHERE login=? AND password=?",'ss',array("manolo","o_pata_chula"));
-		*  Return: Devuelve un conjunto der resultados o FALSE en caso de error
+		*  Return: Devuelve un conjunto de resultados o FALSE en caso de error.
 		*/
 		public function consultar($query,$type,$param) {
 			//return mysqli_query($this->connection,$sentencia);
@@ -36,6 +37,17 @@
 			return $resultado;
 		}
 
+		/* Realiza consultas SQL sin parametrizar.
+		*  String $query - String con la sentencia SQL.
+		*  Return: Devuelve un conjunto der resultados o FALSE en caso de error.
+		*/
+		public function consulta($query) {
+			$stmt = $this->connection->prepare($query);
+			$stmt->execute();
+			return $stmt->get_result();
+		}
+
+		/* Desconecta la Base de Datos. */
 		public function desconectar(){
 			$this->connection->close();
 		}
@@ -43,6 +55,9 @@
 	}
 
 	// $var = new BD();
-	// $var->consultar("INSERT INTO usuarios VALUES (?,?,?,?)",'ssss',array("borxa","borxa","borxa","org"));
-
+	// // $var->consultar("INSERT INTO usuarios VALUES (?,?,?,?)",'ssss',array("borxa","borxa","borxa","org"));
+	// $var->consultar("SELECT * FROM codigopincho",'',array());
+	// while($data = mysqli_fetch_assoc($var)) {
+	// 	echo $data['idpincho'];
+	// }
 ?>

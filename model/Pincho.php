@@ -2,31 +2,63 @@
     include 'BD.php';
 
     class Pincho {
-        var $id_pincho;
-        var $nombre_pincho;
-        var $foto_pincho;
-        var $decripcion_pincho;
-        var $ingredientes_pincho;
-        var $precio;
-        var $aceptado;
-        var $concurso_edicion;
-        var $establecimiento_usuario_login;
+        public $idpincho;
+        public $nombrepincho;
+        public $fotopincho;
+        public $decripcionpincho;
+        public $ingredientesp;
+        public $precio;
+        public $aceptado;
+        public $concurso_edicion;
+        public $establecimiento_usuarios_login;
 
-        public function __construct($id_pincho=null, $nombre_pincho, $foto_pincho,
-                $descripcion_pincho, $ingredientes_pincho, $precio, $aceptado=null,
-                $concurso_edicion, $establecimiento_usuario_login) {
-            $this->id_pincho = $id_pincho;
-            $this->nombre_pincho = $nombre_pincho;
-            $this->foto_pincho = $foto_pincho;
-            $this->decripcion_pincho = $descripcion_pincho;
-            $this->ingredientes_pincho = $ingredientes_pincho;
-            $this->precio = $precio;
-            $this->aceptado = $aceptado;
-            $this->concurso_edicion = $concurso_edicion;
-            $this->establecimiento_usuario_login = $establecimiento_usuario_login;
+        public function __construct() {
+            try {
+                $this->bd = new BD();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
         }
 
-        /* Inserta un Pincho en la BD. Comprueba que los campos necesarios no son null o estan vacios
+        public function listar() {
+            $db = new BD();
+            $res = $db->consulta("SELECT * FROM pincho");
+            $db->desconectar();
+            return $res;
+        }
+
+        public function recuperar($id) {
+
+        }
+
+        public function eliminar($id) {
+
+        }
+
+        public function modificar($objeto) {
+
+        }
+
+        public function insertar($objeto) {
+
+        }
+    }
+
+    // $codPincho = new JuradoProfesional();
+    // $res = $codPincho->listar();
+    // while($data = mysqli_fetch_assoc($res)) {
+    //     echo $data['usuarios_login']."<br/>";
+    //     echo $data['nombre']."<br/>";
+    //     echo $data['direccion']."<br/>";
+    //     echo $data['telefono']."<br/>";
+    //     echo $data['web']."<br/>";
+    //     echo $data['horario']."<br/>";
+    //     echo $data['descripcionestablecimiento']."<hr/>";
+    // }
+
+?>
+
+        <!-- /* Inserta un Pincho en la BD. Comprueba que los campos necesarios no son null o estan vacios
         *  y ademas comprueba que el pincho que se intenta insertar no exista en la BD.
         *  Pincho $objeto - Objeto Pincho a insertar en la BD.
         *  Return: Devuelve TRUE si la insercion se realiza correctamente y FALSE en caso contrario.
@@ -110,4 +142,4 @@
     Pincho::existe($pincho);
     //Pincho::eliminar($pincho);
 
-?>
+?> -->
