@@ -12,6 +12,10 @@
         public $concurso_edicion;
         public $establecimiento_usuarios_login;
 
+        /* Constructor de la clase que inicializa la base de datos.
+        *  Sin parametros.
+        *  Sin return.
+        */
         public function __construct() {
             try {
                 $this->bd = new BD();
@@ -20,27 +24,86 @@
             }
         }
 
+        /* Lista los identificadores de los pinchos y sus atributos.
+        *  Sin parametros.
+        *  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
+        */
         public function listar() {
+             $db = new BD();
+
+            $sentencia = "SELECT * FROM pincho";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res)==0) return false;
+             else  return $res;
+            $db->desconectar();
+        }
+
+        /* Lista los pinchos filtrados por id (idpincho).
+        *  Parametros:
+        *       $id - Clave primaria de pinchos (idpincho).
+        *  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
+        */
+        public function recuperar($id) {
+             $db = new BD();
+            $sentencia = "SELECT * FROM pincho WHERE idpincho='".$id."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res)==0) return false;
+            else  return $res;
+            $db->desconectar();
+        }
+
+        /* Elimina una tupla de pinchos con el id indicado.
+        *  Parametros:
+        *       $id - Clave primaria de la tabla (id).
+        *  Return: Devuelve TRUE si la tupla se elimina correctamente o FALSE en caso contrario.
+        */
+        public function eliminar($id) {
             $db = new BD();
-            $res = $db->consulta("SELECT * FROM pincho");
+            $sentencia = "DELETE FROM pincho WHERE idpincho='".$id."'";
+            $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
 
-        public function recuperar($id) {
-
+        /* Modifica una tupla de pincho con el id indicado.
+        *  Parametros:
+        *       $login - Clave primaria del usuario (login).
+        *       $password - Atributo a modificar, contraseña del usuario especificado.
+        *       $email - Atributo a modificar, email del usuario especificado.
+        *   Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
+        */
+        public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, 
+            $ingredientesp, $precio, $aceptado) {
+            $db = new BD();
+            $sentencia = "UPDATE usuarios SET nombrepincho='".$nombrepincho."', fotopincho='".$fotopincho."', 
+            descripcionpincho='".$descripcionpincho."', ingredientesp='".$ingredientesp."', precio='".$precio."', aceptado='".$aceptado."' WHERE idpincho='".$id."' ";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
         }
 
-        public function eliminar($id) {
-
-        }
-
-        public function modificar($objeto) {
-
-        }
-
-        public function insertar($objeto) {
-
+        /* Inerta una tupla de pincho con los parametros indicado.
+        *  Parametros:
+        *       $idpincho - Atributo a insertar, clave primario del pincho (idpincho).
+        *       $nombrepincho - Atributo a insertar, nombre del picho.
+        *       $fotopincho - Atributo a insertar, foto del pincho.
+        *       $descripcionpincho - Atributo a insertar, descripcion del pincho.
+        *       $ingredientesp - Atributo a insertar, ingredientes del pinco.
+        *       $precio - Atributo a insertar, tipo de usuario (jpop, jpro, org, est). 
+        *       $aceptado - Atributo a insertar, indica si el pincho ha sido aceptado en el concurso.
+        *       $concurso_edicion - Atributo a insertar, indica la edicion en la que participa el pincho. 
+        *       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.           
+        *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
+        */
+        public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp
+            $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) {
+            $db = new BD();
+            $sentencia = "INSERT INTO usuarios (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login) 
+            VALUES('".$idpincho."', '".$nombrepincho."', '".$fotopincho."', '".$descripcionpincho."', '".$ingredientesp."'
+            '".$precio."', '".$aceptado."', '".$concurso_edicion."', '".$establecimiento_usuarios_login."')";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
         }
     }
 

@@ -11,6 +11,11 @@
         public $email;
         public $tipo;
 
+
+        /* Constructor de la clase que inicializa la base de datos.
+        *  Sin parametros.
+        *  Sin return.
+        */
         public function __construct() {
             try {
                 $this->bd = new BD();
@@ -19,6 +24,11 @@
             }
         }
 
+        /* Lista los usuarios filtrados por login.
+        *  Parametros:
+        *       $login - Clave primaria de usuarios (login).
+        *  Return: Devuelve los datos del usuario sin tratar o FALSE en caso de error.
+        */
         public function recuperar($login) {
             $db = new BD();
             $sentencia = "SELECT * FROM usuarios WHERE login='".$login."'";
@@ -28,6 +38,11 @@
             $db->desconectar();
         }
 
+        /* Elimina una tupla de usuarios con el login indicado.
+        *  Parametros:
+        *       $login - Clave primaria de la tabla (login).
+        *  Return: Devuelve TRUE si la tupla se elimina correctamente o FALSE en caso contrario.
+        */
         public function eliminar($login) {
             $db = new BD();
             $sentencia = "DELETE FROM usuarios WHERE login='".$login."'";
@@ -35,25 +50,40 @@
             $db->desconectar();
             return $res;
         }
-
-        public function modificar($objeto) {
+        
+        /* Modifica una tupla de usuarios con el login indicado.
+        *  Parametros:
+        *       $login - Clave primaria del usuario (login).
+        *       $password - Atributo a modificar, contraseña del usuario especificado.
+        *       $email - Atributo a modificar, email del usuario especificado.
+        *   Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
+        */
+        public function modificar($login, $password, $email) {
             $db = new BD();
-            $sentencia = "UPDATE usuarios SET password='".$objeto->password."', email='".$objeto->email."' WHERE login='".$objeto->login."' ";
+            $sentencia = "UPDATE usuarios SET password='".$password."', email='".$email."' WHERE login='".$login."' ";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
 
-        public function insertar($objeto) {
-             $db = new BD();
-            $sentencia = "INSERT INTO usuarios (login, password, email, tipo) VALUES('".$objeto->login."','".$objeto->password."','".$objeto->email."','".$objeto->tipo."')";
+        /* Inerta una tupla de usuario con los parametros indicado.
+        *  Parametros:
+        *       $login - Atributo a insertar, clave primario del usuario (login).
+        *       $password - Atributo a insertar, constraseña del usuario.
+        *       $email - Atributo a insertar, email del usuario.
+        *       $tipo - Atributo a insertar, tipo de usuario (jpop, jpro, org, est).
+        *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
+        */
+        public function insertar($login, $password, $email, $tipo) {
+            $db = new BD();
+            $sentencia = "INSERT INTO usuarios (login, password, email, tipo) VALUES('".$login."','".$password."','".$email."','".$tipo."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
     }
 
-    $user = new Usuarios();
+   /* $user = new Usuarios();
     $user2 = new Usuarios();
     $user2->login ='lucia';
     $user2->password='abc';
@@ -70,7 +100,7 @@
          echo $data['email']."<br/>";
          echo $data['tipo']."<hr/>";
         }*/
-    }
+    //}
 
     // $codPincho = new JuradoProfesional();
     // $res = $codPincho->listar();
