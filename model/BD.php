@@ -2,7 +2,7 @@
 
 	class BD {
 
-		private $connection;
+		public $connection;
 
 		/* Constructor de la clase.
 		*  Los parametros estás predefinidos.
