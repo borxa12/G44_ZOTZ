@@ -19,21 +19,57 @@
             }
         }
 
-        public function recuperar($id) {
-
+        public function recuperar($login) {
+            $db = new BD();
+            $sentencia = "SELECT * FROM usuarios WHERE login='".$login."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res)==0) return false;
+            else  return $res;
+            $db->desconectar();
         }
 
-        public function eliminar($id) {
-
+        public function eliminar($login) {
+            $db = new BD();
+            $sentencia = "DELETE FROM usuarios WHERE login='".$login."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
         }
 
         public function modificar($objeto) {
-
+            $db = new BD();
+            $sentencia = "UPDATE usuarios SET password='".$objeto->password."', email='".$objeto->email."' WHERE login='".$objeto->login."' ";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
         }
 
         public function insertar($objeto) {
-
+             $db = new BD();
+            $sentencia = "INSERT INTO usuarios (login, password, email, tipo) VALUES('".$objeto->login."','".$objeto->password."','".$objeto->email."','".$objeto->tipo."')";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
         }
+    }
+
+    $user = new Usuarios();
+    $user2 = new Usuarios();
+    $user2->login ='lucia';
+    $user2->password='abc';
+    $user2->email = 'lucia@email.com';
+    $user2->tipo = 'jpop';
+
+    $res = $user->eliminar('lucia');
+     if ($res == false) echo "Mal";
+     else{
+        echo "Bien";
+        /*while($data = mysqli_fetch_assoc($res)) {
+         echo $data['login']."<br/>";
+         echo $data['password']."<br/>";
+         echo $data['email']."<br/>";
+         echo $data['tipo']."<hr/>";
+        }*/
     }
 
     // $codPincho = new JuradoProfesional();

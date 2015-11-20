@@ -52,7 +52,7 @@
         public function eliminar($cod) {
             $db = new BD();
            // $res = $db->consulta("DELETE * FROM codigopincho WHERE pincho_idpincho=?",'s', $id);
-            $sentencia = "DELETE * FROM codigopincho WHERE pincho_idpincho='".$id."'";
+            $sentencia = "DELETE FROM codigopincho WHERE codigopincho='".$cod."'";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
@@ -80,14 +80,14 @@
 
     }
 
-    /* $codPincho = new CodigoPincho();
+     $codPincho = new CodigoPincho();
      $codPincho2 = new CodigoPincho();
     $codPincho2->pincho_idpincho ='1';
         $codPincho2->codigopincho = '1234';
         $codPincho2->likes = '1';
         $codPincho2->establecimiento_usuarios_login = 'establecimiento1';
 
-     $res = $codPincho->modificar('1234', 0);
+     $res = $codPincho->eliminar('1234');
      if ($res == false) echo "no modificado";
      else{
         echo "modificado";
@@ -98,5 +98,5 @@
          echo $data['establecimiento_usuarios_login']."<hr/>";
         
     }*/
-
+}
 ?>
