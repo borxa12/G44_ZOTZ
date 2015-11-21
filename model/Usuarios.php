@@ -82,19 +82,6 @@
             return $res;
         }
 
-        /*  Permite a un usuario iniciar sesion si su login y password son correctos
-        *   Parametros:
-        *       $login - Atributo a comprobar, login del usuario que quiere iniciar sesion.
-        *       $password - Atributo a comprobar, contraseña del usuario que quiere iniciar sesion.
-        *   Return: Devuelve 1 si hay exactamente una coincidencia con los atributos que se pasan por parametro.
-        */
-        public function iniciar($login,$password){
-          $db = new BD();
-          $sentencia = "SELECT COUNT(*) FROM usuarios WHERE login='".$login."' AND password='".$password."' AGRUP BY login";
-          $res = mysqli_query($db->connection,$sentencia);
-          $db->desconectar();
-          return $res;
-        }
     }
 
    /* $user = new Usuarios();
