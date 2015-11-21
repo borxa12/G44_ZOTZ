@@ -1,5 +1,4 @@
 <?php
-    include 'BD.php';
 
     class Pincho {
         public $idpincho;
@@ -52,6 +51,21 @@
             $db->desconectar();
         }
 
+        /* Recupera una tupla de pincho con el login indicado y la edicion.
+        *  Parametros:
+        *       $login - atributo de pinchos (establecimiento_usuarios_login).
+        *       $ed - atributo de pinchos (concurso_edicion).
+        *  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
+        */
+        public function recuperarActualEstablecimiento($login, $ed) {
+             $db = new BD();
+            $sentencia = "SELECT * FROM pincho WHERE establecimiento_usuarios_login='".$login."' AND concurso_edicion='".$ed."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res)==0) return false;
+            else  return $res;
+            $db->desconectar();
+        }
+
         /* Elimina una tupla de pinchos con el id indicado.
         *  Parametros:
         *       $id - Clave primaria de la tabla (id).
@@ -95,8 +109,7 @@
         *       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.           
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp
-            $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) {
+        public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) {
             $db = new BD();
             $sentencia = "INSERT INTO usuarios (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login) 
             VALUES('".$idpincho."', '".$nombrepincho."', '".$fotopincho."', '".$descripcionpincho."', '".$ingredientesp."'

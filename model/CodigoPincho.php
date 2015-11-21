@@ -1,6 +1,6 @@
 <?php
 
-    require_once './BD.php';
+
 
     class CodigoPincho {
 
@@ -98,19 +98,19 @@
         }
 
         /* Inerta una tupla de codigo pinhco con los parametros indicado.
+        *  Por defecto el campo likes está a null.
         *  Parametros:
         *       $codigopincho - Atributo a insertar, clave primario del codigo pincho (codigopincho).
-        *       (integer) $likes - Atributo a insertar, numero de personas a las que le gusta el pincho.
         *       $establecimiento_usuarios_login - Atributo a insertar, establecimiento propietario del pincho y que genera los codigos.
         *       (integer) $pincho_idpincho - Atributo a insertar, identificar del pincho.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function insertar($codigopincho,$likes,$establecimiento_usuarios_login,$pincho_idpincho) {
+        public function insertar($codigopincho, $establecimiento_usuarios_login, $pincho_idpincho) {
             $db = new BD();
             //$param = array($objeto->pincho_idpincho, $objeto->codigopincho, $objeto->like, $objeto->establecimiento_usuarios_login);
             // $res = $db->consulta("INSERT INTO codigopincho (pincho_idpincho, codigopincho, like, establecimiento_usuarios_login) VALUES(?,?,?,?)",'ssis', $param);
-            $sentencia = "INSERT INTO codigopincho (codigopincho, likes, establecimiento_usuarios_login, pincho_idpincho)
-                VALUES('".$codigopincho."','".$likes."','".$establecimiento_usuarios_login."','".$pincho_idpincho."')";
+            $sentencia = "INSERT INTO codigopincho (codigopincho, establecimiento_usuarios_login, pincho_idpincho)
+                VALUES('".$codigopincho."', '".$establecimiento_usuarios_login."','".$pincho_idpincho."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
