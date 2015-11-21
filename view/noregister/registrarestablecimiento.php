@@ -5,10 +5,7 @@
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
 ?>
-
-<body>
-			<div id="contenido" class="col-xs-12 col-sm-9 col-md-9">
-                <h1>Registrar Establecimiento</h1>
+            <h1>Registrar Establecimiento</h1>
                 <form id="registroestablecimiento" method="post">
                     <div id=templatemo_form>
                         <div>
@@ -61,8 +58,11 @@
                 </form>
 
             <div class="cleaner"></div>
-
-	<div class="col-xs-12 col-sm-12 col-md-1"></div>
 	</div>
+	<div class="col-xs-12 col-sm-12 col-md-1"></div>
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-1"></div>
+</div>
 
 <?php loadclasses("view","footer.html"); ?>
