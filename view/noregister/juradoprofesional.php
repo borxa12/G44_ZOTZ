@@ -1,6 +1,9 @@
 <?php
-    require_once '../header.php';
-    require_once '../../menus/nomenu.html';
+    include("../../loader.php");
+    loadclasses("view","header.php");
+    loadclasses("menus","nomenu.html");
+    // require_once '../header.php';
+    // require_once '../../menus/nomenu.html';
 ?>
 
 <h1>Miembros del jurado profesional</h1>
@@ -9,4 +12,5 @@
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
-<?php   require_once '../footer.php'; ?>
+
+<?php loadclasses("view","footer.html"); ?>

@@ -1,7 +1,11 @@
 <?php
-    require_once '../header.php';
-    require_once '../../menus/nomenu.html';
+    include("../../loader.php");
+    loadclasses("view","header.php");
+    loadclasses("menus","nomenu.html");
+    //require_once '../header.php';
+    //require_once '../../menus/nomenu.html';
 ?>
+
 <body>
 			<div id="contenido" class="col-xs-12 col-sm-9 col-md-9">
                 <h1>Registrar Establecimiento</h1>
@@ -55,9 +59,10 @@
                     </div>
                     <button type="submit" class="btn btn-default button">Dar de alta</button>
                 </form>
-            
+
             <div class="cleaner"></div>
 
 	<div class="col-xs-12 col-sm-12 col-md-1"></div>
 	</div>
-<?php   require_once '../footer.php'; ?>
+
+<?php loadclasses("view","footer.html"); ?>
