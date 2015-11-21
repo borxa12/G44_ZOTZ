@@ -39,7 +39,7 @@
                             <br></br>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default button">Dar de alta</button>
+                    <button type="submit" formaction="registrarjuradoprofesional.php" class="btn btn-default button">Dar de alta</button>
                 </form>
     </div>
 </div>

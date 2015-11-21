@@ -161,7 +161,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <a href="seleccionarfinalistas.html"><button type="submit" class="btn btn-register">Seleccionar Finalistas</button></a>
+                <a href="seleccionarfinalistas.php"><button type="submit" class="btn btn-register">Seleccionar Finalistas</button></a>
             </div>
         </div>
     </div>

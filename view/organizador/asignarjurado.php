@@ -36,7 +36,7 @@
 							<input type="checkbox" name="jurado5" value="jurado5">jurado5<br><br><br>
 						</div>
 				    </div>
-					<button type="submit" formaction="asignarpinchojuradoprofesional.html" class="btn btn-default button">Guardar</button>
+					<button type="submit" formaction="asignarpinchojuradoprofesional.php" class="btn btn-default button">Guardar</button>
                 </form>
     </div>
 </div>

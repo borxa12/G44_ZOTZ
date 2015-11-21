@@ -28,7 +28,7 @@
                     <br></br>
                 </div>
 		    </div>
-            <a href="seleccionarFinalistas.php" class="btn btn-default button">Volver</a>
+            <button type="submit" formaction="seleccionarfinalistas.php" class="btn btn-default button">Volver</button>
         </form>
         <div class="cleaner"></div>
 </div>

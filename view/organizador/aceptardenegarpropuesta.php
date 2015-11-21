@@ -14,8 +14,10 @@
                     <a href="#"><img src="#" alt="image" class="img"/></a>
                 </div>
                 <div class="button">
-	                <a href="propuestasgastronomicas.php" class="btn btn-default button">Aceptar</a>
-	                <a href="propuestasgastronomicas.php" class="btn btn-default button">Denegar</a>
+                    <form id="evaluacionpincho" method="post">
+                        <button type="submit" formaction="propuestasgastronomicas.php" class="btn btn-default button">Aceptar</button>
+                        <button type="submit" formaction="propuestasgastronomicas.php" class="btn btn-default button">Denegar</button>
+                    </form>
                 </div>
     </div>
 </div>

@@ -10,7 +10,9 @@
                     <a href="" class="pirobox"><img src="" alt="image" class="img"/></a>
                     <h4>Nombre Pincho</h4>
                     <p> Establecimiento </p>
-                    <a href="datospincho.php" class="btn btn-default button">Ver</a>
+                    <form id="verfinalista" method="post">
+                        <button type="submit" formaction="datospincho.php" class="btn btn-default button">Ver</button>
+                    </form>
                 </div>
     </div>
 </div>

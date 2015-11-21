@@ -11,7 +11,9 @@
                     <a href=""  ><img src="" alt="image" class="img" /></a>
                     <h4>Nombre Pincho</h4>
                     <p> Descripción </p>
-                    <div class="btn btn-default button"><a href="asignarjurado.php">Asignar Jurado</a></div>
+                    <form id="asinaciondejurado" method="post">
+                        <button type="submit" formaction="asignarjurado.php" class="btn btn-default button">Asignar Jurado</button>
+                    </form>
                 </div>
             </div>
 </div>
