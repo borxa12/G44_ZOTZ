@@ -1,8 +1,11 @@
 <?php
-    require_once '../header.php';
-    require_once '../../menus/menujuradopopular.html';
+    include("../../loader.php");
+    loadclasses("view","header.php");
+    loadclasses("menus","menujuradopopular.html");
+    //require_once '../header.php';
+    //require_once '../../menus/nomenu.html';
 ?>
-			<div id="contenido" class="col-xs-12 col-sm-9 col-md-9">
+			<!-- <div id="contenido" class="col-xs-12 col-sm-9 col-md-9"> -->
 				<h1>Votar</h1>
 				<div id=templatemo_form>
 					<h2>Introducir códigos</h2>
@@ -23,7 +26,9 @@
 							class="btn btn-default button">Votar</button>
 					</form>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-12 col-md-1"></div>
-	</div>
+            </div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-1"></div>
+</div>
+
+<?php loadclasses("view","footer.html"); ?>

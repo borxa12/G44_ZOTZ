@@ -1,10 +1,12 @@
 <?php
-    require_once '../header.php';
-    require_once '../../menus/menujuradopopular.html';
+    include("../../loader.php");
+    loadclasses("view","header.php");
+    loadclasses("menus","menujuradopopular.html");
+    //require_once '../header.php';
+    //require_once '../../menus/nomenu.html';
 ?>
-
-<body>
-			<div id="contenido" class="col-xs-12 col-sm-9 col-md-9">
+<!-- <body>
+			<div id="contenido" class="col-xs-12 col-sm-9 col-md-9"> -->
 				<h1>Votar</h1>
 				<div id=templatemo_form>
 					<h2>Selecciona un favorito</h2>
@@ -28,7 +30,8 @@
 					</form>
 				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 col-sm-12 col-md-1"></div>
-	</div>
-<?php   require_once '../footer.php'; ?>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-1"></div>
+</div>
+
+<?php loadclasses("view","footer.html"); ?>

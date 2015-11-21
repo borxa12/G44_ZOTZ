@@ -70,42 +70,131 @@
 		<div class="completar col-xs-12 col-sm-12 col-md-1"></div>
 	</header>
 
-	<!-- Login Modal Page -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	    <div class="modal-dialog" role="document">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <a href="http://localhost/Zotz/view/noregister/registro.php"><button type="button" class="btn btn-register">Registrarse</button></a>
-	                <h4 class="modal-title osSansFont" id="myModalLabel">Registro</h4>
-	            </div>
-
-	            <!-- Contenido de la página modal -->
-	            <div class="modal-body">
-	                <form name="sentMessage" id="loginForm" novalidate>
-	                    <div class="row control-group">
-	                        <div class="form-group col-xs-12 floating-label-form-group controls">
-	                            <label>Login</label>
-	                            <input type="text" class="form-control" placeholder="Login" id="login" required data-validation-required-message="Introduzca su login">
-	                            <p class="help-block text-danger"></p>
-	                        </div>
-	                    </div>
-	                    <div class="row control-group">
-	                        <div class="form-group col-xs-12 floating-label-form-group controls">
-	                            <label>Contraseña</label>
-	                            <input type="password" class="form-control" placeholder="Contraseña" id="password" required data-validation-required-message="Introduzca su contraseña">
-	                            <p class="help-block text-danger"></p>
-	                        </div>
-	                    </div>
-	                </form>
-	            </div>
-
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	                <button type="submit" class="btn-login">Iniciar sesion</button>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
 <!-- </body>
 </html> -->
+
+<!-- Login Modal Page -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="http://localhost/Zotz/view/noregister/registro.php"><button type="button" class="btn btn-register">Registrarse</button></a>
+                <h4 class="modal-title osSansFont" id="myModalLabel">Registro</h4>
+            </div>
+
+            <!-- Contenido de la página modal -->
+            <div class="modal-body">
+                <form name="sentMessage" id="loginForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Login</label>
+                            <input type="text" class="form-control" placeholder="Login" id="login" required data-validation-required-message="Introduzca su login">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña" id="password" required data-validation-required-message="Introduzca su contraseña">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn-login">Iniciar sesion</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generar Códigos Modal Page -->
+<div class="modal fade" id="generarCodigos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Contenido de la página modal -->
+            <div class="modal-body">
+                <form  id="codigos" method="post">
+                    <div class="row">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <div>
+                                <h4>Código</h4>
+                            </div>
+                            <div>
+                                <h1 id="code">ASFKJ777</h1>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seleccionar Finalistas Modal Page -->
+<div class="modal fade" id="seleccionarFinalistas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Contenido de la página modal -->
+            <div class="modal-body">
+                <form  id="nfinalistas" method="post">
+                    <div class="row">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <div>
+                                <h4>Número de Finalistas</h4>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Número de Finalistas" id="nfinalista" required data-validation-required-message="Intruduzca el número de finalistas">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <a href="seleccionarfinalistas.html"><button type="submit" class="btn btn-register">Seleccionar Finalistas</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmación Modal Page -->
+<div class="modal fade" id="confirmacionVotoPincho" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Contenido de la página modal -->
+            <div class="modal-body">
+                <form  id="nfinalistas" method="post">
+                    <div class="row">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <div>
+                                <h4>Confirmación</h4>
+                            </div>
+                            <div>
+                                <h2>¿Está seguro de querer votar a este pincho?</h2>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <form id="confirmacion" method="post">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" formaction="index.html" class="btn btn-register">Si</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
