@@ -22,8 +22,7 @@
 							<label>Codigo 3</label> <input id="cod3" name="cod3" type="text" />
 							<br></br>
 						</div>
-						<button type="submit" formaction="votarpincho.php"
-							class="btn btn-default button">Votar</button>
+						<button type="submit" formaction="votarpincho.php" class="btn btn-default button">Votar</button>
 					</form>
 				</div>
             </div>

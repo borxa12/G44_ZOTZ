@@ -54,7 +54,8 @@
                             <br></br>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default button">Dar de alta</button>
+                    <button type="submit" class="btn btn-default button" formaction="../establecimiento/modificarestablecimiento.php">Dar de alta</button>
+                    <button type="submit" formaction="establecimientos.php" class="btn btn-default button">Volver</button>
                 </form>
 
             <div class="cleaner"></div>

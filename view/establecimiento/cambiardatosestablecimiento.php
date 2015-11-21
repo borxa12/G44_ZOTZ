@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <button type="submit" formaction="modificarestablecimiento.php" class="btn btn-default button">Guardar</button>
-					<div class="btn btn-default button"><a href="modificarestablecimiento.php">Cancelar</a></div>
+                    <button type="submit" formaction="modificarestablecimiento.php" class="btn btn-default button">Cancelar</button>
                 </form>
 </div>
 </div>

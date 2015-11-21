@@ -16,7 +16,9 @@
                 <p> Dirección </p>
                 <p> Teléfono </p>
                 <p> Web </p>
-                <button type="button" class="btn btn-default button">Ver</button>
+                <form id="accesoestablecimiento" method="post">
+                    <button type="submit" formaction="establecimiento.php" class="btn btn-default button">Ver</button>
+                </form>
             </div>
 	</div>
 </div>

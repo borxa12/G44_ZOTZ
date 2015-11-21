@@ -26,7 +26,7 @@
 							<a href="" class="pirobox"><img src="" alt="image" class="img"/></a>
 							<p>Descripcion del pincho3</p>
 						</div>
-                		<div class="btn btn-default button"><a href="#" data-toggle="modal" data-target="#confirmacionVotoPincho">Votar</a></div>
+                        <button type="button" class="btn btn-default button" data-toggle="modal" data-target="#confirmacionVotoPincho">Enviar Voto</button>
 					</form>
 				</div>
 			</div>

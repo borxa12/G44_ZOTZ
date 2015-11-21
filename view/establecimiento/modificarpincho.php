@@ -27,6 +27,7 @@
                             <br></br>
                         </div>
 					<div>
+                    <button type="submit" formaction="datospincho.php" class="btn btn-default button">Cancelar</button>
                     <button type="submit" formaction="datospincho.html" class="btn btn-default button">Guardar Pincho</button>
 					</div>
                 </form>

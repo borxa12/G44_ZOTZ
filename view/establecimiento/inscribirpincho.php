@@ -26,6 +26,7 @@
                             <input type="file" id="fotopincho" />
                             <br></br>
                         </div>
+                    <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Cancelar</button>
                     <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Inscribir Pincho</button>
                 </form>
                 <div class="cleaner"></div>

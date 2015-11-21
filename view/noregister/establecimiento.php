@@ -1,7 +1,7 @@
 <?php
     include("../../loader.php");
     loadclasses("view","header.php");
-    loadclasses("menus","menuestablecimiento.html");
+    loadclasses("menus","nomenu.html");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
 ?>
@@ -30,11 +30,6 @@
                             </br>
                         </div>
                         <div>
-                            <label  for="loginestablecimiento">Login</label>
-                            <h4>Login Establecimiento</h4>
-                            </br>
-                        </div>
-                        <div>
                             <label for="emailestablecimiento">Email</label>
                             <h4>Email Establecimiento</h4>
                             </br>
@@ -50,11 +45,9 @@
                             </br>
                         </div>
                     </div>
-                    <form id="actionestablecimientodeletemodify" method="post">
-                        <button type="submit" formaction="cambiardatosestablecimiento.php" class="btn btn-default button">Modificar</button>
-                        <button type="button" class="btn btn-default button" data-toggle="modal" data-target="#eliminarestablecimiento">Eliminar</button>
+                    <form id="volverestablecimientos" method="post">
+                        <button type="submit" formaction="establecimientos.php" class="btn btn-default button">Volver</button>
                     </form>
-
                 <div class="cleaner"></div>
 </div>
 </div>

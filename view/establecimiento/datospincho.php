@@ -28,6 +28,7 @@
                     <br></br>
                 </div>
 		    </div>
+            <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Volver</button>
             <button type="submit" formaction="modificarpincho.php" class="btn btn-default button">Modificar</button>
         </form>
         <div class="cleaner"></div>
