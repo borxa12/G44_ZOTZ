@@ -26,6 +26,7 @@
         </div>
     </div>
     <button type="submit" class="btn btn-default button">Darse de alta</button>
+    <button type="submit" formaction="./registro_login.php" class="btn btn-default button">Volver</button>
 </form>
 
 <div class="cleaner"></div>

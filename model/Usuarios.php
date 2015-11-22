@@ -1,6 +1,10 @@
 <?php
 
-    require_once './BD.php';
+    require_once 'BD.php';
+    // require_once 'http://localhost/Zotz/modelBD.php';
+    // include("../loader.php");
+    // loadclasses("model","BD.php");
+    // loadclasses("menus","menuestablecimiento.html");
 
     class Usuarios {
 
@@ -22,6 +26,21 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
+        }
+
+        /* Realiza la comprobación de login del usuario.
+        *  Parametros:
+        *       $login - Clave primaria de usuarios (login).
+        *       $password - Contraseña asociada al usuario (password).
+        *  Return: Devuelve los datos del usuario sin tratas o FALSE en caso de error.
+        */
+        public function login($login,$password) {
+            $db = new BD();
+            $sentencia = "SELECT * FROM usuarios WHERE login='".$login."' AND password='".$password."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res)==0) return false;
+            else return $res;
+            $db->desconectar();
         }
 
         /* Lista los usuarios filtrados por login.
@@ -84,24 +103,24 @@
 
     }
 
-   /* $user = new Usuarios();
-    $user2 = new Usuarios();
-    $user2->login ='lucia';
-    $user2->password='abc';
-    $user2->email = 'lucia@email.com';
-    $user2->tipo = 'jpop';
+    // $user = new Usuarios();
+    // $user2 = new Usuarios();
+    // $user2->login ='lucia';
+    // $user2->password='abc';
+    // $user2->email = 'lucia@email.com';
+    // $user2->tipo = 'jpop';
 
-    $res = $user->eliminar('lucia');
-     if ($res == false) echo "Mal";
-     else{
-        echo "Bien";
-        /*while($data = mysqli_fetch_assoc($res)) {
-         echo $data['login']."<br/>";
-         echo $data['password']."<br/>";
-         echo $data['email']."<br/>";
-         echo $data['tipo']."<hr/>";
-        }*/
-    //}
+    // $res = $user->login('establecimiento1','estpass');
+    //  if (!$res) echo "Mal";
+    //  else {
+    //     echo "Bien";
+    //     while($data = mysqli_fetch_assoc($res)) {
+    //         echo $data['login']."<br/>";
+    //         echo $data['password']."<br/>";
+    //         echo $data['email']."<br/>";
+    //         echo $data['tipo']."<hr/>";
+    //     }
+    // }
 
     // $codPincho = new JuradoProfesional();
     // $res = $codPincho->listar();

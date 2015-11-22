@@ -1,3 +1,15 @@
+<?php
+    // session_start();
+    // ob_start();
+    // include("../../loader.php");
+    // loadclasses("view","header.php");
+    // loadclasses("menus","menujuradoprofesional.html");
+    //require_once '../header.php';
+    //require_once '../../menus/nomenu.html';
+    // if($_SESSION['tipo'] != 'jpro') {
+    //     header("Location: http://localhost/Zotz/index.php");
+    // } else {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +57,16 @@
 						<li><a href="http://localhost/Zotz/view/noregister/juradoprofesional.php">Jurado Profesional</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/mapa.php">Gastromapa</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/folleto.php">Folleto</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#login">Registrarse</a></li> <!-- #login -->
+						<?php
+							if(isset($_SESSION['login'])) {
+								echo "";
+							} else {
+								?>
+								<li><a href="http://localhost/Zotz/view/noregister/registro_login.php">Login</a></li>
+								<?php
+							}
+						?>
+						<!-- <li><a href="#" data-toggle="modal" data-target="#login">Registrarse</a></li> -->
 					</ul>
 
 					<!-- Buscador -->
@@ -74,28 +95,30 @@
 </html> -->
 
 <!-- Login Modal Page -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <a href="http://localhost/Zotz/view/noregister/registro.php"><button type="button" class="btn btn-register">Registrarse</button></a>
+                <a href="http://localhost/Zotz/view/noregister/registro.php">
+					<button type="button" class="btn btn-register">Registrarse</button>
+				</a>
                 <h4 class="modal-title osSansFont" id="myModalLabel">Registro</h4>
-            </div>
+            </div> -->
 
             <!-- Contenido de la página modal -->
-            <div class="modal-body">
-                <form name="sentMessage" id="loginForm" novalidate>
+            <!-- <div class="modal-body">
+                <form id="loginForm" action="../login.php" method="POST">
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Login</label>
-                            <input type="text" class="form-control" placeholder="Login" id="login" required data-validation-required-message="Introduzca su login">
+                            <input name="login" type="text" class="form-control" placeholder="Login" required data-validation-required-message="Introduzca su login">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Contraseña</label>
-                            <input type="password" class="form-control" placeholder="Contraseña" id="password" required data-validation-required-message="Introduzca su contraseña">
+                            <input name	="password" type="password" class="form-control" placeholder="Contraseña" required data-validation-required-message="Introduzca su contraseña">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -104,11 +127,11 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn-login">Iniciar sesion</button>
+                <button id="conectarse" type="submit" class="btn-login">Iniciar sesion</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Generar Códigos Modal Page -->
 <div class="modal fade" id="generarCodigos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

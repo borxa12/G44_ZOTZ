@@ -1,9 +1,14 @@
 <?php
+    session_start();
+    ob_start();
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
+    if($_SESSION['tipo'] != 'est') {
+        header("Location: http://localhost/Zotz/index.php");
+    } else {
 ?>
 
             <h1>Modificar Establecimiento</h1>
@@ -67,4 +72,7 @@
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
 </div>
 
+<?php
+    }
+?>
 <?php loadclasses("view","footer.html"); ?>
