@@ -8,7 +8,7 @@
         // Atributos
         public $pincho_idpincho;
         public $juradoprofesional_usuarios_login;
-        public $votoprofesional;
+        public $votoprofesional=null;
 
         public function __construct() {
             try {
@@ -19,19 +19,45 @@
         }
 
         public function recuperar($id) {
-
+          $db = new BD();
+          $sentencia = "SELECT * FROM votaprofesional WHERE pincho_idpincho='".$id."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
 
         public function eliminar($id) {
-
+          $db = new BD();
+          $sentencia = "DELETE FROM votaprofesional WHERE pincho_idpincho='".$id."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
 
         public function modificar($objeto) {
-
+          $db = new BD();
+          $sentencia = "UPDATE votaprofesional SET pincho_idpincho='".$objeto->pincho_idpincho."',juradoprofesional_usuarios_login'".$objeto->juradoprofesional_usuarios_login."',votoprofesional='".$objeto->votoprofesional."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
-
-        public function insertar($objeto) {
-
+        /*  Inserta una nueva tupla a la tabla votaprofesional
+        *   Parametros:
+                $$objeto - Array con los atributos de la nueva asignacion de pincho a jurado profesional a insertar
+        *   Return: Devuelve TRUE si se han podido modificar los datos.
+        */
+        public function insertar($idpincho,$jurado) {
+          $db = new BD();
+          foreach ($jurado as $jp) {
+            $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,votaprofesional) VALUES('".$idpincho."','".$jp."',NULL)";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(!$res){
+              $db->desconectar();
+              return $res;
+            }
+          }
+          $db->desconectar();
+          return $res;
         }
     }
 
