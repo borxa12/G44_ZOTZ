@@ -49,7 +49,7 @@
     }
 
     public function recuperarJuradoProfesional() {
-        
+
     }
 
     public function registrarJuradoProfesional($juradoprofesional) {
@@ -60,24 +60,23 @@
 
     }
 
-    public function asignarPinchosJuradoProfesional() {
-
+		/*  Inserta una nueva tupla a la tabla votaprofesional por cada jurado asignado a un pincho
+		*   Parametros:
+						$idpincho - clave primaria del pincho a asignar.
+						$loginsJuradoProfesional - array con los login de cada jurado
+		*   Return: Devuelve TRUE si se han podido insertar los datos.
+		*/
+    public function asignarPinchosJuradoProfesional($idpincho,$loginsJuradoProfesional) {
+			$asignar = new VotaProfesional();
+			$asignar->pincho_idpincho = $idpincho;
+			foreach ($loginsJuradoProfesional as $login) {
+				$asignar->juradoprofesional_usuarios_login = $login;
+				$res = $asignar->insertar($asignar);
+				if(!$res) return $res;
+			}
+			return $res;
     }
 
-    public function asignarPinchos() {
 
-    }
-
-    public function enviarFormulario() {
-
-    }
-
-    public crearAsignacion($pincho,$juradoprofesional) {
-
-    }
-
-    public addAsignacionPinchoJuradoProfesional() {
-
-    }
 
 ?>
