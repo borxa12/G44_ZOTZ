@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    ob_start();
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","nomenu.html");
@@ -6,6 +8,9 @@
     //require_once '../../menus/nomenu.html';
     // session_start(); // Cuidado
     // if(isset($_SESSION['login'])) header("Location: http://localhost/Zotz/login.php"); // Cuidado
+    if(isset($_SESSION['tipo'])) {
+        header("Location: http://localhost/Zotz/index.php"); // Cuidado
+    } else {
 ?>
 
 <h1>Acceso Personal</h1>
@@ -42,4 +47,7 @@
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
 </div>
 
+<?php
+    }
+?>
 <?php loadclasses("view","footer.html"); ?>

@@ -12,7 +12,7 @@
 ?>
 <!-- Contenido principal de la página -->
 <h1>Benvido <?php echo $_SESSION['login']; ?></h1>
-<h3>Grazas por participar no máis fermoso e increíble concurso de pinchos que xamáis foi creado.<br/><br/>Convirtete no xuez que sempre quixeche ser.<br/><br/>Ministerio de Pinchos. Gobierno de Todos.</h3>
+<h3>Grazas por participar no máis fermoso e increíble concurso de pinchos endexamais creado.<br/><br/>Convirtete no xuíz que sempre quixeche ser.<br/><br/>Ministerio de Pinchos. Gobierno de Todos.</h3>
 <h2>Fecha de Inicio: 4/12/2015</h2>
 <h2>Fecha de Finalización: 7/1/2016</h2>
 <!-- </div>
