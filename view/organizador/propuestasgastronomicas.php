@@ -14,20 +14,21 @@
     	$lista = listarPinchosSinAceptar();
 ?>
         <h1>Propuestas Gastronomicas</h1>
-	<form id="propuestasgastronomica" method="post">
+	
 <?php
 	while ($fila = mysqli_fetch_assoc($lista)) {
-			echo "<div class='product_box'>";
+		echo "<form id='propuestasgastronomica' method='POST' action='aceptardenegarpropuesta.php'>";
+		echo "<div class='product_box'>";
 	    echo "<a href='' class='pirobox'><img src='' alt='image' class='img'/></a>";
 			echo "<h4>".$fila["nombrepincho"]."</h4>";
 			echo "<p>".$fila["descripcionpincho"]."</p>";
-			echo "<button type='submit' formaction='aceptardenegarpropuesta.php' class='btn btn-default button'>Evaluar</button>";
+			echo "<button type='submit' class='btn btn-default button'>Evaluar</button>";
 	         echo "</div>";
+	         echo "</form>";
 		}
     }
     
 ?>
- </form>
     </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
