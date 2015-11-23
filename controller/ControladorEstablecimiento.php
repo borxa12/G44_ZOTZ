@@ -1,13 +1,11 @@
 <?php
 
-	require_once '../model/BD.php';
-	require_once '../model/Establecimiento.php';
-	require_once '../model/CodigoPincho.php';
-	require_once '../model/Establecimiento.php';
-	require_once '../model/JuradoProfesional.php';
-	require_once '../model/Pincho.php';
-	require_once '../model/Usuarios.php';
-	require_once '../model/VotaProfesional.php';
+    include_once("../../loader.php");
+    loadclasses("model","Usuarios.php");
+    loadclasses("model","CodigoPincho.php");
+    loadclasses("model","Pincho.php");
+    loadclasses("model","Establecimiento.php");
+    loadclasses("model","BD.php");
 	/* Inserta una tupla de usuario y otra de establecimiento con los parametros indicados.
 	*  Parametros:
 	*       $login - Atributo a insertar, clave primaria del establecimiento (usuarios_login).
@@ -133,7 +131,9 @@
 	 	do{
 	 		$codigo = codigoAleatorio();
 	 	}while (validarCodigo($codigo) == false);
-	 	relacionarCodigo($estlogin, $codigo, $ed);
+	 	$res = relacionarCodigo($estlogin, $codigo, $ed);
+	 	if ($res == false) return false;
+	 	else return $codigo;
 	}
 
 	/* Función que genera un código aleatoriode 6 dígitos alfanuméricos
@@ -150,7 +150,7 @@
 	/* Comprueba si el códogo ($cod) que se le pasa por parámetro es válido,
 	*  si el código está en la BD devuelve false si no devuelve true
 	*/
-		 function validarCodigo($cod) {
+	function validarCodigo($cod) {
         $codPincho = new CodigoPincho();
         $res = $codPincho->recuperar($cod);
         if($res == false) return true;
@@ -165,10 +165,12 @@
 	 	$codigopincho = new CodigoPincho();
 	 	$pincho = new Pincho();
 	 	$res = $pincho->recuperarActualEstablecimiento($estlogin, $ed);
-	 	$data = mysqli_fetch_assoc($res);
-        $id = $data['idpincho'];
-        //$likes = 'NULL';
-        return $codigopincho->insertar($cod, $estlogin, $id);
+	 	if ($res == false) return false;
+	 	else{
+	 		$data = mysqli_fetch_assoc($res);
+       		$id = $data['idpincho'];
+        	return $codigopincho->insertar($cod, $estlogin, $id);
+        }
 	}
 
 	 function cerrarSesion() {

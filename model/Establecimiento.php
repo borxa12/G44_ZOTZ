@@ -1,6 +1,5 @@
 <?php
 
-    require_once './BD.php';
 
     class Establecimiento {
 
@@ -110,7 +109,7 @@
         }
     }
 
-    $est = new Establecimiento();
+   /* $est = new Establecimiento();
     $res = $est->eliminar('establecimiento2');
     if ($res == false) echo "no modificado";
       else{
