@@ -86,11 +86,10 @@
         *       $email - Atributo a modificar, email del usuario especificado.
         *   Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho,
+        public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, 
             $ingredientesp, $precio, $aceptado) {
             $db = new BD();
-            $sentencia = "UPDATE usuarios SET nombrepincho='".$nombrepincho."', fotopincho='".$fotopincho."',
-            descripcionpincho='".$descripcionpincho."', ingredientesp='".$ingredientesp."', precio='".$precio."', aceptado='".$aceptado."' WHERE idpincho='".$id."' ";
+            $sentencia = "UPDATE usuarios SET nombrepincho='".$nombrepincho."', fotopincho='".$fotopincho."', descripcionpincho='".$descripcionpincho."', ingredientesp='".$ingredientesp."', precio='".$precio."', aceptado='".$aceptado."' WHERE idpincho='".$idpincho."' ";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
