@@ -50,8 +50,8 @@ INSERT INTO `juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nom
 -- Volcado de datos para la tabla `pincho`
 --
 
-INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(1, 'pincho1', './img/pinchos/default.png', 'riquisimo', 'algún leva', 2.02, NULL, 1, 'establecimiento1');
-INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(2, 'pincho2', './img/pinchos/default.png', 'rico e barato', 'algún leva', 1.02, NULL, 1, 'establecimiento2');
+INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(1, 'pincho1', './img/pinchos/default.png', 'riquisimo', 'algún leva', 2.02, 'N', 1, 'establecimiento1');
+INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(2, 'pincho2', './img/pinchos/default.png', 'rico e barato', 'algún leva', 1.02, 'N', 1, 'establecimiento2');
 
 --
 -- Volcado de datos para la tabla `usuarios`
