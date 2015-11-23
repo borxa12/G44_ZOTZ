@@ -7,8 +7,6 @@
         private $bd;
         // Atributos
         public $usuarios_login;
-        public $password;
-        public $email;
         public $fotojuradoprofesional;
         public $nombrejuradoprofesional;
         public $reconocimientos;
@@ -26,7 +24,8 @@
     		*/
         public function listar() {
             $db = new BD();
-            $res = $db->consulta("SELECT * FROM juradoprofesional");
+            $sentencia = "SELECT * FROM juradoprofesional";
+            $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
@@ -37,7 +36,8 @@
         */
         public function recuperar($id) {
             $db = new BD();
-            $res = $db->consulta("SELECT * FROM juradoprofesional WHERE usuarios_login='".$id."'");
+            $sentencia"SELECT * FROM juradoprofesional WHERE usuarios_login='".$id."'";
+            $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
@@ -49,7 +49,8 @@
         */
         public function eliminar($id) {
             $db = new BD();
-            $res = $db->consulta("DELETE FROM juradoprofesional WHERE usuarios_login='".$id."'");
+            $sentencia = "DELETE FROM juradoprofesional WHERE usuarios_login='".$id."'";
+            $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
@@ -61,10 +62,10 @@
         */
         public function modificar($id,$objeto) {
             $db = new BD();
-            $res1 = $db->consulta("UPDATE usuarios SET password='".$objeto->password."',email='".$objeto->email"' WHERE usuarios_login='".$id."'");
-            $res2 = $db->consulta("UPDATE juradoprofesional SET fotojuradoprofesional='".$objeto->fotojuradoprofesional."',nombrejuradoprofesional='".$objeto->nombrejuradoprofesional."',reconocimientos='".$objeto->reconocimientos."' WHERE usuarios_login='".$id."'");
+            $sentencia = "UPDATE juradoprofesional SET fotojuradoprofesional='".$objeto->fotojuradoprofesional."',nombrejuradoprofesional='".$objeto->nombrejuradoprofesional."',reconocimientos='".$objeto->reconocimientos."' WHERE usuarios_login='".$id."'";
+            $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
-            return ($res1 && $res2);
+            return $res;
         }
         /*  Permite a un usuario Organizador crear un nuevo usuario JuradoProfesional
         *   Parametros:
@@ -73,10 +74,10 @@
         */
         public function insertar($objeto) {
           $db = new BD();
-          $res1 = $db->consulta("INSERT INTO usuarios(login,password,email) VALUES('".$objeto->usuarios_login."','".$objeto->password."','".$objeto->email."')");
-          $res2 = $db->consulta("INSERT INTO juradoprofesional(fotojuradoprofesional,nombrejuradoprofesional,reconocimientos) VALUES('".$objeto->fotojuradoprofesional."','".$objeto->nombrejuradoprofesional."','".$objeto->reconocimientos."')");
+          $sentencia = "INSERT INTO juradoprofesional(fotojuradoprofesional,nombrejuradoprofesional,reconocimientos) VALUES('".$objeto->fotojuradoprofesional."','".$objeto->nombrejuradoprofesional."','".$objeto->reconocimientos."')";
+          $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
-          return ($res1 && $res2);
+          return $res;
         }
     }
 
@@ -93,3 +94,4 @@
     // }
 
 ?>
+
