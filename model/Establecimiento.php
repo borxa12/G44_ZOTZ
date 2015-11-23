@@ -3,7 +3,7 @@
 
     class Establecimiento {
 
-        private $bd;
+        // private $bd;
         // Atributos
         private $usuarios_login;
         private $nombre;
@@ -17,13 +17,13 @@
         *  Sin parametros.
         *  Sin return.
         */
-        public function __construct() {
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
 
 
         /* Lista los establecimientos, incluyendo identificador y atributos.
@@ -73,7 +73,7 @@
         *       $direccion - Atributo a modificar, direccion del establecimiento.
         *       $telefono - Atributo a modificar, telefono del establecimiento.
         *       $web - Atributo a modificar, web del establecimiento.
-        *       $horario - Atributo a modificar, horario del establecimiento. 
+        *       $horario - Atributo a modificar, horario del establecimiento.
         *       $descripcionestablecimiento - Atributo a modificar, descripcción del establecimiento.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
@@ -94,13 +94,13 @@
         *       $direccion - Atributo a insertar, direccion del establecimiento.
         *       $telefono - Atributo a insertar, telefono del establecimiento.
         *       $web - Atributo a insertar, web del establecimiento.
-        *       $horario - Atributo a insertar, horario del establecimiento. 
+        *       $horario - Atributo a insertar, horario del establecimiento.
         *       $descripcionestablecimiento - Atributo a insertar, descripcción del establecimiento.
        *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
         public function insertar($login, $nombre, $direccion, $telefono, $web, $horario, $descripcionestablecimiento) {
             $db = new BD();
-            $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento) 
+            $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento)
             VALUES('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."'
             '".$horario."', '".$descripcionestablecimiento."')";
             $res = mysqli_query($db->connection,$sentencia);
