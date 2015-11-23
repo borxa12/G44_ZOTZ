@@ -1,10 +1,10 @@
 <?php
 
-    require_once './BD.php';
+    //require_once './BD.php';
 
     class Concurso {
 
-        private $bd;
+      //private $bd;
         // Atributos
         public $edicion;
         public $folleto;
@@ -25,7 +25,7 @@
         *  Sin parametros.
         *  Sin return.
         */
-        public function __construct() { // $edicion,$folleto,$gastromapa,$fechac,$fechaf,$usuarios_login
+        /*public function __construct() { // $edicion,$folleto,$gastromapa,$fechac,$fechaf,$usuarios_login
             try {
                 $this->bd = new BD();
             } catch (Exception $e) {
@@ -38,7 +38,7 @@
             // $this->fechaf = $fechaf;
             // $this->usuarios_login = $usuarios_login;
         }
-
+*/
         /* Lista los concursos.
         *  Sin parametros.
         *  Return: Devuelve los datos del concurso sin tratar o FALSE en caso de error.
