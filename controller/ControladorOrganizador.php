@@ -1,13 +1,21 @@
 <?php
 
-	require_once '../model/Establecimiento.php';
+	/*require_once '../model/Establecimiento.php';
 	require_once '../model/CodigoPincho.php';
 	require_once '../model/Establecimiento.php';
 	require_once '../model/JuradoProfesional.php';
 	require_once '../model/Pincho.php';
 	require_once '../model/Usuarios.php';
 	require_once '../model/VotaProfesional.php';
-	require_once '../model/BD.php';
+	require_once '../model/BD.php';*/
+	loadclasses("view","header.php"); 
+	loadclasses("menus","menuorganizador.html"); 
+	loadclasses("model","Pincho.php"); 	
+	loadclasses("model","BD.php"); 
+	loadclasses("model", "JuradoProfesional.php")
+	
+
+
 
 	public function revisarPinchos() {
 
@@ -36,6 +44,23 @@
     public function eliminarPincho() {
 
     }
+    
+    function gestionarPropuesta($id,$a) {
+		
+			$datos = datosPropuestaGastronomica($id);
+			$fila = mysqli_fetch_assoc($datos);
+			$id = $fila["idpincho"];
+			$nombre = $fila["nombrepincho"];
+			$foto = $fila["fotopincho"];
+			$descripcion = $fila["descripcionpincho"];
+			$ingredientes = $fila["ingredientesp"];
+			$precio = $fila["precio"];
+			$pincho = new Pincho();
+		
+			
+			return $pincho->modificar($id, $nombre, $foto, $descripcion, $ingredientes, $precio, $a); 
+			
+	}
     function listarPinchosSinAceptar(){
 		
 		$pincho = new Pincho();
@@ -95,7 +120,17 @@
 			}
 			return $res;
     }
+    
+    function datosPropuestaGastronomica($id){
+		
+		
+		$pincho = new Pincho();
+		$datos =  $pincho->recuperar($id);
+		
+		return $datos;	
+	}
 
 
-
+loadclasses("view","footer.html"); 
 ?>
+
