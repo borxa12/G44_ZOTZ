@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'BD.php';
+    // require_once 'BD.php';
     // require_once 'http://localhost/Zotz/modelBD.php';
     // include("../loader.php");
     // loadclasses("model","BD.php");
@@ -8,7 +8,7 @@
 
     class Usuarios {
 
-        private $bd;
+        // private $bd;
         // Atributos
         public $login;
         public $password;
@@ -20,13 +20,13 @@
         *  Sin parametros.
         *  Sin return.
         */
-        public function __construct() {
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
 
         /* Realiza la comprobación de login del usuario.
         *  Parametros:
