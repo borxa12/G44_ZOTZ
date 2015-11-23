@@ -1,22 +1,22 @@
 <?php
 
-    require_once './BD.php';
+    // require_once './BD.php';
 
     class VotaProfesional {
 
-        private $bd;
+        // private $bd;
         // Atributos
         public $pincho_idpincho;
         public $juradoprofesional_usuarios_login;
         public $votoprofesional=null;
 
-        public function __construct() {
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
         /*  lista las asignaciones de pincho a jurado profesional
         *   Return: Devuelve la lista con los datos.
         */
