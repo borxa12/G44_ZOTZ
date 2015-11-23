@@ -4,7 +4,7 @@
 
     class CodigoPincho {
 
-        private $bd;
+        //private $bd;
         // Atributos
         public $pincho_idpincho;
         public $codigopincho;
@@ -15,13 +15,13 @@
         *  Sin parametros.
         *  Sin return.
         */
-        public function __construct() {
+      /*  public function __construct() {
             try {
                 $this->bd = new BD();
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }
+        }*/
 
         /* Lista los codigos de los pinchos, incluyendo identificar y atributos.
         *  Sin parametros.
