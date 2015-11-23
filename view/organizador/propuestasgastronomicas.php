@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-    //include("../../loader.php");
+    include("../../loader.php");
     //loadclasses("view","header.php");
     //loadclasses("menus","menuorganizador.html");
     loadclasses("controller","ControladorOrganizador.php");
