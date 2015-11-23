@@ -15,13 +15,13 @@
         *  Sin parametros.
         *  Sin return.
         */
-        public function __construct() {
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
 
         /* Lista los identificadores de los pinchos y sus atributos.
         *  Sin parametros.
@@ -86,10 +86,10 @@
         *       $email - Atributo a modificar, email del usuario especificado.
         *   Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, 
+        public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho,
             $ingredientesp, $precio, $aceptado) {
             $db = new BD();
-            $sentencia = "UPDATE usuarios SET nombrepincho='".$nombrepincho."', fotopincho='".$fotopincho."', 
+            $sentencia = "UPDATE usuarios SET nombrepincho='".$nombrepincho."', fotopincho='".$fotopincho."',
             descripcionpincho='".$descripcionpincho."', ingredientesp='".$ingredientesp."', precio='".$precio."', aceptado='".$aceptado."' WHERE idpincho='".$id."' ";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
@@ -103,15 +103,15 @@
         *       $fotopincho - Atributo a insertar, foto del pincho.
         *       $descripcionpincho - Atributo a insertar, descripcion del pincho.
         *       $ingredientesp - Atributo a insertar, ingredientes del pinco.
-        *       $precio - Atributo a insertar, tipo de usuario (jpop, jpro, org, est). 
+        *       $precio - Atributo a insertar, tipo de usuario (jpop, jpro, org, est).
         *       $aceptado - Atributo a insertar, indica si el pincho ha sido aceptado en el concurso.
-        *       $concurso_edicion - Atributo a insertar, indica la edicion en la que participa el pincho. 
-        *       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.           
+        *       $concurso_edicion - Atributo a insertar, indica la edicion en la que participa el pincho.
+        *       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
         public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) {
             $db = new BD();
-            $sentencia = "INSERT INTO usuarios (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login) 
+            $sentencia = "INSERT INTO usuarios (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login)
             VALUES('".$idpincho."', '".$nombrepincho."', '".$fotopincho."', '".$descripcionpincho."', '".$ingredientesp."'
             '".$precio."', '".$aceptado."', '".$concurso_edicion."', '".$establecimiento_usuarios_login."')";
             $res = mysqli_query($db->connection,$sentencia);
