@@ -52,13 +52,25 @@
 
     }
 
-    public function registrarJuradoProfesional($juradoprofesional) {
+    public function registrarJuradoProfesional() {
+    	
+    	$login = $_POST["loginjuradoprofesional"];
+		$nombre = $_POST["nombrejuradoprofesional"];
+		$email=$_POST["emailjuradoprofesional"];
+		$password=$_POST["passwordjuradoprofesional"];
+		$reconocimientos=$_POST["reconocimientos"];
+ 
+		$usuario = new Usuarios();
+		$juradoprofesional = new JuradoProfesional();
+		$juradoprofesional->usuarios_login=$login;
+		$juradoprofesional->nombrejuradoprofesional=$nombre;
+		$juradoprofesional->recomientos=$reconocimientos;
+		//$juradoprofesional->fotojuradoprofesional=$foto;
+		
+		$usuarios->insertar($login, $password, $email, "jpro");
+		$juradoprofesional->insertar($juradoprofesional);
+	 }
 
-    }
-
-    public function addJuradoProfesional() {
-
-    }
 
 		/*  Inserta una nueva tupla a la tabla votaprofesional por cada jurado asignado a un pincho
 		*   Parametros:
