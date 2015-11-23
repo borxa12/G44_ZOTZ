@@ -11,17 +11,7 @@
         public $concurso_edicion;
         public $establecimiento_usuarios_login;
 
-        /* Constructor de la clase que inicializa la base de datos.
-        *  Sin parametros.
-        *  Sin return.
-        */
-        // public function __construct() {
-        //     try {
-        //         $this->bd = new BD();
-        //     } catch (Exception $e) {
-        //         die($e->getMessage());
-        //     }
-        // }
+       
 
         /* Lista los identificadores de los pinchos y sus atributos.
         *  Sin parametros.
