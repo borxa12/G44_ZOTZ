@@ -1,80 +1,79 @@
 <?php
 
-    require_once './BD.php';
+    // require_once './BD.php';
 
-    class JuradoProfesional {
+    class VotaProfesional {
 
-        private $bd;
+        // private $bd;
         // Atributos
-        public $usuarios_login;
-        public $fotojuradoprofesional;
-        public $nombrejuradoprofesional;
-        public $reconocimientos;
+        public $pincho_idpincho;
+        public $juradoprofesional_usuarios_login;
+        public $votoprofesional=null;
 
-        public function __construct() {
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }
-
-    		/*  Lista el JuradoProfesional inscrito en el concurso.
-    		*   Return: Devuelve una lista con los atributos de todos los miembros del JuradoProfesional.
-    		*/
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
+        /*  lista las asignaciones de pincho a jurado profesional
+        *   Return: Devuelve la lista con los datos.
+        */
         public function listar() {
-            $db = new BD();
-            $sentencia = "SELECT * FROM juradoprofesional";
-            $res = mysqli_query($db->connection,$sentencia);
-            $db->desconectar();
-            return $res;
+          $db = new BD();
+          $sentencia = "SELECT * FROM votaprofesional";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
-        /*  Obtiene los datos de un miembro del JuradoProfesional.
+        /*  recupera los datos de la asignacione de pincho a jurado profesional
         *   Parametros:
-                $id - Atributo a comprobar, contiene el login del usuario JuradoProfesional a listar.
-        *   Return: Devuelve los datos del usuario JuradoProfesional si ha sido posible encontrarlos.
+                $id - id del pincho de la asignacion a recuperar.
+        *   Return: Devuelve los datos de la asignacion.
         */
         public function recuperar($id) {
-            $db = new BD();
-            $sentencia"SELECT * FROM juradoprofesional WHERE usuarios_login='".$id."'";
-            $res = mysqli_query($db->connection,$sentencia);
-            $db->desconectar();
-            return $res;
+          $db = new BD();
+          $sentencia = "SELECT * FROM votaprofesional WHERE pincho_idpincho='".$id."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
-
-        /*  Elimina un usuario JuradoProfesional.
+        /*  ELimina una tupla de la tabla votaprofesional
         *   Parametros:
-        *       $login - Atributo a comprobar, login del usuario que se quiere eliminar.
-        *   Return: Devuelve TRUE si se ha podido eliminar el usuario JuradoProfesional.
+                $id - id del pincho de la asignacion a eliminar.
+                $login - login del jurado de la asignacion a eliminar
+        *   Return: Devuelve TRUE si se han podido eliminar los datos.
         */
-        public function eliminar($id) {
-            $db = new BD();
-            $sentencia = "DELETE FROM juradoprofesional WHERE usuarios_login='".$id."'";
-            $res = mysqli_query($db->connection,$sentencia);
-            $db->desconectar();
-            return $res;
+
+        public function eliminar($id,$login) {
+          $db = new BD();
+          $sentencia = "DELETE FROM votaprofesional WHERE pincho_idpincho='".$id."' AND juradoprofesional_usuarios_login='".$login."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
-        /*  Permite a un usuario JuradoProfesional modificar sus datos
+        /*  MOdifica una tupla en la tabla votaprofesional
         *   Parametros:
-                $id - Atributo a comprobar, contiene el login del usuario JuradoProfesional a modificar.
-        *       $jp - Objeto con los nuevos datos del usuario JuradoProfesional
+                $objeto - Array con los atributos a modificar
         *   Return: Devuelve TRUE si se han podido modificar los datos.
         */
-        public function modificar($id,$objeto) {
-            $db = new BD();
-            $sentencia = "UPDATE juradoprofesional SET fotojuradoprofesional='".$objeto->fotojuradoprofesional."',nombrejuradoprofesional='".$objeto->nombrejuradoprofesional."',reconocimientos='".$objeto->reconocimientos."' WHERE usuarios_login='".$id."'";
-            $res = mysqli_query($db->connection,$sentencia);
-            $db->desconectar();
-            return $res;
+
+        public function modificar($objeto) {
+          $db = new BD();
+          $sentencia = "UPDATE votaprofesional SET pincho_idpincho='".$objeto->pincho_idpincho."',juradoprofesional_usuarios_login'".$objeto->juradoprofesional_usuarios_login."',votoprofesional='".$objeto->votoprofesional."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
         }
-        /*  Permite a un usuario Organizador crear un nuevo usuario JuradoProfesional
+        /*  Inserta una nueva tupla a la tabla votaprofesional
         *   Parametros:
-                $$objeto - Array con los atributos el nuevo usuario JuradoProfesional a insertar
+                $objeto - Array con los atributos de la nueva asignacion de pincho a jurado profesional a insertar
         *   Return: Devuelve TRUE si se han podido modificar los datos.
         */
         public function insertar($objeto) {
           $db = new BD();
-          $sentencia = "INSERT INTO juradoprofesional(fotojuradoprofesional,nombrejuradoprofesional,reconocimientos) VALUES('".$objeto->fotojuradoprofesional."','".$objeto->nombrejuradoprofesional."','".$objeto->reconocimientos."')";
+          $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,votaprofesional) VALUES('".$objeto->pincho_idpincho."','".$objeto->juradoprofesional_usuarios_login."','".$objeto->votoprofesional."')";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
           return $res;
