@@ -6,6 +6,7 @@
     loadclasses("model","Pincho.php");
     loadclasses("model","Establecimiento.php");
     loadclasses("model","BD.php");
+    
 	/* Inserta una tupla de usuario y otra de establecimiento con los parametros indicados.
 	*  Parametros:
 	*       $login - Atributo a insertar, clave primaria del establecimiento (usuarios_login).

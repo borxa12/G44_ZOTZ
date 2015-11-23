@@ -6,6 +6,7 @@
     // loadclasses("menus","nomenu.html");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
+    loadclasses("controller","ControladorEstablecimiento.php");
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -29,57 +30,90 @@
     }
 ?>
             <h1>Registrar Establecimiento</h1>
-                <form id="registroestablecimiento" method="post">
+                <form name="registroestablecimiento" method="post">
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nombre</label>
-                            <input type="text" id="nombreestablecimiento" />
+                            <input type="text" name="nombreestablecimiento"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="direccionestablecimiento">Dirección</label>
-                            <input type="text" id="direccionestablecimiento" />
+                            <input type="text" name="direccionestablecimiento"/>
+                            <br></br>
+                        </div>
+                        <div>
+                            <label for="horarioestablecimiento">Horario</label>
+                            <input type="text" name="horarioestablecimiento"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="telefonoestablecimiento">Teléfono</label>
-                            <input type="tel" pattern="[0-9]" maxlength="9" id="telefonoestablecimiento"/>
+                            <input type="tel" pattern="^[9|8|7|6]\d{8}$" name="telefonoestablecimiento"
+                                title="Número de 9 dígitos que empieza por 6, 7, 8 o 9"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="webestablecimiento">Web</label>
-                            <input type="text" id="webestablecimiento" />
+                            <input type="text" name="webestablecimiento"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="loginestablecimiento">Login</label>
-                            <input type="text" id="loginestablecimiento" />
+                            <input type="text" name="loginestablecimiento"/>
                             <br></br>
                             </div>
                         <div>
                             <label for="emailestablecimiento">Email</label>
-                            <input type="email" id="emailestablecimiento" />
+                            <input type="email" name="emailestablecimiento"
+                                title="example@example.com"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input type="password" id="passwordjuradoprofesional" />
+                            <input type="password" name="passwordjuradoprofesional"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="fotojuradoprofesional">Foto</label>
-                            <input type="file" id="fotojuradoprofesional" />
+                            <label for="repetirpasswordjuradoprofesional">Repetir Password</label>
+                            <input type="password" name="repetirpasswordjuradoprofesional"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionestablecimiento">Descripción</label>
-                            <textarea rows="4" id="descripcionestablecimiento"></textarea>
+                            <textarea rows="4" name="descripcionestablecimiento"></textarea>
                             <br></br>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default button" formaction="../establecimiento/modificarestablecimiento.php">Dar de alta</button>
+                    <button name="altaest" type="submit" class="btn btn-default button">Dar de alta</button> <!-- formaction="http://localhost/Zotz/index.php" -->
                     <button type="submit" formaction="establecimientos.php" class="btn btn-default button">Volver</button>
                 </form>
+
+                <?php
+                    if(isset($_POST['altaest'])) {
+                        if($_POST['nombreestablecimiento'] == "" || $_POST['direccionestablecimiento'] == "" ||
+                            $_POST['horarioestablecimiento'] == "" || $_POST['telefonoestablecimiento'] == "" ||
+                            $_POST['webestablecimiento'] == "" || $_POST['loginestablecimiento'] == "" ||
+                            $_POST['emailestablecimiento'] == "" || $_POST['passwordjuradoprofesional'] == "" ||
+                            $_POST['repetirpasswordjuradoprofesional'] == "" || $_POST['descripcionestablecimiento'] == "") {
+                                echo '<script> alert("Debe rellenar todos los campos");</script>';
+                                echo '<script> window.location="http://localhost/Zotz/view/noregister/registrarestablecimiento.php";</script>';
+                        } else if(strcmp($_POST['passwordjuradoprofesional'],$_POST['repetirpasswordjuradoprofesional'])) {
+                            echo '<script> alert("Las contraseñas no coinciden");</script>';
+                            echo '<script> window.location="./registrarestablecimiento.php";</script>';
+                        } else {
+                            if (altaEstablecimiento($_POST['loginestablecimiento'],$_POST['passwordjuradoprofesional'],
+                                $_POST['emailestablecimiento'],$_POST['nombreestablecimiento'],$_POST['direccionestablecimiento'],
+                                $_POST['telefonoestablecimiento'],$_POST['webestablecimiento'],$_POST['horarioestablecimiento'],
+                                $_POST['descripcionestablecimiento'])) {
+                                    header("Location: http://localhost/Zotz/view/noregister/registro_login.php");
+                                } else {
+                                    echo '<script> alert("O login xa existe. Tenteo con outro.");</script>';
+                                    echo '<script> window.location="./registrarestablecimiento.php";</script>';
+                                }
+                        }
+                    }
+                ?>
 
             <div class="cleaner"></div>
 	</div>

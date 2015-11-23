@@ -1,5 +1,11 @@
 <?php
 
+    // include_once("../loader.php");
+    // // loadclasses("model","Usuarios.php");
+    // // loadclasses("model","CodigoPincho.php");
+    // // loadclasses("model","Pincho.php");
+    // // loadclasses("model","Establecimiento.php");
+    // loadclasses("model","BD.php");
 
     class Establecimiento {
 
@@ -100,20 +106,23 @@
         */
         public function insertar($login, $nombre, $direccion, $telefono, $web, $horario, $descripcionestablecimiento) {
             $db = new BD();
-            $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento)
-            VALUES('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."'
-            '".$horario."', '".$descripcionestablecimiento."')";
+            // $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento)
+            // VALUES('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."', '".$horario."', '".$descripcionestablecimiento."')";
+            // $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento)
+            // VALUES('borxa12', 'asdf', 'asdf', '632598574', 'cer', '0.00-23.02', 'adsffasdf')";
+            $sentencia = "INSERT INTO `g44_zotz`.`establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefono`, `web`, `horario`, `descripcionestablecimento`)
+                VALUES ('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."', '".$horario."', '".$descripcionestablecimiento."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
     }
 
-   /* $est = new Establecimiento();
-    $res = $est->eliminar('establecimiento2');
-    if ($res == false) echo "no modificado";
-      else{
-         echo "modificado"; }
+   // $est = new Establecimiento();
+   // $res = $est->insertar(null,null,null,null,null,null,null);
+   // if ($res == false) echo "no modificado";
+   //    else{
+   //       echo "modificado"; }
     /*while($data = mysqli_fetch_assoc($res)) {
         echo $data['usuarios_login']."<br/>";
         echo $data['nombre']."<br/>";

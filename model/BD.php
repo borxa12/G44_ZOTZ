@@ -7,7 +7,7 @@
 		/* Constructor de la clase.
 		*  Los parametros estás predefinidos.
 		*/
-		public function __construct($host="127.0.0.1",$user="zotz",$pass="zotz",$db="g44_zotz") {
+		public function __construct($host="127.0.0.1",$user="zotz",$pass="zotz",$db="G44_ZOTZ") {
 			$this->connection = new mysqli($host,$user,$pass,$db);
 			return $this->connection;
 		}
