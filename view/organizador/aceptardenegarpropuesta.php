@@ -1,11 +1,12 @@
 <?php
     session_start();
     ob_start();
-    include("../../loader.php");
-    loadclasses("view","header.php");
-    loadclasses("menus","menuorganizador.html");
+   include("../../loader.php");
+   //loadclasses("view","header.php");
+    //loadclasses("menus","menuorganizador.html");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
+    loadclasses("controller","ControladorOrganizador.php");
     
     if($_SESSION['tipo'] != 'org') {
         header("Location: http://localhost/Zotz/index.php");
