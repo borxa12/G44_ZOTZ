@@ -7,6 +7,7 @@
 	require_once '../model/Pincho.php';
 	require_once '../model/Usuarios.php';
 	require_once '../model/VotaProfesional.php';
+	require_once '../model/BD.php';
 
 	public function revisarPinchos() {
 
@@ -35,6 +36,12 @@
     public function eliminarPincho() {
 
     }
+    function listarPinchosSinAceptar(){
+		
+		$pincho = new Pincho();
+		$lista = $pincho->listarSinGestionar();
+		return $lista;
+	}
 
     public function seleccionarFinalistas(int $num) {
 
