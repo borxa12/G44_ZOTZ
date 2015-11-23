@@ -17,7 +17,7 @@
 
 
 
-	public function revisarPinchos() {
+/*	public function revisarPinchos() {
 
 	}
 
@@ -44,7 +44,7 @@
     public function eliminarPincho() {
 
     }
-    
+    */
     function gestionarPropuesta($id,$a) {
 		
 			$datos = datosPropuestaGastronomica($id);
@@ -67,7 +67,7 @@
 		$lista = $pincho->listarSinGestionar();
 		return $lista;
 	}
-
+/*
     public function seleccionarFinalistas(int $num) {
 
 	}
@@ -82,7 +82,7 @@
 
     public function recuperarJuradoProfesional() {
 
-    }
+    }*/
 
     public function registrarJuradoProfesional() {
     	
