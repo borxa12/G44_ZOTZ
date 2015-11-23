@@ -34,8 +34,8 @@
             <br></br>
         </div>
     </div>
-    <button name="cancelar" type="submit" class="btn btn-default button">Cancelar</button>
     <button name="iniciarsesion" type="submit" class="btn btn-default button">Inciar Sesión</button>
+    <button name="cancelar" type="submit" class="btn btn-default button">Cancelar</button>
 </form>
 
 
