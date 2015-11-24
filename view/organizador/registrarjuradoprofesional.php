@@ -16,22 +16,22 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nombre</label>
-                            <input type = "text" id="nombrejuradoprofesional" required />
+                            <input type = "text" id="nombrejuradoprofesional" maxlength=20 required />
                             <br></br>
                         </div>
                         <div>
                             <label for="loginjuradoprofesional">Login</label>
-                            <input type="text" id="loginjuradoprofesional" required/>
+                            <input type="text" id="loginjuradoprofesional" maxlength=50 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="emailjuradoprofesional">Email</label>
-                            <input type="text" id="emailjuradoprofesional" required/>
+                            <input title= "mail@example.com" type="text" id="emailjuradoprofesional" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" maxlength=50 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input type="password" id="passwordjuradoprofesional" required/>
+                            <input title="Longitud máxima : 20" type="password" id="passwordjuradoprofesional" maxlength=20 required/>
                             <br></br>
                         </div>
                         <div>
@@ -41,7 +41,7 @@
                         </div>
                         <div>
                             <label for="reconocimientosjuradoprofesional">Reconocimientos</label>
-                            <textarea rows="4" id="reconocimientosjuradoprofesional"></textarea>
+                            <textarea rows="4" id="reconocimientosjuradoprofesional" maxlength=1000 ></textarea>
                             <br></br>
                         </div>
                     </div>
