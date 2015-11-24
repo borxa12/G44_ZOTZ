@@ -18,17 +18,17 @@
             <div id=templatemo_form>
                 <div>
                     <label for="nombrepincho">Nombre</label>
-                    <h4> <?php $r['nombrepincho'] ?> </h4>
+                    <h4> <?php echo $r['nombrepincho'] ?> </h4>
                     <br></br>
                 </div>
                 <div>
                     <label for="descripcionpincho">Descripcion</label>
-                    <h4><?php $r['descripcionpincho'] ?>o</h4>
+                    <h4><?php echo $r['descripcionpincho'] ?></h4>
                     <br></br>
                 </div>
                 <div>
                     <label for="ingrdientespincho">Ingredientes</label>
-                    <h4><?php $r['ingredientesp'] ?></h4>
+                    <h4><?php echo $r['ingredientesp'] ?></h4>
                     <br></br>
                 </div>
                 <div>

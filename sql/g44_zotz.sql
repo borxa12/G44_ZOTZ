@@ -135,7 +135,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`codigopincho` (
   `codigopincho` VARCHAR(6) NOT NULL,
-  `like` TINYINT(1) NULL,
+  `likes` TINYINT(1) NULL,
   `establecimiento_usuarios_login` VARCHAR(20) NOT NULL,
   `pincho_idpincho` INT NOT NULL,
   PRIMARY KEY (`codigopincho`, `pincho_idpincho`),

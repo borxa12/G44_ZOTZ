@@ -20,12 +20,15 @@ SET time_zone = "+00:00";
 -- Base de datos: `g44_zotz`
 --
 
+
 --
--- Volcado de datos para la tabla `codigopincho`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `codigopincho` (`codigopincho`, `like`, `establecimiento_usuarios_login`, `pincho_idpincho`) VALUES('4423ASD', 1, 'establecimiento1', 1);
-INSERT INTO `codigopincho` (`codigopincho`, `like`, `establecimiento_usuarios_login`, `pincho_idpincho`) VALUES('51ASDF', NULL, 'establecimiento1', 1);
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('establecimiento1', 'estpass', 'establecimiento@est.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('establecimiento2', 'estpass', 'establecimiento@est.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('juradoprofesional', 'jpropass', 'juradoprofesional@jpro.com', 'jpro');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('organizador', 'orgpass', 'organizador@org.com', 'org');
 
 --
 -- Volcado de datos para la tabla `concurso`
@@ -41,12 +44,6 @@ INSERT INTO `establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefon
 INSERT INTO `establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefono`, `web`, `horario`, `descripcionestablecimento`) VALUES('establecimiento2', 'Establecimiento 2', 'Lexos de aqui', '412578962', 'www.restaurante-lonxe.com', '09.30-23.00', 'pos máis bonito');
 
 --
--- Volcado de datos para la tabla `juradoprofesional`
---
-
-INSERT INTO `juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nombrejuradoprofesional`, `reconocimientos`) VALUES('juradoprofesional', './img/jpro/default.png', 'Alfredo Martínez', NULL);
-
---
 -- Volcado de datos para la tabla `pincho`
 --
 
@@ -54,13 +51,17 @@ INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpinc
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(2, 'pincho2', './img/pinchos/default.png', 'rico e barato', 'algún leva', 1.02, 'N', 1, 'establecimiento2');
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `codigopincho`
 --
 
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('establecimiento1', 'estpass', 'establecimiento@est.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('establecimiento2', 'estpass', 'establecimiento@est.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('juradoprofesional', 'jpropass', 'juradoprofesional@jpro.com', 'jpro');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('organizador', 'orgpass', 'organizador@org.com', 'org');
+INSERT INTO `codigopincho` (`codigopincho`, `likes`, `establecimiento_usuarios_login`, `pincho_idpincho`) VALUES('4423ASD', 1, 'establecimiento1', 1);
+INSERT INTO `codigopincho` (`codigopincho`, `likes`, `establecimiento_usuarios_login`, `pincho_idpincho`) VALUES('51ASDF', NULL, 'establecimiento1', 1);
+
+--
+-- Volcado de datos para la tabla `juradoprofesional`
+--
+
+INSERT INTO `juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nombrejuradoprofesional`, `reconocimientos`) VALUES('juradoprofesional', './img/jpro/default.png', 'Alfredo Martínez', NULL);
 
 --
 -- Volcado de datos para la tabla `votaprofesional`
