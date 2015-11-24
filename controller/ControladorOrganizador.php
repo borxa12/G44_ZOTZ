@@ -1,18 +1,10 @@
 <?php
 
-	/*require_once '../model/Establecimiento.php';
-	require_once '../model/CodigoPincho.php';
-	require_once '../model/Establecimiento.php';
-	require_once '../model/JuradoProfesional.php';
-	require_once '../model/Pincho.php';
-	require_once '../model/Usuarios.php';
-	require_once '../model/VotaProfesional.php';
-	require_once '../model/BD.php';*/
 	loadclasses("view","header.php"); 
 	loadclasses("menus","menuorganizador.html"); 
 	loadclasses("model","Pincho.php"); 	
 	loadclasses("model","BD.php"); 
-	loadclasses("model", "JuradoProfesional.php")
+	loadclasses("model", "JuradoProfesional.php");
 	
 
 
@@ -130,7 +122,5 @@
 		return $datos;	
 	}
 
-
-loadclasses("view","footer.html"); 
 ?>
 
