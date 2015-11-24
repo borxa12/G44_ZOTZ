@@ -86,12 +86,16 @@
 		$nombre = $_POST["nombrejuradoprofesional"];
 		$email=$_POST["emailjuradoprofesional"];
 		$password=$_POST["passwordjuradoprofesional"];
+		$foto=$_POST["fotojuradoprofesional"];
 		$reconocimientos=$_POST["reconocimientos"];
+		
+		move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/foto".$login.".jpg");
 
 		$usuario = new Usuarios();
 		$juradoprofesional = new JuradoProfesional();
 		$juradoprofesional->usuarios_login=$login;
 		$juradoprofesional->nombrejuradoprofesional=$nombre;
+		$juradoprofesional->fotojuradoprofesional=$foto;
 		$juradoprofesional->recomientos=$reconocimientos;
 		//$juradoprofesional->fotojuradoprofesional=$foto;
 		$usuarios->insertar($login, $password, $email, "jpro");
