@@ -31,7 +31,7 @@
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input title="No se admiten Ñ ni acentos" type="password" id="passwordjuradoprofesional" pattern="![Ññ`´]" maxlength=20 required/>
+                            <input title="No se admiten Ñ ni acentos" type="password" id="passwordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=20 required/>
                             <br></br>
                         </div>
                         <div>
