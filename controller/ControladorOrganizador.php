@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 	/*require_once '../model/Establecimiento.php';
 	require_once '../model/CodigoPincho.php';
 	require_once '../model/Establecimiento.php';
@@ -15,6 +16,17 @@
 	loadclasses("model","BD.php");
 	loadclasses("model","JuradoProfesional.php");
 	loadclasses("model","CodigoPincho.php");
+=======
+	loadclasses("view","header.php"); 
+	loadclasses("menus","menuorganizador.html"); 
+	loadclasses("model","Pincho.php"); 	
+	loadclasses("model","BD.php"); 
+	loadclasses("model", "JuradoProfesional.php");
+	loadclasses("model", "Usuarios.php");
+	
+
+
+>>>>>>> origin/master
 
 /*	public function revisarPinchos() {
 
