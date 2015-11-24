@@ -16,22 +16,22 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nombre</label>
-                            <input type = "text" id="nombrejuradoprofesional" />
+                            <input type = "text" id="nombrejuradoprofesional" required />
                             <br></br>
                         </div>
                         <div>
                             <label for="loginjuradoprofesional">Login</label>
-                            <input type="text" id="loginjuradoprofesional" />
+                            <input type="text" id="loginjuradoprofesional" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="emailjuradoprofesional">Email</label>
-                            <input type="text" id="emailjuradoprofesional" />
+                            <input type="text" id="emailjuradoprofesional" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input type="password" id="passwordjuradoprofesional" />
+                            <input type="password" id="passwordjuradoprofesional" required/>
                             <br></br>
                         </div>
                         <div>
@@ -45,7 +45,7 @@
                             <br></br>
                         </div>
                     </div>
-                    <button type="submit" formaction="registrarjuradoprofesional.php" class="btn btn-default button">Dar de alta</button>
+                    <button type="submit" formaction="ControladorOrganizador.php" class="btn btn-default button">Dar de alta</button>
                 </form>
     </div>
 </div>
