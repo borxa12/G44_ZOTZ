@@ -1,15 +1,9 @@
 <?php
-
-	//require_once '../model/Establecimiento.php';
-	require_once '../model/CodigoPincho.php';
-	//require_once '../model/Establecimiento.php';
-	//require_once '../model/JuradoProfesional.php';
-	require_once '../model/Pincho.php';
-	//require_once '../model/Usuarios.php';
-	//require_once '../model/VotaProfesional.php';
-    require_once '../model/BD.php';
-
-    /* Funcion que actualiza el campo likes con el valor de $likes de la tupla de codigopincho
+    include_once("../../loader.php");
+    loadclasses("model","Pincho.php");
+    loadclasses("model","CodigoPincho.php");
+    loadclasses("model","BD.php");
+    /* Funcion que actualiza el campo likes con el valor de $likes de la tupla de codigopincho 
     * que indica el parámetro $cod.
     * El parámetro $likes no puede ser null, si lo es devuelve false.
     * Se llama a validarCodigo($cod) para comprobar que el codiopincho es valido en caso de no serlo devuelve false
@@ -32,7 +26,7 @@
         $codigopincho = new CodigoPincho();
         if(validarCodigo($cod) == true){
             return recuperarPincho($cod);
-        }
+        }   
         else{
             return false;
         }
@@ -74,9 +68,9 @@
     }*/
 
 
-    // $res = introducirCodigos('4423AS');
-    // if($res) echo "valido"."<br/>";
-    // else echo "no valido";
+   /* $res = introducirCodigos('4423AS');
+    if($res) echo "valido"."<br/>";
+    else echo "no valido";*/
     /*while($data = mysqli_fetch_assoc($res)) {
         echo $data['idpincho']."<br/>";
         echo $data['nombrepincho']."<hr/>";
