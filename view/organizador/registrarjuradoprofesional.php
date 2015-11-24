@@ -31,7 +31,7 @@
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input title="Longitud máxima : 20" type="password" id="passwordjuradoprofesional" maxlength=20 required/>
+                            <input title="Longitud máxima : 20" type="password" id="passwordjuradoprofesional" pattern="![ñ`´]" maxlength=20 required/>
                             <br></br>
                         </div>
                         <div>
