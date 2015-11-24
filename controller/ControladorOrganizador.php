@@ -1,16 +1,10 @@
 <?php
 
-<<<<<<< HEAD
-
 	loadclasses("model","Pincho.php");
 	loadclasses("model","BD.php");
 	loadclasses("model","JuradoProfesional.php");
 	loadclasses("model","CodigoPincho.php");
 	loadclasses("model", "Usuarios.php");
-	
-
-
->>>>>>> origin/master
 
 /*	public function revisarPinchos() {
 
@@ -88,7 +82,7 @@
 		$password=$_POST["passwordjuradoprofesional"];
 		$foto=$_POST["fotojuradoprofesional"];
 		$reconocimientos=$_POST["reconocimientos"];
-		
+
 		move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/foto".$login.".jpg");
 
 		$usuario = new Usuarios();
