@@ -4,6 +4,7 @@
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuorganizador.html");
+    loadclasses("controller","ControladorOrganizador.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
 
@@ -12,7 +13,7 @@
     } else {
 ?>
                 <h1>Registrar Jurado Profesional</h1>
-                <form id="registroestablecimiento" method="post">
+                <form id="registroestablecimiento" method="post" action="ControladorOrganizador.php">
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nombre</label>
