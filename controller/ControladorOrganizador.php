@@ -5,6 +5,7 @@
 	loadclasses("model","Pincho.php"); 	
 	loadclasses("model","BD.php"); 
 	loadclasses("model", "JuradoProfesional.php");
+	loadclasses("model", "Usuarios.php");
 	
 
 
