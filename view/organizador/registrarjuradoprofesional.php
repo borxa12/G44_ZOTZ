@@ -13,7 +13,7 @@
     } else {
 ?>
                 <h1>Registrar Jurado Profesional</h1>
-                <form id="registroestablecimiento" method="post" action="ControladorOrganizador.php">
+                <form id="registroestablecimiento" method="post" action="ControladorOrganizador.php" enctype="multipart/form-data">
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nombre</label>
@@ -27,7 +27,7 @@
                         </div>
                         <div>
                             <label for="emailjuradoprofesional">Email</label>
-                            <input title= "mail@example.com" type="text" id="emailjuradoprofesional" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" maxlength=50 required/>
+                            <input title= "mail@example.com" type="email" id="emailjuradoprofesional" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" maxlength=50 required/>
                             <br></br>
                         </div>
                         <div>
