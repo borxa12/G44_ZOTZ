@@ -76,7 +76,7 @@
 
     }*/
 
-    public function registrarJuradoProfesional() {
+    function registrarJuradoProfesional() {
     	
     	$login = $_POST["loginjuradoprofesional"];
 		$nombre = $_POST["nombrejuradoprofesional"];
@@ -102,7 +102,7 @@
 						$loginsJuradoProfesional - array con los login de cada jurado
 		*   Return: Devuelve TRUE si se han podido insertar los datos.
 		*/
-    public function asignarPinchosJuradoProfesional($idpincho,$loginsJuradoProfesional) {
+    function asignarPinchosJuradoProfesional($idpincho,$loginsJuradoProfesional) {
 			$asignar = new VotaProfesional();
 			$asignar->pincho_idpincho = $idpincho;
 			foreach ($loginsJuradoProfesional as $login) {
