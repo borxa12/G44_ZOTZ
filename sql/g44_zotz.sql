@@ -93,7 +93,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`juradoprofesional` (
   `usuarios_login` VARCHAR(20) NOT NULL,
-  `fotojuradoprofesional` VARCHAR(50) NOT NULL,
+  `fotojuradoprofesional` VARCHAR(50) NULL,
   `nombrejuradoprofesional` VARCHAR(50) NOT NULL,
   `reconocimientos` VARCHAR(1000) NULL,
   INDEX `fk_juradoprofesional_usuarios1_idx` (`usuarios_login` ASC),
@@ -113,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`votaprofesional` (
   `pincho_idpincho` INT NOT NULL,
   `juradoprofesional_usuarios_login` VARCHAR(20) NOT NULL,
   `votoprofesional` INT NULL,
+  `finalista` TINYINT(1) NULL,
   PRIMARY KEY (`pincho_idpincho`, `juradoprofesional_usuarios_login`),
   INDEX `fk_votaprofesional_juradoprofesional1_idx` (`juradoprofesional_usuarios_login` ASC),
   INDEX `fk_votaprofesional_pincho1_idx` (`pincho_idpincho` ASC),
