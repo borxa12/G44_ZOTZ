@@ -34,49 +34,51 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nombre</label>
-                            <input type="text" name="nombreestablecimiento"/>
+                            <input type="text" name="nombreestablecimiento" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="direccionestablecimiento">Dirección</label>
-                            <input type="text" name="direccionestablecimiento"/>
+                            <input type="text" name="direccionestablecimiento" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="horarioestablecimiento">Horario</label>
-                            <input type="text" name="horarioestablecimiento"/>
+                            <input type="text" name="horarioestablecimiento" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="telefonoestablecimiento">Teléfono</label>
                             <input type="tel" pattern="^[9|8|7|6]\d{8}$" name="telefonoestablecimiento"
-                                title="Número de 9 dígitos que empieza por 6, 7, 8 o 9"/>
+                                title="Número de 9 dígitos que empieza por 6, 7, 8 o 9" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="webestablecimiento">Web</label>
-                            <input type="text" name="webestablecimiento"/>
+                            <input type="text" name="webestablecimiento" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="loginestablecimiento">Login</label>
-                            <input type="text" name="loginestablecimiento"/>
+                            <input type="text" name="loginestablecimiento" require/>
                             <br></br>
                             </div>
                         <div>
                             <label for="emailestablecimiento">Email</label>
                             <input type="email" name="emailestablecimiento"
-                                title="example@example.com"/>
+                                title="example@example.com" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input type="password" name="passwordjuradoprofesional"/>
+                            <input type="password" pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
+                                name="passwordjuradoprofesional" title="Letras números y caracteres especiales como - _ @ #" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="repetirpasswordjuradoprofesional">Repetir Password</label>
-                            <input type="password" name="repetirpasswordjuradoprofesional"/>
+                            <input type="password" pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
+                                name="repetirpasswordjuradoprofesional" require/>
                             <br></br>
                         </div>
                         <div>

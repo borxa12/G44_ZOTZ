@@ -52,8 +52,8 @@
             $db = new BD();
             $sentencia = "SELECT * FROM usuarios WHERE login='".$login."'";
             $res = mysqli_query($db->connection,$sentencia);
-            if(mysqli_num_rows($res)==0) return false;
-            else  return $res;
+            if(mysqli_num_rows($res) == 0) return false;
+            else return $res;
             $db->desconectar();
         }
 

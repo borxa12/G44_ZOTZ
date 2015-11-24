@@ -9,7 +9,7 @@
 	//require_once '../model/VotaProfesional.php';
     require_once '../model/BD.php';
 
-    /* Funcion que actualiza el campo likes con el valor de $likes de la tupla de codigopincho 
+    /* Funcion que actualiza el campo likes con el valor de $likes de la tupla de codigopincho
     * que indica el parámetro $cod.
     * El parámetro $likes no puede ser null, si lo es devuelve false.
     * Se llama a validarCodigo($cod) para comprobar que el codiopincho es valido en caso de no serlo devuelve false
@@ -32,7 +32,7 @@
         $codigopincho = new CodigoPincho();
         if(validarCodigo($cod) == true){
             return recuperarPincho($cod);
-        }   
+        }
         else{
             return false;
         }
@@ -74,9 +74,9 @@
     }*/
 
 
-    $res = introducirCodigos('4423AS');
-    if($res) echo "valido"."<br/>";
-    else echo "no valido";
+    // $res = introducirCodigos('4423AS');
+    // if($res) echo "valido"."<br/>";
+    // else echo "no valido";
     /*while($data = mysqli_fetch_assoc($res)) {
         echo $data['idpincho']."<br/>";
         echo $data['nombrepincho']."<hr/>";

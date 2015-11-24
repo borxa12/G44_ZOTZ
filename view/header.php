@@ -1,7 +1,7 @@
 <?php
     // session_start();
     // ob_start();
-    // include("../../loader.php");
+    // include_once("../loader.php");
     // loadclasses("view","header.php");
     // loadclasses("menus","menujuradoprofesional.html");
     //require_once '../header.php';
@@ -9,6 +9,8 @@
     // if($_SESSION['tipo'] != 'jpro') {
     //     header("Location: http://localhost/Zotz/index.php");
     // } else {
+	// include_once("./loader.php");
+	// loadclasses("controller","ControladorOrganizador.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +57,7 @@
 						<li><a href="http://localhost/Zotz/view/noregister/pinchos.php">Pinchos</a></li> <!-- http://127.0.0.1/Zotz/view/noregister/pinchos.php -->
 						<li><a href="http://localhost/Zotz/view/noregister/establecimientos.php">Establecimientos</a></li> <!-- ./view/noregister/establecimientos.html -->
 						<li><a href="http://localhost/Zotz/view/noregister/juradoprofesional.php">Jurado Profesional</a></li>
+						<!-- <li><a href="http://localhost/Zotz/view/noregister/finalistas.php">Finalistas</a></li> -->
 						<li><a href="http://localhost/Zotz/view/noregister/mapa.php">Gastromapa</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/folleto.php">Folleto</a></li>
 						<?php
@@ -134,11 +137,11 @@
 </div> -->
 
 <!-- Generar Códigos Modal Page -->
-<div class="modal fade" id="generarCodigos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="generarCodigos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <!-- Contenido de la página modal -->
+            < Contenido de la página modal
             <div class="modal-body">
                 <form  id="codigos" method="post">
                     <div class="row">
@@ -160,42 +163,47 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Seleccionar Finalistas Modal Page -->
-<div class="modal fade" id="seleccionarFinalistas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="seleccionarFinalistas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <!-- Contenido de la página modal -->
-            <div class="modal-body">
-                <form  id="nfinalistas" method="post">
-                    <div class="row">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <div>
-                                <h4>Número de Finalistas</h4>
-                            </div>
-                            <input type="number" class="form-control" placeholder="Número de Finalistas" id="nfinalista" required data-validation-required-message="Intruduzca el número de finalistas">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <Contenido de la página modal -
+			<form  id="nfinalistas" method="post">
+	            <div class="modal-body">
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <a href="seleccionarfinalistas.php"><button type="submit" class="btn btn-register">Seleccionar Finalistas</button></a>
-            </div>
+	                    <div class="row">
+	                        <div class="form-group col-xs-12 floating-label-form-group controls">
+	                            <div>
+	                                <h4>Número de Finalistas</h4>
+	                            </div>
+	                            <input name="nfinalista" type="number" class="form-control" placeholder="Número de Finalistas"
+									required data-validation-required-message="Intruduzca el número de finalistas">
+	                            <p class="help-block text-danger"></p>
+	                        </div>
+	                    </div>
+
+	            </div>
+
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	                <!- <a href="seleccionarfinalistas.php">
+						<button name="btnfinalistas" type="submit" class="btn btn-register">Seleccionar Finalistas</button>
+					<!- </a>
+	            </div>
+			</form>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Confirmación Voto Pincho Modal Page -->
-<div class="modal fade" id="confirmacionVotoPincho" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="confirmacionVotoPincho" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <!-- Contenido de la página modal -->
+            <! Contenido de la página modal
             <div class="modal-body">
                 <form  id="nfinalistas" method="post">
                     <div class="row">
@@ -220,14 +228,14 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Confirmación Eliminar Establecimiento Modal Page -->
-<div class="modal fade" id="eliminarestablecimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="eliminarestablecimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <!-- Contenido de la página modal -->
+            <! Contenido de la página modal
             <div class="modal-body">
                 <form  id="nfinalistas" method="post">
                     <div class="row">
@@ -252,4 +260,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

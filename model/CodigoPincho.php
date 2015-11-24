@@ -1,7 +1,5 @@
 <?php
 
-
-
     class CodigoPincho {
 
         //private $bd;
@@ -48,6 +46,19 @@
             $sentencia = "SELECT * FROM codigopincho WHERE pincho_idpincho='".$id."'";
             $res = mysqli_query($db->connection,$sentencia);
             if(mysqli_num_rows($res)==0) return false;
+            else return $res;
+            $db->desconectar();
+        }
+
+        /* Agrupa los pinchos por pincho_idpincho y suma la columa likes. Los resultados se devuelven en orden descendiente por likes.
+        *  Sin Parametros.
+        *  Return: Devuelve los datos sin tratar sin tratar o FALSE en caso de error.
+        */
+        public function listarLikes($num) {
+            $db = new BD();
+            $sentencia = "SELECT `pincho_idpincho`, SUM(`likes`) FROM `codigopincho` GROUP BY `pincho_idpincho` ORDER BY 2 DESC LIMIT $num";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res) == 0) return false;
             else return $res;
             $db->desconectar();
         }

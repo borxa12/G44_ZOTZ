@@ -11,19 +11,16 @@
         public $concurso_edicion;
         public $establecimiento_usuarios_login;
 
-       
-
         /* Lista los identificadores de los pinchos y sus atributos.
         *  Sin parametros.
         *  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
         */
         public function listar() {
-             $db = new BD();
-
+            $db = new BD();
             $sentencia = "SELECT * FROM pincho";
             $res = mysqli_query($db->connection,$sentencia);
-            if(mysqli_num_rows($res)==0) return false;
-             else  return $res;
+            if(mysqli_num_rows($res) == 0) return false;
+            else return $res;
             $db->desconectar();
         }
 
@@ -76,8 +73,8 @@
         *       $email - Atributo a modificar, email del usuario especificado.
         *   Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-         public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, 
-            $ingredientesp, $precio, $aceptado) 
+         public function modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho,
+            $ingredientesp, $precio, $aceptado)
             {
             $db = new BD();
             $sentencia = "UPDATE pincho SET nombrepincho='".$nombrepincho."', fotopincho='".$fotopincho."', descripcionpincho='".$descripcionpincho."', ingredientesp='".$ingredientesp."', precio='".$precio."', aceptado='".$aceptado."' WHERE idpincho='".$idpincho."'";
@@ -99,7 +96,7 @@
         *       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) 
+        public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login)
         {
             $db = new BD();
             $sentencia = "INSERT INTO usuarios (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login)
@@ -109,9 +106,9 @@
             $db->desconectar();
             return $res;
         }
-        
+
         public function listarSinGestionar(){
-			
+
 			 $db = new BD();
 
             $sentencia = "SELECT * FROM pincho WHERE aceptado='N'";
@@ -119,7 +116,7 @@
 			$db->desconectar();
             if(mysqli_num_rows($res)==0) return false;
              else  return $res;
-            
+
 		}
     }
 
