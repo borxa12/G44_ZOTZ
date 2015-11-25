@@ -16,6 +16,14 @@
           $db->desconectar();
           return $res;
         }
+        
+public function juradoNoAsignado($id){
+          $db = new BD();
+          $sentencia = "SELECT * FROM juradoprofesional where usuarios_login NOT IN (SELECT juradoprofesional_usuarios_login FROM votaprofesional WHERE pincho_idpincho=$id)";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
+        }
         /*  Recupera los datos de la asignacione de pincho a jurado profesional
         *   Parametros:
         *        $id - id del pincho de la asignacion a recuperar.
