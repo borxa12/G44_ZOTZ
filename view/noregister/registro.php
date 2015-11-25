@@ -17,22 +17,22 @@
     <div id=templatemo_form>
         <div>
             <label for="loginjuradopopular">Login</label>
-            <input type="text" name="loginjuradopopular"/>
+            <input type="text" maxlength=20 name="loginjuradopopular"/>
             <br></br>
         </div>
         <div>
             <label for="emailjuradopopular">Email</label>
-            <input type="email" name="emailjuradopopular" title="example@example.com"/>
+            <input type="email" maxlength=50 name="emailjuradopopular" title="example@example.com"/>
             <br></br>
         </div>
         <div>
             <label for="passwordjuradopopular">Password</label>
-            <input type="password" name="passwordjuradopopular"/>
+            <input type="password" maxlength=45 name="passwordjuradopopular"/>
             <br></br>
         </div>
         <div>
             <label for="repetirpasswordjuradopopular">Repetir Password</label>
-            <input type="password" name="repetirpasswordjuradopopular"/>
+            <input type="password" maxlength=45 name="repetirpasswordjuradopopular"/>
             <br></br>
         </div>
     </div>
