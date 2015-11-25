@@ -4,6 +4,7 @@
     loadclasses("model","Usuarios.php");
     loadclasses("model","CodigoPincho.php");
     loadclasses("model","Pincho.php");
+    loadclasses("model","Concurso.php");
     loadclasses("model","Establecimiento.php");
     loadclasses("model","BD.php");
 
