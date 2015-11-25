@@ -50,17 +50,17 @@
 					<form id="votojuradopopular" method="post">
 						<div class="product_box">
 							<input type="radio" name="pincho" value="<?php echo $c1; ?>"><?php echo $datap1['nombrepincho']; ?><br>
-							<a href="" class="pirobox"><img src="" alt="<?php echo $datap1['fotopincho']; ?>" class="img"/></a>
+							<a href="" class="pirobox"><img src="<?php echo "./img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap1['descripcionpincho']; ?></p>
 						</div>
 						<div class="product_box">
 							<input type="radio" name="pincho" value="<?php echo $c2; ?>"><?php echo $datap2['nombrepincho']; ?><br>
-							<a href="" class="pirobox"><img src="" alt="<?php echo $datap2['fotopincho']; ?>" class="img"/></a>
+							<a href="" class="pirobox"><img src="<?php echo "./img/pinchos/".$datap2['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap2['descripcionpincho']; ?></p>
 						</div>
 						<div class="product_box">
 							<input type="radio" name="pincho" value="<?php echo $c3; ?>"><?php echo $datap3['nombrepincho']; ?><br>
-							<a href="" class="pirobox"><img src="" alt="<?php echo $datap3['fotopincho']; ?>" class="img"/></a>
+							<a href="" class="pirobox"><img src="<?php echo "./img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap3['descripcionpincho']; ?></p>
 						</div>
                         <button type="submit" name="enviarvoto" class="btn btn-default button" >Enviar Voto</button>
