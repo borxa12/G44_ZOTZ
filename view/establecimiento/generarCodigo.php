@@ -20,8 +20,14 @@
                             </div>
                             <div>
                                 <?php 
-                                    $ed = 1;
+                                    $concurso = new Concurso();
+                                    $res = $concurso->recuperarUltimoConcurso();
+                                    $data = mysqli_fetch_assoc($res);
+                                    $ed = $data['edicion'];
                                     $cod = generarCodigos($_SESSION['login'], $ed);
+                                    if($cod == false){
+                                        echo "<h1> No tienes ningún pincho aceptado en la edición actual</h1>";
+                                    }
                                 ?>
                                 <h1 id="code"><?php echo $cod;?></h1>
                             </div>
