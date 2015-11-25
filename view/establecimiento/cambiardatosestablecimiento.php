@@ -87,7 +87,7 @@
                                 $_POST['telefono'],$_POST['web'],$_POST['horario'],
                                 $_POST['descripcion'])) {
                                   echo "ENTRA";
-                                    header("Location: http://localhost/Zotz/view/establecimiento/modificarestablecimiento.php");
+                                  echo '<script> window.location="./modificarestablecimiento.php";</script>';
                                 }
                         }
                     }
