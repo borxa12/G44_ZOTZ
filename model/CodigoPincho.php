@@ -2,24 +2,11 @@
 
     class CodigoPincho {
 
-        //private $bd;
         // Atributos
         public $pincho_idpincho;
         public $codigopincho;
         public $likes;
         public $establecimiento_usuarios_login;
-
-        /* Constructor de la clase que inicializa la base de datos.
-        *  Sin parametros.
-        *  Sin return.
-        */
-      /*  public function __construct() {
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-        }*/
 
         /* Lista los codigos de los pinchos, incluyendo identificar y atributos.
         *  Sin parametros.
@@ -126,32 +113,5 @@
             $db->desconectar();
             return $res;
         }
-
     }
-
-    //  $codPincho = new CodigoPincho();
-    //  $codPincho2 = new CodigoPincho();
-    // $codPincho2->pincho_idpincho ='1';
-    //     $codPincho2->codigopincho = '1234';
-    //     $codPincho2->likes = '1';
-    //     $codPincho2->establecimiento_usuarios_login = 'establecimiento1';
-
-    // $codPincho = new CodigoPincho();
-    // $res = $codPincho->insertar("AAA001",2,"establecimiento1",1);
-    // if(!$res) echo "MAL";
-    // else echo "BIEN";
-
-    //  $res = $codPincho->eliminar('1234');
-    //  if ($res == false) echo "no modificado";
-    //  else{
-    //     echo "modificado";
-    //     /*while($data = mysqli_fetch_assoc($res)) {
-    //      echo $data['pincho_idpincho']."<br/>";
-    //      echo $data['codigopincho']."<br/>";
-    //      echo $data['like']."<br/>";
-    //      echo $data['establecimiento_usuarios_login']."<hr/>";
-    //
-    // }*/
-    // }
-
 ?>
