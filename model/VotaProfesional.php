@@ -1,11 +1,22 @@
 <?php
 
+    // require_once './BD.php';
+
     class VotaProfesional {
 
+        // private $bd;
         // Atributos
         public $pincho_idpincho;
         public $juradoprofesional_usuarios_login;
         public $votoprofesional=null;
+
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
 
         /*  Lista las asignaciones de pincho a jurado profesional
         *   Return: Devuelve la lista con los datos.
@@ -77,8 +88,10 @@
         */
         public function insertar($objeto) {
             $db = new BD();
-            $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,votaprofesional) VALUES('".$objeto->pincho_idpincho."','".$objeto->juradoprofesional_usuarios_login."','".$objeto->votoprofesional."')";
+
+            $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,votoprofesional) VALUES('".$objeto->pincho_idpincho."','".$objeto->juradoprofesional_usuarios_login."',null)";
             $res = mysqli_query($db->connection,$sentencia);
+            echo $sentencia;
             $db->desconectar();
             return $res;
         }
@@ -100,5 +113,21 @@
             $db->desconectar();
             return true;
         }
+
     }
+
+    // $codPincho = new VotaProfesional();
+    // $res = $codPincho->eleccionFinalistas(2);
+    // if($res) echo "BIEN";
+    // else echo "MAL";
+    // while($data = mysqli_fetch_assoc($res)) {
+    //     echo $data['usuarios_login']."<br/>";
+    //     echo $data['nombre']."<br/>";
+    //     echo $data['direccion']."<br/>";
+    //     echo $data['telefono']."<br/>";
+    //     echo $data['web']."<br/>";
+    //     echo $data['horario']."<br/>";
+    //     echo $data['descripcionestablecimiento']."<hr/>";
+    // }
+
 ?>
