@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`establecimiento` (
   CONSTRAINT `fk_establecimiento_usuarios1`
     FOREIGN KEY (`usuarios_login`)
     REFERENCES `G44_ZOTZ`.`usuarios` (`login`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -63,11 +63,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`pincho` (
   `idpincho` INT NOT NULL AUTO_INCREMENT,
-  `nombrepincho` VARCHAR(15) NOT NULL,
+  `nombrepincho` VARCHAR(50) NOT NULL,
   `fotopincho` VARCHAR(50) NOT NULL,
   `descripcionpincho` VARCHAR(100) NOT NULL,
-  `ingredientesp` VARCHAR(500) NOT NULL,
-  `precio` DOUBLE NOT NULL,
+  `ingredientesp` VARCHAR(150) NOT NULL,
+  `precio` VARCHAR(5) NOT NULL,
   `aceptado` VARCHAR(1) NULL,
   `concurso_edicion` INT NOT NULL,
   `establecimiento_usuarios_login` VARCHAR(20) NOT NULL,
@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`pincho` (
   CONSTRAINT `fk_pincho_establecimiento1`
     FOREIGN KEY (`establecimiento_usuarios_login`)
     REFERENCES `G44_ZOTZ`.`establecimiento` (`usuarios_login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
