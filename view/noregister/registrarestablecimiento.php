@@ -70,15 +70,15 @@
                             <br></br>
                         </div>
                         <div>
-                            <label for="passwordjuradoprofesional">Password</label>
+                            <label for="passwordestablecimiento">Password</label>
                             <input type="password" pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
-                                name="passwordjuradoprofesional" title="Letras números y caracteres especiales como - _ @ #" require/>
+                                name="passwordestablecimiento" title="Letras números y caracteres especiales como - _ @ #" require/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="repetirpasswordjuradoprofesional">Repetir Password</label>
+                            <label for="repetirpasswordestablecimiento">Repetir Password</label>
                             <input type="password" pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
-                                name="repetirpasswordjuradoprofesional" require/>
+                                name="repetirpasswordestablecimiento" require/>
                             <br></br>
                         </div>
                         <div>
@@ -96,15 +96,15 @@
                         if($_POST['nombreestablecimiento'] == "" || $_POST['direccionestablecimiento'] == "" ||
                             $_POST['horarioestablecimiento'] == "" || $_POST['telefonoestablecimiento'] == "" ||
                             $_POST['webestablecimiento'] == "" || $_POST['loginestablecimiento'] == "" ||
-                            $_POST['emailestablecimiento'] == "" || $_POST['passwordjuradoprofesional'] == "" ||
-                            $_POST['repetirpasswordjuradoprofesional'] == "" || $_POST['descripcionestablecimiento'] == "") {
+                            $_POST['emailestablecimiento'] == "" || $_POST['passwordestablecimiento'] == "" ||
+                            $_POST['repetirpasswordestablecimiento'] == "" || $_POST['descripcionestablecimiento'] == "") {
                                 echo '<script> alert("Debe rellenar todos los campos");</script>';
                                 echo '<script> window.location="http://localhost/Zotz/view/noregister/registrarestablecimiento.php";</script>';
-                        } else if(strcmp($_POST['passwordjuradoprofesional'],$_POST['repetirpasswordjuradoprofesional'])) {
+                        } else if(strcmp($_POST['passwordestablecimiento'],$_POST['repetirpasswordestablecimiento'])) {
                             echo '<script> alert("Las contraseñas no coinciden");</script>';
                             echo '<script> window.location="./registrarestablecimiento.php";</script>';
                         } else {
-                            if (altaEstablecimiento($_POST['loginestablecimiento'],$_POST['passwordjuradoprofesional'],
+                            if (altaEstablecimiento($_POST['loginestablecimiento'],$_POST['passwordestablecimiento'],
                                 $_POST['emailestablecimiento'],$_POST['nombreestablecimiento'],$_POST['direccionestablecimiento'],
                                 $_POST['telefonoestablecimiento'],$_POST['webestablecimiento'],$_POST['horarioestablecimiento'],
                                 $_POST['descripcionestablecimiento'])) {

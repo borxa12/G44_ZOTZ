@@ -6,9 +6,10 @@
 
         // private $bd;
         // Atributos
-        public $pincho_idpincho;
-        public $juradoprofesional_usuarios_login;
-        public $votoprofesional=null;
+        public $usuarios_login;
+        public $fotojuradoprofesional=null;
+        public $nombrejuradoprofesional;
+        public $reconocimientos=null;
 
         // public function __construct() {
         //     try {
@@ -17,63 +18,65 @@
         //         die($e->getMessage());
         //     }
         // }
-        /*  lista las asignaciones de pincho a jurado profesional
+
+        /*  Lista las asignaciones de pincho a jurado profesional
         *   Return: Devuelve la lista con los datos.
         */
         public function listar() {
           $db = new BD();
-          $sentencia = "SELECT * FROM votaprofesional";
+          $sentencia = "SELECT * FROM juradoprofesional";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
           return $res;
         }
-        /*  recupera los datos de la asignacione de pincho a jurado profesional
+        /*  Recupera los datos de la asignacione de pincho a jurado profesional
         *   Parametros:
-                $id - id del pincho de la asignacion a recuperar.
+        *        $id - id del pincho de la asignacion a recuperar.
         *   Return: Devuelve los datos de la asignacion.
         */
         public function recuperar($id) {
           $db = new BD();
-          $sentencia = "SELECT * FROM votaprofesional WHERE pincho_idpincho='".$id."'";
+          $sentencia = "SELECT * FROM juradoprofesional WHERE usuarios_login='".$id."'";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
           return $res;
         }
-        /*  ELimina una tupla de la tabla votaprofesional
-        *   Parametros:
-                $id - id del pincho de la asignacion a eliminar.
-                $login - login del jurado de la asignacion a eliminar
-        *   Return: Devuelve TRUE si se han podido eliminar los datos.
-        */
 
-        public function eliminar($id,$login) {
-          $db = new BD();
-          $sentencia = "DELETE FROM votaprofesional WHERE pincho_idpincho='".$id."' AND juradoprofesional_usuarios_login='".$login."'";
-          $res = mysqli_query($db->connection,$sentencia);
-          $db->desconectar();
-          return $res;
-        }
-        /*  MOdifica una tupla en la tabla votaprofesional
+        /*  ELimina una tupla de la tabla juradoprofesional.
         *   Parametros:
-                $objeto - Array con los atributos a modificar
+        *        $login - login del jurado profesional a eliminar.
+        *   Return: Devuelve TRUE si se han podido eliminar los datos, FALSE en caso contrario.
+        */
+        public function eliminar($login) {
+            $db = new BD();
+            $sentencia = "DELETE FROM `juradoprofesional` WHERE `usuarios_login`='".$login."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
+        /*  Modifica una tupla en la tabla juradoprofesional.
+        *   Parametros:
+        *        $objeto - Array con los atributos a modificar
         *   Return: Devuelve TRUE si se han podido modificar los datos.
         */
-
-        public function modificar($objeto) {
+        public function modificar($usuarios_login,$fotojuradoprofesional,$nombrejuradoprofesional,$reconocimientos) {
           $db = new BD();
-          $sentencia = "UPDATE votaprofesional SET pincho_idpincho='".$objeto->pincho_idpincho."',juradoprofesional_usuarios_login'".$objeto->juradoprofesional_usuarios_login."',votoprofesional='".$objeto->votoprofesional."'";
+          $sentencia = "UPDATE juradoprofesional SET usuarios_login='".$usuarios_login."',fotojuradoprofesional='".$fotojuradoprofesional."',nombrejuradoprofesional='".$nombrejuradoprofesional."',reconocimientos='".$reconocimientos."'";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
           return $res;
         }
+
         /*  Inserta una nueva tupla a la tabla votaprofesional
         *   Parametros:
-                $objeto - Array con los atributos de la nueva asignacion de pincho a jurado profesional a insertar
+        *        $objeto - Array con los atributos de la nueva asignacion de pincho a jurado profesional a insertar
         *   Return: Devuelve TRUE si se han podido modificar los datos.
         */
-        public function insertar($objeto) {
+        public function insertar($login,$foto,$nombre,$reconocimientos) {
           $db = new BD();
-          $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,votaprofesional) VALUES('".$objeto->pincho_idpincho."','".$objeto->juradoprofesional_usuarios_login."','".$objeto->votoprofesional."')";
+          $sentencia = "INSERT INTO `g44_zotz`.`juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nombrejuradoprofesional`, `reconocimientos`)
+            VALUES ('".$login."', '".$foto."', '".$nombre."', '".$reconocimientos."')";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
           return $res;
@@ -81,7 +84,9 @@
     }
 
     // $codPincho = new JuradoProfesional();
-    // $res = $codPincho->listar();
+    // $res = $codPincho->insertar("jprofesional2",null,"JPRO","poucos");
+    // if($res) echo "BIEN";
+    // else echo "MAL";
     // while($data = mysqli_fetch_assoc($res)) {
     //     echo $data['usuarios_login']."<br/>";
     //     echo $data['nombre']."<br/>";

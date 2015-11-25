@@ -76,25 +76,37 @@
 
     }*/
 
-	function registrarJuradoProfesional() {
-		$login = $_POST["loginjuradoprofesional"];
-		$nombre = $_POST["nombrejuradoprofesional"];
-		$email=$_POST["emailjuradoprofesional"];
-		$password=$_POST["passwordjuradoprofesional"];
-		$foto=$_POST["fotojuradoprofesional"];
-		$reconocimientos=$_POST["reconocimientos"];
+	function registrarJuradoProfesional($login,$password,$email,$nombre,$foto,$reconocimientos) {
+		// $login = $_POST["loginjuradoprofesional"];
+		// $nombre = $_POST["nombrejuradoprofesional"];
+		// $email=$_POST["emailjuradoprofesional"];
+		// $password=$_POST["passwordjuradoprofesional"];
+		// $foto=$_POST["fotojuradoprofesional"];
+		// $reconocimientos=$_POST["reconocimientos"];
+		if ($foto != null) {
+			move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/juradoprofesional/".$login.".jpg");
+			$usuario = new Usuario();
+			$jpro = new JuradoProfesional();
+			$res1 = $usuario->insertar($login,$password,$email,"jpro");
+			$res2 = $jpro->insertar($login,$foto,$nombre,$reconocimientos);
+			return ($res1 && $res2);
+		} else {
+			$usuario = new Usuarios();
+			$jpro = new JuradoProfesional();
+			$res1 = $usuario->insertar($login,$password,$email,"jpro");
+			$res2 = $jpro->insertar($login,$foto,$nombre,$reconocimientos);
+			return ($res1 && $res2);
+		}
 
-		move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/foto".$login.".jpg");
-
-		$usuario = new Usuarios();
-		$juradoprofesional = new JuradoProfesional();
-		$juradoprofesional->usuarios_login=$login;
-		$juradoprofesional->nombrejuradoprofesional=$nombre;
-		$juradoprofesional->fotojuradoprofesional=$foto;
-		$juradoprofesional->recomientos=$reconocimientos;
-		//$juradoprofesional->fotojuradoprofesional=$foto;
-		$usuarios->insertar($login, $password, $email, "jpro");
-		$juradoprofesional->insertar($juradoprofesional);
+		// $usuario = new Usuarios();
+		// $juradoprofesional = new JuradoProfesional();
+		// $juradoprofesional->usuarios_login=$login;
+		// $juradoprofesional->nombrejuradoprofesional=$nombre;
+		// $juradoprofesional->fotojuradoprofesional=$foto;
+		// $juradoprofesional->recomientos=$reconocimientos;
+		// //$juradoprofesional->fotojuradoprofesional=$foto;
+		// $usuarios->insertar($login, $password, $email, "jpro");
+		// $juradoprofesional->insertar($juradoprofesional);
 	}
 
 
