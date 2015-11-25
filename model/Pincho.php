@@ -132,6 +132,17 @@
             
 	}
 	
+	
+            public function listarAceptados(){
+    			$db = new BD();
+                $sentencia = "SELECT * FROM pincho WHERE aceptado='A'";
+                $res = mysqli_query($db->connection,$sentencia);
+    			$db->desconectar();
+                if(mysqli_num_rows($res)==0) return false;
+                else  return $res;
+
+    		}
+	
 	/* Comprueba el número de pinchos que tiene registrados un estableciemiento dado en una edición dada del concurso.
 	Parámetros
 		$edicion: es la edición del concurso para la que se quiere comprobar los pinchos registrados por el establecimiento.
