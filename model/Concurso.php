@@ -39,6 +39,14 @@
             // $this->usuarios_login = $usuarios_login;
         }
 */
+        public function recuperarUltimoConcurso(){
+          $db = new BD();
+          $sentencia = "SELECT * FROM concurso ORDER BY edicion DESC";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+              return $res;
+
+        }
         /* Lista los concursos.
         *  Sin parametros.
         *  Return: Devuelve los datos del concurso sin tratar o FALSE en caso de error.
