@@ -23,6 +23,19 @@
              else  return $res;
             $db->desconectar();
         }
+        /* Lista los identificadores de los pinchos y sus atributos segun el establecimiento.
+        *  Sin parametros.
+        *  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
+        */
+        public function listarPorEstablecimiento($est) {
+             $db = new BD();
+
+            $sentencia = "SELECT * FROM pincho WHERE establecimiento_usuarios_login='".$est."' ORDER BY concurso_edicion DESC";
+            $res = mysqli_query($db->connection,$sentencia);
+           $db->desconectar();
+            if(mysqli_num_rows($res)==0) return false;
+             else  return $res;
+        }
 
         /* Lista los pinchos filtrados por id (idpincho).
         *  Parametros:
@@ -94,11 +107,10 @@
         *       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) {
+        public function insertar($nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $aceptado, $concurso_edicion, $establecimiento_usuarios_login) {
             $db = new BD();
-            $sentencia = "INSERT INTO usuarios (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login)
-            VALUES('".$idpincho."', '".$nombrepincho."', '".$fotopincho."', '".$descripcionpincho."', '".$ingredientesp."'
-            '".$precio."', '".$aceptado."', '".$concurso_edicion."', '".$establecimiento_usuarios_login."')";
+            $sentencia = "INSERT INTO pincho (idpincho, nombrepincho, fotopincho, descripcionpincho, ingredientesp, precio, aceptado, concurso_edicion, establecimiento_usuarios_login)
+            VALUES( DEFAULT, '".$nombrepincho."', '".$fotopincho."', '".$descripcionpincho."', '".$ingredientesp."','".$precio."', '".$aceptado."', '".$concurso_edicion."', '".$establecimiento_usuarios_login."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
@@ -113,6 +125,13 @@
             else  return $res;
             
 		}
+	public function comprobarPropuestas($edicion,$est){
+          $db = new BD();
+          $sentencia = "SELECT COUNT(idpincho) AS contador FROM pincho WHERE concurso_edicion='".$edicion."' AND establecimiento_usuarios_login='".$est."' GROUP BY concurso_edicion";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          return $res;
+        }
     }
 
     ?>
