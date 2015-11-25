@@ -19,22 +19,22 @@
               <input name="concurso" hidden="true" value="<?php echo $concurso['edicion'];?>"type = "text"/>
                         <div>
                             <label for="nombrepincho">Nombre</label>
-                            <input name="nombrepincho" type="text"/>
+                            <input name="nombrepincho" maxlength=100 type="text"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionpincho">Descripcion</label>
-                            <textarea name="descripcionpincho" rows="4" cols="50" ></textarea>
+                            <textarea name="descripcionpincho" maxlength=500 rows="4" cols="50" ></textarea>
                             <br></br>
                         </div>
                         <div>
                             <label for="ingredientespincho">Ingredientes</label>
-                            <textarea name="ingredientespincho" rows="4" cols="50"></textarea>
+                            <textarea name="ingredientespincho" rows="4" maxlength=250 cols="50"></textarea>
                             <br></br>
                         </div>
                         <div>
                             <label for="precio">Precio</label>
-                            <input name="precio" type="text"/>
+                            <input name="precio" maxlength=5 type="text"/>
                             <br></br>
                         </div>
                         <div>
