@@ -22,47 +22,47 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombre">Nombre</label>
-                            <input type = "text" name="nombre" placeholder="Nombre establecimiento" value="<?php echo $establecimiento['nombre'];?>"/>
+                            <input type = "text" name="nombre" placeholder="Nombre establecimiento" maxlength=90 value="<?php echo $establecimiento['nombre'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="direccion">Dirección</label>
-                            <input type = "text" name="direccion" placeholder="Dirección establecimiento" value="<?php echo $establecimiento['direccion'];?>"/>
+                            <input type = "text" name="direccion" placeholder="Dirección establecimiento" maxlength=90 value="<?php echo $establecimiento['direccion'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="telefono">Teléfono</label>
-                            <input type="tel" name="telefono" placeholder="Teléfono del establecimiento" value="<?php echo $establecimiento['telefono'];?>"/>
+                            <input type="tel" name="telefono" placeholder="Teléfono del establecimiento" maxlength=20 value="<?php echo $establecimiento['telefono'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="horario">Horario</label>
-                            <input type="tel" name="horario" placeholder="Horario del establecimiento" value="<?php echo $establecimiento['horario'];?>"/>
+                            <input type="tel" name="horario" placeholder="Horario del establecimiento" maxlength=15 value="<?php echo $establecimiento['horario'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="web">Web</label>
-                            <input type = "text" name="web" placeholder="Web establecimiento" value="<?php echo $establecimiento['web'];?>"/>
+                            <input type = "text" name="web" placeholder="Web establecimiento" maxlength=45 value="<?php echo $establecimiento['web'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="email">Email</label>
-                            <input type="email" name="email" placeholder="Email establecimiento" value="<?php echo $establecimiento['email'];?>"/>
+                            <input type="email" name="email" placeholder="Email establecimiento" maxlength=50 value="<?php echo $establecimiento['email'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="password">Password</label>
-                            <input type="password" name="password" placeholder="Nueva password" value="<?php echo $establecimiento['password'];?>"/>
+                            <input type="password" name="password" placeholder="Nueva password" maxlength=45 value="<?php echo $establecimiento['password'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="confirmarpassword">Confirmar Password</label>
-                            <input type="password" name="confirmarpassword" placeholder="Repetir la nueva password" value="<?php echo $establecimiento['password'];?>"/>
+                            <input type="password" name="confirmarpassword" placeholder="Repetir la nueva password" maxlength=45 value="<?php echo $establecimiento['password'];?>"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcion">Descripción</label>
-                            <textarea rows="4" cols="50" name="descripcion" placeholder="Nueva descripción"><?php echo $establecimiento['descripcion'];?></textarea>
+                            <textarea rows="4" cols="50" name="descripcion" maxlength=200  placeholder="Nueva descripción"><?php echo $establecimiento['descripcion'];?></textarea>
                             <br></br>
                         </div>
                     </div>
