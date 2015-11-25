@@ -1,9 +1,10 @@
 <?php
     session_start();
     ob_start();
+    ini_set('display_errors',1);
     include("../../loader.php");
     loadclasses("view","header.php");
-	loadclasses("controller","ControladorOrganizador.php");
+	loadclasses("controller","ControladorNoRegistrado.php");
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -25,9 +26,9 @@
     } else {
         loadclasses("menus","nomenu.html");
     }
-	
-	$lista= listarJuradoProfesional();
-	
+
+	$lista= listaJuradoProfesional();
+
 ?>
 
 <h1>Miembros del jurado profesional</h1>
@@ -39,7 +40,7 @@
 			echo "<h4>".$fila["nombrejuradoprofesional"]."</h4>";
 			echo "<p>".$fila["reconocimientos"]."</p>";
 			echo "</div>";
-			
+
 		}
 	}
 ?>
