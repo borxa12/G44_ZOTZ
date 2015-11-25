@@ -22,8 +22,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`concurso` (
   `edicion` INT NOT NULL,
-  `folleto` VARCHAR(45) NOT NULL,
-  `gastromapa` VARCHAR(45) NOT NULL,
+  `folleto` VARCHAR(45),
+  `gastromapa` VARCHAR(45),
   `fechac` DATE NOT NULL,
   `fechaf` DATE NOT NULL,
   `usuarios_login` VARCHAR(20) NOT NULL,
@@ -47,14 +47,14 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`establecimiento` (
   `telefono` VARCHAR(45) NOT NULL,
   `web` VARCHAR(45) NOT NULL,
   `horario` VARCHAR(20) NOT NULL,
-  `descripcionestablecimento` VARCHAR(100) NOT NULL,
+  `descripcionestablecimiento` VARCHAR(100) NOT NULL,
   INDEX `fk_establecimiento_usuarios1_idx` (`usuarios_login` ASC),
   PRIMARY KEY (`usuarios_login`),
   CONSTRAINT `fk_establecimiento_usuarios1`
     FOREIGN KEY (`usuarios_login`)
     REFERENCES `G44_ZOTZ`.`usuarios` (`login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
