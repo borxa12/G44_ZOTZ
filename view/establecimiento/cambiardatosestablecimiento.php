@@ -1,72 +1,97 @@
 <?php
     session_start();
     ob_start();
+    ini_set('display_errors',1);
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
+    loadclasses("controller","ControladorEstablecimiento.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
     if($_SESSION['tipo'] != 'est') {
         header("Location: http://localhost/Zotz/index.php");
     } else {
+      $establecimiento = recuperarDatosEstablecimiento($_SESSION['login']);
 ?>
 
             <h1>Modificar Establecimiento</h1>
                 <div class="cleaner_h40"></div>
                 <br></br>
 
-                <form id="modificarestablecimiento" method="post">
+                <form name="modificarestablecimiento" method="post">
                     <div id=templatemo_form>
                         <div>
-                            <label for="nombreestablecimiento">Nombre</label>
-                            <input type = "text" id="nombreestablecimiento" placeholder="Nombre establecimiento" value="Datos de la BD"/>
+                            <label for="nombre">Nombre</label>
+                            <input type = "text" name="nombre" placeholder="Nombre establecimiento" value="<?php echo $establecimiento['nombre'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="direccionestablecimiento">Dirección</label>
-                            <input type = "text" id="direccionestablecimiento" placeholder="Dirección establecimiento" value="Datos de la BD"/>
+                            <label for="direccion">Dirección</label>
+                            <input type = "text" name="direccion" placeholder="Dirección establecimiento" value="<?php echo $establecimiento['direccion'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="telefonoestablecimiento">Teléfono</label>
-                            <input type="tel" id="telefonoestablecimiento" placeholder="Teléfono del establecimiento" value="Datos de la BD"/>
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" name="telefono" placeholder="Teléfono del establecimiento" value="<?php echo $establecimiento['telefono'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="webestablecimiento">Web</label>
-                            <input type = "text" id="webestablecimiento" placeholder="Web establecimiento" value="Datos de la BD"/>
+                            <label for="horario">Horario</label>
+                            <input type="tel" name="horario" placeholder="Horario del establecimiento" value="<?php echo $establecimiento['horario'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label  for="loginestablecimiento">Login</label>
-                            <input type="text" id="loginestablecimiento" placeholder="Login establecimiento" value="Datos de la BD"/>
-                            <br></br>
-                            </div>
-                        <div>
-                            <label for="emailestablecimiento">Email</label>
-                            <input type="email" id="emailestablecimiento" placeholder="Email establecimiento" value="Datos de la BD"/>
+                            <label for="web">Web</label>
+                            <input type = "text" name="web" placeholder="Web establecimiento" value="<?php echo $establecimiento['web'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="passwordestablecimiento">Password</label>
-                            <input type="password" id="passwordjuradoprofesionalinput" placeholder="Nueva password"/>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="Email establecimiento" value="<?php echo $establecimiento['email'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="comfirmarpasswordestablecimiento">Confirmar Password</label>
-                            <input type="password" id="comfirmarpasswordestablecimientoinput" onblur="validar();" placeholder="Repetir la nueva password"/>
-                            <span id="mensajeerror" hidden="true">Las contraseñas no coinciden</span>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Nueva password" value="<?php echo $establecimiento['password'];?>"/>
                             <br></br>
                         </div>
                         <div>
-                            <label for="descripcionestablecimiento">Descripción</label>
-                            <textarea rows="4" cols="50" id="descripcionestablecimiento" placeholder="Nueva descripción">Descripción establecimiento de la BD</textarea>
+                            <label for="confirmarpassword">Confirmar Password</label>
+                            <input type="password" name="confirmarpassword" placeholder="Repetir la nueva password" value="<?php echo $establecimiento['password'];?>"/>
+                            <br></br>
+                        </div>
+                        <div>
+                            <label for="descripcion">Descripción</label>
+                            <textarea rows="4" cols="50" name="descripcion" placeholder="Nueva descripción"><?php echo $establecimiento['descripcion'];?></textarea>
                             <br></br>
                         </div>
                     </div>
-                    <button type="submit" formaction="modificarestablecimiento.php" class="btn btn-default button">Guardar</button>
+                    <button name="modificar" type="submit" class="btn btn-default button">Guardar</button>
                     <button type="submit" formaction="modificarestablecimiento.php" class="btn btn-default button">Cancelar</button>
                 </form>
+                <?php
+                    if(isset($_POST['modificar'])) {
+                        if($_POST['nombre'] == "" || $_POST['direccion'] == "" ||
+                            $_POST['horario'] == "" || $_POST['telefono'] == "" ||
+                            $_POST['web'] == "" ||
+                            $_POST['email'] == "" || $_POST['password'] == "" ||
+                            $_POST['confirmarpassword'] == "" || $_POST['descripcion'] == "") {
+                                echo '<script> alert("Debe rellenar todos los campos");</script>';
+                                echo '<script> window.location="./cambiardatosestablecimiento.php";</script>';
+                        } else if(strcmp($_POST['password'],$_POST['confirmarpassword'])) {
+                            echo '<script> alert("Las contraseñas no coinciden");</script>';
+                            echo '<script> window.location="./cambiardatosestablecimiento.php";</script>';
+                        } else {
+                            if (modificarDatosEstablecimiento($_SESSION['login'],$_POST['password'],
+                                $_POST['email'],$_POST['nombre'],$_POST['direccion'],
+                                $_POST['telefono'],$_POST['web'],$_POST['horario'],
+                                $_POST['descripcion'])) {
+                                  echo "ENTRA";
+                                    header("Location: http://localhost/Zotz/view/establecimiento/modificarestablecimiento.php");
+                                }
+                        }
+                    }
+                ?>
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
