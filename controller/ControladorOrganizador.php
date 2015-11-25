@@ -7,35 +7,6 @@
 	loadclasses("model","Usuarios.php");
 	loadclasses("model","VotaProfesional.php");
 
-/*	public function revisarPinchos() {
-
-	}
-
-    public function recuperarPincho() {
-
-    }
-
-    public function seleccionarPropuesta() {
-
-	}
-
-    public function aceptarPropuesta() {
-
-	}
-
-    public function denegarPropuesta() {
-
-	}
-
-    public function registrarPincho() {
-
-    }
-
-    public function eliminarPincho() {
-
-    }
-    */
-
 	function gestionarPropuesta($id,$a) {
 		$datos = datosPropuestaGastronomica($id);
 		$fila = mysqli_fetch_assoc($datos);
@@ -67,22 +38,15 @@
 		if(mysqli_num_rows($res) >= $num) return true;
 		else return false;
     }
-
-    // public function elegirFinalistas() {
-	//
-    // }
-
-    /* public function recuperarJuradoProfesional() {
-
-    }*/
+	
+	function listarJuradoProfesional(){
+		$jp = new JuradoProfesional();
+		$lista = $jp->listar();
+		return $lista;
+	}
 
 	function registrarJuradoProfesional($login,$password,$email,$nombre,$foto,$reconocimientos) {
-		// $login = $_POST["loginjuradoprofesional"];
-		// $nombre = $_POST["nombrejuradoprofesional"];
-		// $email=$_POST["emailjuradoprofesional"];
-		// $password=$_POST["passwordjuradoprofesional"];
-		// $foto=$_POST["fotojuradoprofesional"];
-		// $reconocimientos=$_POST["reconocimientos"];
+
 		if ($foto != null) {
 			$usuario = new Usuarios();
 			$jpro = new JuradoProfesional();
@@ -96,16 +60,6 @@
 			$res2 = $jpro->insertar($login,$foto,$nombre,$reconocimientos);
 			return ($res1 && $res2);
 		}
-
-		// $usuario = new Usuarios();
-		// $juradoprofesional = new JuradoProfesional();
-		// $juradoprofesional->usuarios_login=$login;
-		// $juradoprofesional->nombrejuradoprofesional=$nombre;
-		// $juradoprofesional->fotojuradoprofesional=$foto;
-		// $juradoprofesional->recomientos=$reconocimientos;
-		// //$juradoprofesional->fotojuradoprofesional=$foto;
-		// $usuarios->insertar($login, $password, $email, "jpro");
-		// $juradoprofesional->insertar($juradoprofesional);
 	}
 
 
@@ -131,5 +85,5 @@
 		$datos =  $pincho->recuperar($id);
 		return $datos;
 	}
-// loadclasses("view","footer.html");
 ?>
+
