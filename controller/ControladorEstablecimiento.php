@@ -36,9 +36,9 @@
 	*/
     function bajaEstablecimiento($login) {
         $usuario = new Usuarios();
-        $establecimento = new Establecimiento();
-        $res1 = $usuario->eliminar($login);
+        $establecimiento = new Establecimiento();
         $res2 = $establecimiento->eliminar($login);
+        $res1 = $usuario->eliminar($login);
         return ($res1 && $res2);
     }
 
@@ -57,10 +57,12 @@
 	*/
     function modificarDatosEstablecimiento($login,$password,$email,$nombre,$direccion,$telefono,$web,$horario,$descripcion) {
         $usuario = new Usuarios();
-        $establecimento = new Establecimiento();
+        $establecimiento = new Establecimiento();
         $res1 = $usuario->modificar($login, $password, $email);
-        $res2 = $establecimiento->modificar($login, $nombre, $direccion, $telefono, $web, $horario, $descripcionestablecimiento);
-        return ($res1 && $res2);
+        $res2 = $establecimiento->modificar($login, $nombre, $direccion, $telefono, $web, $horario, $descripcion);
+        echo $res2;
+        if($res1 && $res2) return true;
+        return false;
     }
 
     /* Recupera los datos de un establecimiento utilizando el login.
