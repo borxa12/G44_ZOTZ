@@ -1,7 +1,15 @@
 <?php
 
+    // include_once("../loader.php");
+    // // loadclasses("model","Usuarios.php");
+    // // loadclasses("model","CodigoPincho.php");
+    // // loadclasses("model","Pincho.php");
+    // // loadclasses("model","Establecimiento.php");
+    // loadclasses("model","BD.php");
+
     class Establecimiento {
 
+        // private $bd;
         // Atributos
         private $usuarios_login;
         private $nombre;
@@ -10,6 +18,18 @@
         private $web;
         private $horario;
         private $descripcionestablecimiento;
+
+        /* Constructor de la clase que inicializa la base de datos.
+        *  Sin parametros.
+        *  Sin return.
+        */
+        // public function __construct() {
+        //     try {
+        //         $this->bd = new BD();
+        //     } catch (Exception $e) {
+        //         die($e->getMessage());
+        //     }
+        // }
 
 
         /* Lista los establecimientos, incluyendo identificador y atributos.
@@ -67,7 +87,7 @@
             $db = new BD();
             //$param = array($objeto->pincho_idpincho, $objeto->codigopincho, $objeto->like, $objeto->establecimiento_usuarios_login);
            // $res = $db->consulta("UPDATE codigopincho SET pincho_idpincho=?, codigopincho=?, like=?, establecimiento_usuarios_login=?",'ssis', $param);
-            $sentencia = "UPDATE establecimiento SET nombre='".$nombre."', direccion='".$direccion."', telefono='".$telefono."', web='".$web."', horario='".$horario."', descripcionestablecimiento='".$descripcionestablecimiento."' WHERE usuarios_login='".$login."'";
+            $sentencia = "UPDATE establecimiento SET nombre='".$nombre."', direccion='".$direccion."', telefono='".$telefono."', web='".$web."', horario='".$horario."', descripcionestablecimento='".$descripcionestablecimiento."' WHERE usuarios_login='".$login."'";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
@@ -90,12 +110,27 @@
             // VALUES('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."', '".$horario."', '".$descripcionestablecimiento."')";
             // $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento)
             // VALUES('borxa12', 'asdf', 'asdf', '632598574', 'cer', '0.00-23.02', 'adsffasdf')";
-            $sentencia = "INSERT INTO `establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefono`, `web`, `horario`, `descripcionestablecimento`)
+            $sentencia = "INSERT INTO `G44_ZOTZ`.`establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefono`, `web`, `horario`, `descripcionestablecimento`)
                 VALUES ('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."', '".$horario."', '".$descripcionestablecimiento."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
     }
+
+   // $est = new Establecimiento();
+   // $res = $est->insertar(null,null,null,null,null,null,null);
+   // if ($res == false) echo "no modificado";
+   //    else{
+   //       echo "modificado"; }
+    /*while($data = mysqli_fetch_assoc($res)) {
+        echo $data['usuarios_login']."<br/>";
+        echo $data['nombre']."<br/>";
+        echo $data['direccion']."<br/>";
+        echo $data['telefono']."<br/>";
+        echo $data['web']."<br/>";
+        echo $data['horario']."<br/>";
+        echo $data['descripcionestablecimiento']."<hr/>";
+    }*/
 
 ?>
