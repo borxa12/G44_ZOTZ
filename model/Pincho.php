@@ -116,6 +116,10 @@
             return $res;
         }
         
+        /*Funcion que lista aquellos pinchos que estean sin gestionar, es decir que tengan el campo aceptado a N.
+        Son todos aquellos pinchos que el organizador tiene que revisar para aceptar o denegar.
+        */
+        
         public function listarSinGestionar(){
 			$db = new BD();
             $sentencia = "SELECT * FROM pincho WHERE aceptado='N'";
@@ -124,7 +128,10 @@
             if(mysqli_num_rows($res)==0) return false;
             else  return $res;
             
-		}
+	}
+	
+	/* Comprueba el número de pinchos que tiene registrados un estableciemiento dado en una edición dada del concurso.
+	*/
 	public function comprobarPropuestas($edicion,$est){
           $db = new BD();
           $sentencia = "SELECT COUNT(idpincho) AS contador FROM pincho WHERE concurso_edicion='".$edicion."' AND establecimiento_usuarios_login='".$est."' GROUP BY concurso_edicion";
