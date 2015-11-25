@@ -13,6 +13,23 @@
         header("Location: http://localhost/Zotz/index.php");
     } else {
       $id = $_GET['idpincho'];
+      if(isset($_POST['modificar'])){
+        $nombre = $_POST['nombrepincho'];
+        $descripcion = $_POST['descripcionpincho'];
+        $ingredientes = $_POST['ingredientespincho'];
+        $precio = $_POST['precio'];
+        $res = recuperarDatosPincho($id);
+        $pincho = mysqli_fetch_assoc($res);
+        $foto = $pincho['fotopincho'];
+        if($_FILES['fotopincho']['name']!=''){
+          $concurso=$pincho['concurso_edicion'];
+          $trozos = explode(".", $_FILES['fotopincho']['name']);
+          $extension = end($trozos);
+          $foto = "pincho_".$concurso."_".$_SESSION['login'].".".$extension;
+          move_uploaded_file($_FILES['fotopincho']['tmp_name'], "../../img/pinchos/".$foto);
+        }
+        modificarDatosPincho($id, $nombre, $foto, $descripcion, $ingredientes, $precio);
+      }
       $res = recuperarDatosPincho($id);
       $pincho = mysqli_fetch_assoc($res);
 ?>
@@ -34,13 +51,20 @@
                     <br></br>
                 </div>
                 <div>
+                    <label for="precio">Precio</label>
+                    <h4><?php echo $pincho['precio'];?></h4>
+                    <br></br>
+                </div>
+                <div>
                     <label for="fotopincho">Foto</label>
                     <?php echo "<img src='../../img/pinchos/".$pincho['fotopincho']."' alt='image' class='img'>"; ?>
                     <br></br>
                 </div>
 		    </div>
             <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Volver</button>
-            <button type="submit" formaction="modificarpincho.php" class="btn btn-default button">Modificar</button>
+            <?php
+              if($pincho['aceptado']=='N')echo "<button type='submit' formaction='modificarpincho.php?idpincho=".$pincho['idpincho']."' class='btn btn-default button'>Modificar</button>";
+             ?>
         </form>
         <div class="cleaner"></div>
 </div>
