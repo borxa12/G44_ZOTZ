@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <label for="reconocimientosjuradoprofesional">Reconocimientos</label>
-                            <textarea rows="4" name="reconocimientosjuradoprofesional" maxlength=500 ></textarea>
+                            <textarea rows="4" name="reconocimientosjuradoprofesional" maxlength=1000 ></textarea>
                             <br></br>
                         </div>
                     </div>
