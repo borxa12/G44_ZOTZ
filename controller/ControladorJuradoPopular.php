@@ -33,11 +33,10 @@
 
     }
 
-   /* function seleccionarPincho($cod) {
-
-    }*/
-
-    /* Funcion que recupera la informción del pincho al que esta asociado $cod (codigopincho).
+    /* Funcion que recupera la información del pincho al que esta asociado $cod (codigopincho).
+    Parámetros:
+    	$cod: es el código del pincho que se quiere consultar.
+    Return: devuelve la información de dicho pincho.
     */
     function recuperarPincho($cod) {
         $pincho = new Pincho();
@@ -50,6 +49,9 @@
 
     /* Funcion que comprueba que el $cod (codigopincho) que se le pasa por parámetro existe
     *  y el campo likes de la tupla esta a null.
+    Parámetros:
+    	$cod: es el código del pincho que se quiere comprobar si existe
+    Return: TRUE si el pincho existe y FALSE en caso contrario.
     */
     function validarCodigo($cod) {
         $codPincho = new CodigoPincho();
@@ -62,17 +64,4 @@
             else return false;
         }
     }
-
-    /*function actualizarVotacion() {
-
-    }*/
-
-
-   /* $res = introducirCodigos('4423AS');
-    if($res) echo "valido"."<br/>";
-    else echo "no valido";*/
-    /*while($data = mysqli_fetch_assoc($res)) {
-        echo $data['idpincho']."<br/>";
-        echo $data['nombrepincho']."<hr/>";
-    }*/
 ?>
