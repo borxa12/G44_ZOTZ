@@ -4,36 +4,46 @@
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
+    loadclasses("controller","ControladorEstablecimiento.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
 
+    ini_set('display_errors',1);
     if($_SESSION['tipo'] != 'est') {
         header("Location: http://localhost/Zotz/index.php");
     } else {
+      $res = concursoActual();
+      $concurso = mysqli_fetch_assoc($res);
 ?>
-				<form id="registropincho" method="post">
+				<form name="registropincho" method="post" action="gestionpinchos.php" enctype="multipart/form-data">
+              <input name="concurso" hidden="true" value="<?php echo $concurso['edicion'];?>"type = "text"/>
                         <div>
                             <label for="nombrepincho">Nombre</label>
-                            <input type = "text" id="nombrepincho" />
+                            <input name="nombrepincho" type="text"/>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionpincho">Descripcion</label>
-                            <textarea rows="4" cols="50" id="descripcionpincho"></textarea>
+                            <textarea name="descripcionpincho" rows="4" cols="50" ></textarea>
                             <br></br>
                         </div>
                         <div>
-                            <label for="ingrdientespincho">Ingredientes</label>
-                            <textarea rows="4" cols="50" id="ingredientespincho"></textarea>
+                            <label for="ingredientespincho">Ingredientes</label>
+                            <textarea name="ingredientespincho" rows="4" cols="50"></textarea>
                             <br></br>
                         </div>
                         <div>
-                            <label for="fotopincho">Foto</label>
-                            <input type="file" id="fotopincho" />
+                            <label for="precio">Nombre</label>
+                            <input name="precio" type="text"/>
                             <br></br>
                         </div>
-                    <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Cancelar</button>
-                    <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Inscribir Pincho</button>
+                        <div>
+                            <label for="foto">Foto</label>
+                            <input name="fotopincho" type="file"/>
+                            <br></br>
+                        </div>
+                        <button name="inscribirpincho" type="submit" class="btn btn-default button">Inscribir Pincho</button>
+                        <button name="cancelar" type="submit" class="btn btn-default button">Cancelar</button>
                 </form>
                 <div class="cleaner"></div>
 </div>
