@@ -105,7 +105,7 @@
 	*/
     function enviarPropuestaGatronomica($nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $concurso_edicion, $establecimiento_usuarios_login) {
 		 $pincho = new Pincho();
-		 return $pincho->insertar($nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, NULL, $concurso_edicion, $establecimiento_usuarios_login);
+		 return $pincho->insertar($nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, 'N', $concurso_edicion, $establecimiento_usuarios_login);
 	}
 
 	/* Recupera los datos de un pincho en concreto.
@@ -130,7 +130,7 @@
 	*/
     function modificarDatosPincho($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio) {
         $pincho = new Pincho();
-        return $pincho->modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, NULL);
+        return $pincho->modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, 'N');
     }
 
 	/* Esta funcion llama a codigoAleatorio() para generar un código nuevo.
@@ -183,7 +183,7 @@
             return $codigopincho->insertar($cod, $estlogin, $id);
         }
     }
-    
+
 	 function listarPinchos($login) {
      $pincho = new Pincho();
      return $pincho->listarPorEstablecimiento($login);
