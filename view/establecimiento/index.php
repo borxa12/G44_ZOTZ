@@ -2,13 +2,18 @@
     session_start();
     ob_start();
     include("../../loader.php");
+    ini_set('display_errors',1);
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
+    loadclasses("controller","ControladorEstablecimiento.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
     if($_SESSION['tipo'] != 'est') {
         header("Location: http://localhost/Zotz/index.php");
     } else {
+      if(isset($_GET['eliminar'])){
+        if(bajaEstablecimiento($_SESSION['login'])) header("Location: http://localhost/Zotz/logout.php");
+      }
 ?>
 <!-- Contenido principal de la página -->
 <h1>Benvido <?php echo $_SESSION['login']; ?></h1>
