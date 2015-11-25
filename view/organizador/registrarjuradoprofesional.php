@@ -60,13 +60,15 @@
                             echo '<script> alert("Las contraseñas no coinciden");</script>';
                             // echo '<script> window.location="./registrarestablecimiento.php";</script>';
                         } else {
-                            if(isset($_POST['fotojuradoprofesional'])) {
-                                $foto = $_POST['fotojuradoprofesional'];
+							$login = $_POST['loginjuradoprofesional'];
+                            if($_FILES['fotojuradoprofesional']['name']) {
+                                $foto = $_FILES['fotojuradoprofesional'];
+								move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/juradoprofesional/".$login.".jpg");
                             } else {
                                 $foto = null;
                             }
                             if (registrarJuradoProfesional($_POST['loginjuradoprofesional'],$_POST['passwordjuradoprofesional'],
-                                $_POST['emailjuradoprofesional'],$_POST['nombrejuradoprofesional'],$foto,
+                                $_POST['emailjuradoprofesional'],$_POST['nombrejuradoprofesional'],$login.".jpg",
                                 $_POST['reconocimientosjuradoprofesional'])) {
                                     header("Location: http://localhost/Zotz/view/noregister/juradoprofesional.php");
                                 } else {
@@ -74,6 +76,7 @@
                                     // echo '<script> window.location="./registrarestablecimiento.php";</script>';
                                 }
                         }
+						
                     }
                 ?>
 
