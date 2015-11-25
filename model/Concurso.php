@@ -1,10 +1,7 @@
 <?php
 
-    //require_once './BD.php';
-
     class Concurso {
 
-      //private $bd;
         // Atributos
         public $edicion;
         public $folleto;
@@ -13,32 +10,11 @@
         public $fechaf;
         public $usuarios_login;
 
-        // public function __construct() {
-        //     try {
-        //         $this->bd = new BD();
-        //     } catch (Exception $e) {
-        //         die($e->getMessage());
-        //     }
-        // }
-
         /* Constructor de la clase que inicializa la base de datos.
         *  Sin parametros.
         *  Sin return.
         */
-        /*public function __construct() { // $edicion,$folleto,$gastromapa,$fechac,$fechaf,$usuarios_login
-            try {
-                $this->bd = new BD();
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-            // $this->edicion = $edicion;
-            // $this->folleto = $folleto;
-            // $this->gastromapa = $gastromapa;
-            // $this->fechac = $fechac;
-            // $this->fechaf = $fechaf;
-            // $this->usuarios_login = $usuarios_login;
-        }
-*/
+
         public function recuperarUltimoConcurso(){
           $db = new BD();
           $sentencia = "SELECT * FROM concurso ORDER BY edicion DESC";
@@ -131,25 +107,5 @@
             return $res;
         }
     }
-
-    // $codPincho = new Concurso();
-    // $res = $codPincho->eliminar(4);
-    // $res = $codPincho->modificar("4","4",'./folletos/2015/folleto.png', './gastromapas/2015/gastromapa.png', '2015-12-11', '2015-12-22', 'organizador');
-    // $res = $codPincho->insertar("15",'./folletos/2015/folleto.png', './gastromapas/2015/gastromapa.png', '2015-12-11', '2015-12-22', 'organizador');
-    // if(!$res) echo "MAL";
-    // else echo "BIEN";
-
-    // if(!$res) {
-    //     echo "LA HAS CAGADO";
-    // } else {
-    //     while($data = mysqli_fetch_assoc($res)) {
-    //         echo $data['edicion']."<br/>";
-    //         echo $data['folleto']."<br/>";
-    //         echo $data['gastromapa']."<br/>";
-    //         echo $data['fechac']."<br/>";
-    //         echo $data['fechaf']."<br/>";
-    //         echo $data['usuarios_login']."<hr/>";
-    //     }
-    // }
 
 ?>
