@@ -47,19 +47,11 @@
 
 	function registrarJuradoProfesional($login,$password,$email,$nombre,$foto,$reconocimientos) {
 
-		if ($foto != null) {
 			$usuario = new Usuarios();
 			$jpro = new JuradoProfesional();
 			$res1 = $usuario->insertar($login,$password,$email,"jpro");
 			$res2 = $jpro->insertar($login,$foto,$nombre,$reconocimientos);
 			return ($res1 && $res2);
-		} else {
-			$usuario = new Usuarios();
-			$jpro = new JuradoProfesional();
-			$res1 = $usuario->insertar($login,$password,$email,"jpro");
-			$res2 = $jpro->insertar($login,$foto,$nombre,$reconocimientos);
-			return ($res1 && $res2);
-		}
 	}
 
 
@@ -86,4 +78,3 @@
 		return $datos;
 	}
 ?>
-
