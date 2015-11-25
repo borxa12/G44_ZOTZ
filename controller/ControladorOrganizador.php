@@ -84,8 +84,7 @@
 		// $foto=$_POST["fotojuradoprofesional"];
 		// $reconocimientos=$_POST["reconocimientos"];
 		if ($foto != null) {
-			move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/juradoprofesional/".$login.".jpg");
-			$usuario = new Usuario();
+			$usuario = new Usuarios();
 			$jpro = new JuradoProfesional();
 			$res1 = $usuario->insertar($login,$password,$email,"jpro");
 			$res2 = $jpro->insertar($login,$foto,$nombre,$reconocimientos);
