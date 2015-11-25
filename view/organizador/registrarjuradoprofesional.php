@@ -1,6 +1,7 @@
 <?php
     session_start();
     ob_start();
+	ini_set("display_errors",1);
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuorganizador.html");
@@ -63,6 +64,7 @@
 							$login = $_POST['loginjuradoprofesional'];
                             if($_FILES['fotojuradoprofesional']['name']) {
                                 $foto = $_FILES['fotojuradoprofesional'];
+								
 								move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/juradoprofesional/".$login.".jpg");
                             } else {
                                 $foto = null;
