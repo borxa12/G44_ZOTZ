@@ -1,23 +1,10 @@
 <?php
-
-    // require_once './BD.php';
-
     class JuradoProfesional {
-
-        // private $bd;
-        // Atributos
+        
         public $usuarios_login;
         public $fotojuradoprofesional=null;
         public $nombrejuradoprofesional;
         public $reconocimientos=null;
-
-        // public function __construct() {
-        //     try {
-        //         $this->bd = new BD();
-        //     } catch (Exception $e) {
-        //         die($e->getMessage());
-        //     }
-        // }
 
         /*  Lista las asignaciones de pincho a jurado profesional
         *   Return: Devuelve la lista con los datos.
@@ -75,26 +62,12 @@
         */
         public function insertar($login,$foto,$nombre,$reconocimientos) {
           $db = new BD();
-          $sentencia = "INSERT INTO `g44_zotz`.`juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nombrejuradoprofesional`, `reconocimientos`)
+          $sentencia = "INSERT INTO `juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nombrejuradoprofesional`, `reconocimientos`)
             VALUES ('".$login."', '".$foto."', '".$nombre."', '".$reconocimientos."')";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
           return $res;
         }
     }
-
-    // $codPincho = new JuradoProfesional();
-    // $res = $codPincho->insertar("jprofesional2",null,"JPRO","poucos");
-    // if($res) echo "BIEN";
-    // else echo "MAL";
-    // while($data = mysqli_fetch_assoc($res)) {
-    //     echo $data['usuarios_login']."<br/>";
-    //     echo $data['nombre']."<br/>";
-    //     echo $data['direccion']."<br/>";
-    //     echo $data['telefono']."<br/>";
-    //     echo $data['web']."<br/>";
-    //     echo $data['horario']."<br/>";
-    //     echo $data['descripcionestablecimiento']."<hr/>";
-    // }
 
 ?>
