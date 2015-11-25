@@ -22,21 +22,31 @@
         $extension = end($trozos);
         $foto = "pincho_".$concurso."_".$_SESSION['login'].".".$extension;
         move_uploaded_file($_FILES['fotopincho']['tmp_name'], "../../img/pinchos/".$foto);
+
         enviarPropuestaGatronomica($nombre, $foto, $descripcionpincho, $ingredientespincho, $precio, $concurso, $_SESSION['login']);
       }
       $listapinchos = listarPinchos($_SESSION['login']);
 ?>
 				<h1>Pinchos</h1>
-                <div class="registrarestablecimiento">
-                    <a href="inscribirpincho.php">Inscribir pincho para la proxima edicion</a>
-                </div>
+
+                  <?php
+                    $res = concursoActual();
+                    $concurso = mysqli_fetch_assoc($res);
+                    $res = comprobarPropuestasEstablecimiento($concurso['edicion'],$_SESSION['login']);
+                    $nump = mysqli_fetch_assoc($res);
+                    if($nump['contador']==0){
+                      echo "<div class='registrarestablecimiento'>";
+                      echo "<a href='inscribirpincho.php'>Inscribir pincho para la proxima edicion</a>";
+                      echo "</div>";
+                    }
+                    ?>
 <?php
             if($listapinchos!=null){
               while($linea = mysqli_fetch_assoc($listapinchos)){
                 echo "<div class='product_box'>";
-                    echo "<a href='datospincho.php?idpincho=".$linea['idpincho']."'  class='pirobox'><img src='' alt='image' class='img' /></a>";
-                    echo "<h4>Nombre Pincho</h4>";
-                    echo "<p> Edicion </p>";
+                    echo "<a href='datospincho.php?idpincho=".$linea['idpincho']."'  class='pirobox'><img src='../../img/pinchos/".$linea['fotopincho']."' alt='image' class='img' /></a>";
+                    echo "<h4>".$linea['nombrepincho']."</h4>";
+                    echo "<p> ".$linea['concurso_edicion']." </p>";
                     echo "<form id='verpincho' method='post'>";
                         echo "<button type='submit' formaction='datospincho.php?idpincho=".$linea['idpincho']."' class='btn btn-default button'>Ver</button>";
                     echo "</form>";
