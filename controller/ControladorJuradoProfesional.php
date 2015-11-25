@@ -22,13 +22,6 @@
 		return ($res1 && $res2);
 	}
 
-public function juradoNoAsignado($id){
-          $db = new BD();
-          $sentencia = "SELECT * FROM juradoprofesional where usuarios_login NOT IN (SELECT juradoprofesional_usuarios_login FROM votaprofesional WHERE pincho_idpincho=$id)";
-          $res = mysqli_query($db->connection,$sentencia);
-          $db->desconectar();
-          return $res;
-        }
 
 	/*  Elimina un usuario JuradoProfesional.
 	*   Parametros:
