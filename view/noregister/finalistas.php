@@ -45,7 +45,7 @@
             while($r = mysqli_fetch_assoc($res)) {
 ?>
                 <div class="product_box">
-                    <a href="" class="pirobox"><img src="<?php echo 'http://localhost/Zotz/'.$r['fotopincho']; ?>" alt="image" class="img"/></a>
+                    <a href="" class="pirobox"><img src="<?php echo 'http://localhost/Zotz/img/pincho/'.$r['fotopincho']; ?>" alt="image" class="img"/></a>
                     <h4><?php echo $r['nombrepincho'] ?></h4>
                     <p> <?php
                             $est = recuperarDatosEstablecimiento($r['establecimiento_usuarios_login']);
