@@ -51,13 +51,5 @@
 		public function desconectar(){
 			$this->connection->close();
 		}
-
 	}
-
-	// $var = new BD();
-	// // $var->consultar("INSERT INTO usuarios VALUES (?,?,?,?)",'ssss',array("borxa","borxa","borxa","org"));
-	// $var->consultar("SELECT * FROM codigopincho",'',array());
-	// while($data = mysqli_fetch_assoc($var)) {
-	// 	echo $data['idpincho'];
-	// }
 ?>
