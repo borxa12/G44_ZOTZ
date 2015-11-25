@@ -102,10 +102,10 @@
 	*       $establecimiento_usuarios_login - Atributo a insertar, login del establecimiento al que pertenece el pincho.
 	*  Return: Devuelve TRUE si la tupla se inserta correctamente o FALSE en caso contrario.
 	*/
-    function enviarPropuestaGatronomica($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $concurso_edicion, $establecimiento_usuarios_login) {
-        $pincho = new Pincho();
-        return $pincho->insertar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, NULL, $concurso_edicion, $establecimiento_usuarios_login);
-    }
+    function enviarPropuestaGatronomica($nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, $concurso_edicion, $establecimiento_usuarios_login) {
+		 $pincho = new Pincho();
+		 return $pincho->insertar($nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, NULL, $concurso_edicion, $establecimiento_usuarios_login);
+	}
 
 	/* Recupera los datos de un pincho en concreto.
 	*  Parametros:
@@ -182,6 +182,21 @@
             return $codigopincho->insertar($cod, $estlogin, $id);
         }
     }
+    
+	 function listarPinchos($login) {
+     $pincho = new Pincho();
+     return $pincho->listarPorEstablecimiento($login);
+	}
+
+  function concursoActual(){
+    $concurso = new Concurso();
+    return $concurso->recuperarUltimoConcurso();
+  }
+
+  function comprobarPropuestasEstablecimiento($edicion,$est){
+    $pincho = new Pincho();
+    return $pincho->comprobarPropuestas($edicion,$est);
+  }
 
     // function cerrarSesion() {
     //
