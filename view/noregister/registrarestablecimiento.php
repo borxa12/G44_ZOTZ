@@ -34,56 +34,56 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nombre</label>
-                            <input type="text" name="nombreestablecimiento" require/>
+                            <input type="text" name="nombreestablecimiento" maxlength=90 require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="direccionestablecimiento">Dirección</label>
-                            <input type="text" name="direccionestablecimiento" require/>
+                            <input type="text" name="direccionestablecimiento" maxlength=90 require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="horarioestablecimiento">Horario</label>
-                            <input type="text" name="horarioestablecimiento" require/>
+                            <input type="text" name="horarioestablecimiento" maxlength=15 require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="telefonoestablecimiento">Teléfono</label>
-                            <input type="tel" pattern="^[9|8|7|6]\d{8}$" name="telefonoestablecimiento"
+                            <input type="tel" maxlength=20 pattern=[0-9]{9,45} name="telefonoestablecimiento"
                                 title="Número de 9 dígitos que empieza por 6, 7, 8 o 9" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="webestablecimiento">Web</label>
-                            <input type="text" name="webestablecimiento" require/>
+                            <input type="text" name="webestablecimiento" maxlength=45 require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="loginestablecimiento">Login</label>
-                            <input type="text" name="loginestablecimiento" require/>
+                            <input type="text" name="loginestablecimiento" maxlength=20 require/>
                             <br></br>
                             </div>
                         <div>
                             <label for="emailestablecimiento">Email</label>
-                            <input type="email" name="emailestablecimiento"
+                            <input type="email" maxlength=50 name="emailestablecimiento"
                                 title="example@example.com" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordestablecimiento">Password</label>
-                            <input type="password" pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
+                            <input type="password" maxlength=45 pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
                                 name="passwordestablecimiento" title="Letras números y caracteres especiales como - _ @ #" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="repetirpasswordestablecimiento">Repetir Password</label>
-                            <input type="password" pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
+                            <input type="password" maxlength=45 pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
                                 name="repetirpasswordestablecimiento" require/>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionestablecimiento">Descripción</label>
-                            <textarea rows="4" name="descripcionestablecimiento"></textarea>
+                            <textarea rows="4" maxlength=200 name="descripcionestablecimiento"></textarea>
                             <br></br>
                         </div>
                     </div>
