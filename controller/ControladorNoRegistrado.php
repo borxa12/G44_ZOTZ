@@ -1,13 +1,5 @@
 <?php
 
-	// require_once '../model/BD.php';
-	// require_once '../model/Establecimiento.php';
-	// require_once '../model/CodigoPincho.php';
-	// require_once '../model/Establecimiento.php';
-	// require_once '../model/JuradoProfesional.php';
-	// require_once '../model/Pincho.php';
-	// require_once '../model/Usuarios.php';
-	// require_once '../model/VotaProfesional.php';
 	loadclasses("model","BD.php");
 	loadclasses("model","Establecimiento.php");
 	loadclasses("model","CodigoPincho.php");
@@ -15,7 +7,6 @@
 	loadclasses("model","JuradoProfesional.php");
 	loadclasses("model","Pincho.php");
 	loadclasses("model","Usuarios.php");
-	// loadclasses("model","VotaProfesional.php");
 
 	/* Lista los establecimientos, incluyendo identificador y atributos.
 	*  Return: Devuelve los datos del concurso sin tratar o FALSE en caso de error.
