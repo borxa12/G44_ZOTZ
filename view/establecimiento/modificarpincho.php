@@ -1,40 +1,55 @@
 <?php
     session_start();
     ob_start();
+    ini_set("display_errors",1);
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
+    loadclasses("controller","ControladorEstablecimiento.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'est') {
         header("Location: http://localhost/Zotz/index.php");
     } else {
+      $id = $_GET['idpincho'];
+      $res = recuperarDatosPincho($id);
+      $pincho = mysqli_fetch_assoc($res);
 ?>
-					<form id="registropincho" method="post">
+					<form id="registropincho" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="nombrepincho">Nombre</label>
-                            <input type = "text" id="nombrepincho" placeholder="Nombre Pincho" value="Nombre del pincho en la BD"/>
+                            <?php echo "<input type = 'text' name='nombrepincho' placeholder='Nombre Pincho' value='".$pincho['nombrepincho']."'/>";?>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionpincho">Descripcion</label>
-                            <textarea rows="4" cols="50" id="descripcionpincho" placeholder="Descripcion Pincho">Descipcion del pincho en la BD</textarea>
+                            <?php echo "<textarea rows='4' cols='50' name='descripcionpincho' placeholder='Descripcion Pincho'>".$pincho['descripcionpincho']."</textarea>"; ?>
                             <br></br>
                         </div>
                         <div>
                             <label for="ingrdientespincho">Ingredientes</label>
-                            <textarea rows="4" cols="50" id="ingredientespincho" placeholder="Ingredientes Pincho">Ingredientes del pincho en la BD</textarea>
+                            <?php echo "<textarea rows='4' cols='50' name='ingredientespincho' placeholder='Ingredientes Pincho'>".$pincho['ingredientesp']."</textarea>"; ?>
+                            <br></br>
+                        </div>
+                        <div>
+                            <label for="precio">Precio</label>
+                            <?php echo "<input type = 'text' name='precio' placeholder='Precio Pincho' value='".$pincho['precio']."'/>";?>
                             <br></br>
                         </div>
                         <div>
                             <label for="fotopincho">Foto</label>
-                            <input type="file" id="fotopincho" />
+                            <?php
+                              echo "<img src='../../img/pinchos/".$pincho['fotopincho']."' alt='image' class='img'>";
+                             ?>
+                            <input name="fotopincho" type="file" id="fotopincho" />
                             <br></br>
                         </div>
 					<div>
-                    <button type="submit" formaction="datospincho.php" class="btn btn-default button">Cancelar</button>
-                    <button type="submit" formaction="datospincho.html" class="btn btn-default button">Guardar Pincho</button>
+                <?php
+                    echo "<button name='modificar' type='submit' formaction='datospincho.php?idpincho=".$pincho['idpincho']."' class='btn btn-default button'>Guardar Pincho</button>";
+                    echo "<button type='submit' formaction='datospincho.php?idpincho=".$pincho['idpincho']."' class='btn btn-default button'>Cancelar</button>";
+                  ?>
 					</div>
                 </form>
 				</div>
