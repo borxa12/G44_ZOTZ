@@ -18,7 +18,7 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nombre</label>
-                            <input type = "text" name="nombrejuradoprofesional" maxlength=50 required />
+                            <input type = "text" name="nombrejuradoprofesional" maxlength=60 required />
                             <br></br>
                         </div>
                         <div>
@@ -28,17 +28,17 @@
                         </div>
                         <div>
                             <label for="emailjuradoprofesional">Email</label>
-                            <input title= "mail@example.com" type="email" name="emailjuradoprofesional" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" maxlength=50 required/>
+                            <input title= "mail@example.com" type="email" name="emailjuradoprofesional" maxlength=50 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Password</label>
-                            <input title="No se admiten Ñ ni acentos" type="password" name="passwordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=20 required/>
+                            <input title="No se admiten Ñ ni acentos" type="password" name="passwordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="repetirpasswordjuradoprofesional">Repetir Password</label>
-                            <input title="No se admiten Ñ ni acentos" type="password" name="repetirpasswordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=20 required/>
+                            <input title="No se admiten Ñ ni acentos" type="password" name="repetirpasswordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
                             <br></br>
                         </div>
                         <div>
@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <label for="reconocimientosjuradoprofesional">Reconocimientos</label>
-                            <textarea rows="4" name="reconocimientosjuradoprofesional" maxlength=1000 ></textarea>
+                            <textarea rows="4" name="reconocimientosjuradoprofesional" maxlength=500 ></textarea>
                             <br></br>
                         </div>
                     </div>
