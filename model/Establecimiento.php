@@ -1,15 +1,7 @@
 <?php
 
-    // include_once("../loader.php");
-    // // loadclasses("model","Usuarios.php");
-    // // loadclasses("model","CodigoPincho.php");
-    // // loadclasses("model","Pincho.php");
-    // // loadclasses("model","Establecimiento.php");
-    // loadclasses("model","BD.php");
-
     class Establecimiento {
 
-        // private $bd;
         // Atributos
         private $usuarios_login;
         private $nombre;
@@ -18,18 +10,6 @@
         private $web;
         private $horario;
         private $descripcionestablecimiento;
-
-        /* Constructor de la clase que inicializa la base de datos.
-        *  Sin parametros.
-        *  Sin return.
-        */
-        // public function __construct() {
-        //     try {
-        //         $this->bd = new BD();
-        //     } catch (Exception $e) {
-        //         die($e->getMessage());
-        //     }
-        // }
 
 
         /* Lista los establecimientos, incluyendo identificador y atributos.
@@ -117,20 +97,5 @@
             return $res;
         }
     }
-
-   // $est = new Establecimiento();
-   // $res = $est->insertar(null,null,null,null,null,null,null);
-   // if ($res == false) echo "no modificado";
-   //    else{
-   //       echo "modificado"; }
-    /*while($data = mysqli_fetch_assoc($res)) {
-        echo $data['usuarios_login']."<br/>";
-        echo $data['nombre']."<br/>";
-        echo $data['direccion']."<br/>";
-        echo $data['telefono']."<br/>";
-        echo $data['web']."<br/>";
-        echo $data['horario']."<br/>";
-        echo $data['descripcionestablecimiento']."<hr/>";
-    }*/
 
 ?>
