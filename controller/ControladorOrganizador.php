@@ -4,7 +4,8 @@
 	loadclasses("model","BD.php");
 	loadclasses("model","JuradoProfesional.php");
 	loadclasses("model","CodigoPincho.php");
-	loadclasses("model", "Usuarios.php");
+	loadclasses("model","Usuarios.php");
+	loadclasses("model","VotaProfesional.php");
 
 /*	public function revisarPinchos() {
 
@@ -55,8 +56,8 @@
 	}
 
     function seleccionarFinalistas($num) {
-		$pincho = new CodigoPincho();
-		$res = $pincho->listarLikes($num);
+		$pincho = new VotaProfesional();
+		$res = $pincho->eleccionFinalistas($num);
 		return $res;
 	}
 

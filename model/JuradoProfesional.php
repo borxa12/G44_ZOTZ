@@ -2,7 +2,7 @@
 
     // require_once './BD.php';
 
-    class VotaProfesional {
+    class JuradoProfesional {
 
         // private $bd;
         // Atributos
@@ -93,4 +93,3 @@
     // }
 
 ?>
-

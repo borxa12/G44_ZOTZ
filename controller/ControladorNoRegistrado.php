@@ -87,4 +87,14 @@
 		return $res['folleto'];
 	}
 
+	/*  Recupera los pinchos finalistas.
+	*   Sin parametros.
+	*   Return: Devuelve los pinchos finalistas, FALSE en caso contrario.
+	*/
+	function recuperarFinalistas(){
+		$votopro = new VotaProfesional();
+		$res = $votopro->recuperarFinalistas();
+		return $res;
+	}
+
 ?>

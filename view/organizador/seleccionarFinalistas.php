@@ -38,7 +38,9 @@
         if(comprobarParticipantes($_POST['nfinalistas'])) {
             // $finalistas = seleccionarFinalistas($_POST['nfinalista']);
             // header("Location: http://localhost/Zotz/view/organizador/seleccionarFinalistas.php");
-            header("Location: http://localhost/Zotz/view/organizador/finalistas.php?nfinalistas=".$_POST['nfinalistas']);
+            $res = seleccionarFinalistas($_POST['nfinalistas']);
+            // header("Location: http://localhost/Zotz/view/noregister/finalistas.php?nfinalistas=".$_POST['nfinalistas']);
+            header("Location: http://localhost/Zotz/view/noregister/finalistas.php");
         } else {
             echo '<script> alert("Excedeu o número de participantes.");</script>';
             // echo '<script> window.location="";</script>';

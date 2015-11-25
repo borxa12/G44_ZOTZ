@@ -8,13 +8,31 @@
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
 
-    if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+    if(isset($_SESSION['tipo'])) {
+        switch ($_SESSION['tipo']) {
+            case 'org':
+                loadclasses("menus","menuorganizador.html");
+                break;
+            case 'jpop':
+                loadclasses("menus","menujuradopopular.html");
+                break;
+            case 'jpro':
+                loadclasses("menus","menujuradoprofesional.html");
+                break;
+            case 'est':
+                loadclasses("menus","menuestablecimiento.html");
+                break;
+            // default:
+            //     loadclasses("menus","nomenu.html");
+            //     break;
+        }
     } else {
-        $res = recuperarPincho($_GET['pincho']);
-        while($r = mysqli_fetch_assoc($res)) {
+        loadclasses("menus","nomenu.html");
+    }
+    $res = recuperarPincho($_GET['pincho']);
+    while($r = mysqli_fetch_assoc($res)) {
 ?>
-		<!-- <form id="registropincho" method="post"> -->
+		<form id="registropincho" method="post">
             <div id=templatemo_form>
                 <div>
                     <label for="nombrepincho">Nombre</label>
@@ -37,8 +55,8 @@
                     <br></br>
                 </div>
 		    </div>
-            <!-- <button type="submit" formaction="finalistas.php" class="btn btn-default button">Volver</button>
-        </form> -->
+            <button type="submit" formaction="finalistas.php" class="btn btn-default button">Volver</button>
+        </form>
     <?php
         }
     ?>
@@ -48,7 +66,4 @@
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
 </div>
 
-<?php
-    }
-?>
 <?php loadclasses("view","footer.html"); ?>

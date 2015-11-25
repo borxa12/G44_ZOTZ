@@ -67,8 +67,8 @@ INSERT INTO `juradoprofesional` (`usuarios_login`, `fotojuradoprofesional`, `nom
 -- Volcado de datos para la tabla `votaprofesional`
 --
 
-INSERT INTO `votaprofesional` (`pincho_idpincho`, `juradoprofesional_usuarios_login`, `votoprofesional`) VALUES(1, 'juradoprofesional', NULL);
-INSERT INTO `votaprofesional` (`pincho_idpincho`, `juradoprofesional_usuarios_login`, `votoprofesional`) VALUES(2, 'juradoprofesional', NULL);
+INSERT INTO `votaprofesional` (`pincho_idpincho`, `juradoprofesional_usuarios_login`, `votoprofesional`, `finalista`) VALUES(1, 'juradoprofesional', NULL, 0);
+INSERT INTO `votaprofesional` (`pincho_idpincho`, `juradoprofesional_usuarios_login`, `votoprofesional`, `finalista`) VALUES(2, 'juradoprofesional', NULL, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

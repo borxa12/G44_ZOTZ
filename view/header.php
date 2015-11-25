@@ -57,7 +57,7 @@
 						<li><a href="http://localhost/Zotz/view/noregister/pinchos.php">Pinchos</a></li> <!-- http://127.0.0.1/Zotz/view/noregister/pinchos.php -->
 						<li><a href="http://localhost/Zotz/view/noregister/establecimientos.php">Establecimientos</a></li> <!-- ./view/noregister/establecimientos.html -->
 						<li><a href="http://localhost/Zotz/view/noregister/juradoprofesional.php">Jurado Profesional</a></li>
-						<!-- <li><a href="http://localhost/Zotz/view/noregister/finalistas.php">Finalistas</a></li> -->
+						<li><a href="http://localhost/Zotz/view/noregister/finalistas.php">Finalistas</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/mapa.php">Gastromapa</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/folleto.php">Folleto</a></li>
 						<?php
