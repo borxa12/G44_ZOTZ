@@ -3,9 +3,7 @@
     ob_start();
     include("../../loader.php");
     loadclasses("view","header.php");
-    // loadclasses("menus","nomenu.html");
-    // require_once '../header.php';
-    // require_once '../../menus/nomenu.html';
+	loadclasses("controller","ControladorOrganizador.php");
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -27,13 +25,26 @@
     } else {
         loadclasses("menus","nomenu.html");
     }
+	
+	$lista= listarJuradoProfesional();
+	
 ?>
 
 <h1>Miembros del jurado profesional</h1>
-
-</div>
+<?php
+	if($lista){
+		while ($fila = mysqli_fetch_assoc($lista)) {
+			echo "<div class='product_box'>";
+			echo "<a href='' class='pirobox'><img src='../../img/juradoprofesional/".$fila['fotojuradoprofesional']."' alt='image' class='img'/></a>";
+			echo "<h4>".$fila["nombrejuradoprofesional"]."</h4>";
+			echo "<p>".$fila["reconocimientos"]."</p>";
+			echo "</div>";
+			
+		}
+	}
+?>
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
-
+</div>
 <?php loadclasses("view","footer.html"); ?>
