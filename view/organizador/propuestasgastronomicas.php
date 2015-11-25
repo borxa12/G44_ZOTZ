@@ -28,7 +28,7 @@
 	if($lista){
 		while ($fila = mysqli_fetch_assoc($lista)) {
 			echo "<div class='product_box'>";
-			echo "<a href='' class='pirobox'><img src='' alt='image' class='img'/></a>";
+			echo "<a href='' class='pirobox'><img src='../../img/pinchos/".$fila['fotopincho']."' alt='image' class='img'/></a>";
 			echo "<h4>".$fila["nombrepincho"]."</h4>";
 			echo "<p>".$fila["descripcionpincho"]."</p>";
 			echo "<button type='submit' formaction='aceptardenegarpropuesta.php?idpincho=".$fila['idpincho']."' class='btn btn-default button'>Evaluar</button>";
