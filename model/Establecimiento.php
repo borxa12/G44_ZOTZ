@@ -110,7 +110,7 @@
             // VALUES('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."', '".$horario."', '".$descripcionestablecimiento."')";
             // $sentencia = "INSERT INTO establecimiento (usuarios_login, nombre, direccion, telefono, web, horario, descripcionestablecimiento)
             // VALUES('borxa12', 'asdf', 'asdf', '632598574', 'cer', '0.00-23.02', 'adsffasdf')";
-            $sentencia = "INSERT INTO `G44_ZOTZ`.`establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefono`, `web`, `horario`, `descripcionestablecimento`)
+            $sentencia = "INSERT INTO `G44_ZOTZ`.`establecimiento` (`usuarios_login`, `nombre`, `direccion`, `telefono`, `web`, `horario`, `descripcionestablecimiento`)
                 VALUES ('".$login."', '".$nombre."', '".$direccion."', '".$telefono."', '".$web."', '".$horario."', '".$descripcionestablecimiento."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
