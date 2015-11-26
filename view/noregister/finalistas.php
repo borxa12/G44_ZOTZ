@@ -1,15 +1,13 @@
 <?php
     session_start();
     ob_start();
+    ini_set('display_errors',1);
     include("../../loader.php");
     loadclasses("view","header.php");
     // loadclasses("menus","menuorganizador.html");
     // loadclasses("menus","nomenu.html");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
-    loadclasses("controller","ControladorOrganizador.php");
-    loadclasses("controller","ControladorJuradoProfesional.php");
-    loadclasses("controller","ControladorEstablecimiento.php");
     loadclasses("controller","ControladorNoRegistrado.php");
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
@@ -42,27 +40,24 @@
     } else {
         while($f = mysqli_fetch_assoc($finalistas)) {
             $res = recuperarPincho($f['pincho_idpincho']);
-            while($r = mysqli_fetch_assoc($res)) {
-?>
-                <div class="product_box">
-                    <a href="" class="pirobox"><img src="<?php echo 'http://localhost/Zotz/img/pincho/'.$r['fotopincho']; ?>" alt="image" class="img"/></a>
-                    <h4><?php echo $r['nombrepincho'] ?></h4>
-                    <p> <?php
+            $r = mysqli_fetch_assoc($res);
+                echo "<div class='product_box'>";
+                    echo "<a href='' class='pirobox'><img src='../../img/pinchos/".$r['fotopincho']."' alt='image' class='img'/></a>";
+                    echo "<h4>".$r['nombrepincho']."</h4>";
+                    echo "<p>";
                             $est = recuperarDatosEstablecimiento($r['establecimiento_usuarios_login']);
                             echo $est['nombre'];
-                    ?> </p>
-                    <p>Nota: <?php echo $f['media'] ?></p>
-                    <form name="verfinalista" method="post">
-                        <button name="btnver" type="submit" class="btn btn-default button">Ver</button>
-                    </form>
-                    <?php
+
+                    echo "</p>";
+                    echo "<p>Nota: ".$f['media']."</p>";
+                    echo "<form name='verfinalista' method='post'>";
+                        echo "<button name='btnver' type='submit' class='btn btn-default button'>Ver</button>";
+                    echo "</form>";
                         if(isset($_POST['btnver'])) {
                             header("Location: http://localhost/Zotz/view/noregister/datospincho.php?pincho=".$r['idpincho']);
                         }
-                    ?>
-                </div>
-<?php
-            }
+                echo "</div>";
+
         }
     }
 ?>

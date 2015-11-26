@@ -3,7 +3,7 @@
     ob_start();
     include("../../loader.php");
     loadclasses("view","header.php");
-    loadclasses("menus","menuorganizador.html");
+    // loadclasses("menus","menuorganizador.html");
     loadclasses("controller","ControladorJuradoProfesional.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
@@ -51,7 +51,7 @@
                 </div>
                 <div>
                     <label for="fotopincho">Foto</label>
-                    <img src="<?php echo 'http://localhost/Zotz/'.$r['fotopincho']; ?>" alt="image" class="img">
+                    <img src="<?php echo '../../img/pinchos/'.$r['fotopincho']; ?>" alt="image" class="img">
                     <br></br>
                 </div>
 		    </div>

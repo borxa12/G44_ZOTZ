@@ -1,200 +1,3 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
-CREATE SCHEMA IF NOT EXISTS `G44_ZOTZ` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `G44_ZOTZ` ;
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`usuarios` (
-  `login` VARCHAR(20) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
-  `tipo` VARCHAR(4) NOT NULL,
-  PRIMARY KEY (`login`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`concurso`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`concurso` (
-  `edicion` INT NOT NULL,
-  `folleto` VARCHAR(45),
-  `gastromapa` VARCHAR(45),
-  `fechac` DATE NOT NULL,
-  `fechaf` DATE NOT NULL,
-  `usuarios_login` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`edicion`),
-  INDEX `fk_concurso_usuarios1_idx` (`usuarios_login` ASC),
-  CONSTRAINT `fk_concurso_usuarios1`
-    FOREIGN KEY (`usuarios_login`)
-    REFERENCES `G44_ZOTZ`.`usuarios` (`login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`establecimiento`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`establecimiento` (
-  `usuarios_login` VARCHAR(20) NOT NULL,
-  `nombre` VARCHAR(90) NOT NULL,
-  `direccion` VARCHAR(90) NOT NULL,
-  `telefono` VARCHAR(20) NOT NULL,
-  `web` VARCHAR(45) NULL,
-  `horario` VARCHAR(15) NOT NULL,
-  `descripcionestablecimiento` VARCHAR(200) NOT NULL,
-  INDEX `fk_establecimiento_usuarios1_idx` (`usuarios_login` ASC),
-  PRIMARY KEY (`usuarios_login`),
-  CONSTRAINT `fk_establecimiento_usuarios1`
-    FOREIGN KEY (`usuarios_login`)
-    REFERENCES `G44_ZOTZ`.`usuarios` (`login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`pincho`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`pincho` (
-  `idpincho` INT NOT NULL AUTO_INCREMENT,
-  `nombrepincho` VARCHAR(100) NOT NULL,
-  `fotopincho` VARCHAR(50) NOT NULL,
-  `descripcionpincho` VARCHAR(500) NOT NULL,
-  `ingredientesp` VARCHAR(250) NOT NULL,
-  `precio` VARCHAR(5) NOT NULL,
-  `aceptado` VARCHAR(1) NULL,
-  `concurso_edicion` INT NOT NULL,
-  `establecimiento_usuarios_login` VARCHAR(20) NOT NULL,
-  INDEX `precio_idx` (`precio` ASC),
-  INDEX `fk_pincho_concurso1_idx` (`concurso_edicion` ASC),
-  INDEX `fk_pincho_establecimiento1_idx` (`establecimiento_usuarios_login` ASC),
-  PRIMARY KEY (`idpincho`),
-  CONSTRAINT `fk_pincho_concurso1`
-    FOREIGN KEY (`concurso_edicion`)
-    REFERENCES `G44_ZOTZ`.`concurso` (`edicion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pincho_establecimiento1`
-    FOREIGN KEY (`establecimiento_usuarios_login`)
-    REFERENCES `G44_ZOTZ`.`establecimiento` (`usuarios_login`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`juradoprofesional`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`juradoprofesional` (
-  `usuarios_login` VARCHAR(20) NOT NULL,
-  `fotojuradoprofesional` VARCHAR(50) NULL,
-  `nombrejuradoprofesional` VARCHAR(60) NOT NULL,
-  `reconocimientos` VARCHAR(1000) NULL,
-  INDEX `fk_juradoprofesional_usuarios1_idx` (`usuarios_login` ASC),
-  PRIMARY KEY (`usuarios_login`),
-  CONSTRAINT `fk_juradoprofesional_usuarios1`
-    FOREIGN KEY (`usuarios_login`)
-    REFERENCES `G44_ZOTZ`.`usuarios` (`login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`votaprofesional`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`votaprofesional` (
-  `pincho_idpincho` INT NOT NULL,
-  `juradoprofesional_usuarios_login` VARCHAR(20) NOT NULL,
-  `votoprofesional` INT NULL,
-  `finalista` TINYINT(1) NULL,
-  PRIMARY KEY (`pincho_idpincho`, `juradoprofesional_usuarios_login`),
-  INDEX `fk_votaprofesional_juradoprofesional1_idx` (`juradoprofesional_usuarios_login` ASC),
-  INDEX `fk_votaprofesional_pincho1_idx` (`pincho_idpincho` ASC),
-  CONSTRAINT `fk_votaprofesional_juradoprofesional1`
-    FOREIGN KEY (`juradoprofesional_usuarios_login`)
-    REFERENCES `G44_ZOTZ`.`juradoprofesional` (`usuarios_login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_votaprofesional_pincho1`
-    FOREIGN KEY (`pincho_idpincho`)
-    REFERENCES `G44_ZOTZ`.`pincho` (`idpincho`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `G44_ZOTZ`.`codigopincho`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`codigopincho` (
-  `codigopincho` VARCHAR(6) NOT NULL,
-  `likes` TINYINT(1) NULL,
-  `establecimiento_usuarios_login` VARCHAR(20) NOT NULL,
-  `pincho_idpincho` INT NOT NULL,
-  PRIMARY KEY (`codigopincho`, `pincho_idpincho`),
-  INDEX `fk_codigopincho_establecimiento1_idx` (`establecimiento_usuarios_login` ASC),
-  INDEX `fk_codigopincho_pincho1_idx` (`pincho_idpincho` ASC),
-  CONSTRAINT `fk_codigopincho_establecimiento1`
-    FOREIGN KEY (`establecimiento_usuarios_login`)
-    REFERENCES `G44_ZOTZ`.`establecimiento` (`usuarios_login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_codigopincho_pincho1`
-    FOREIGN KEY (`pincho_idpincho`)
-    REFERENCES `G44_ZOTZ`.`pincho` (`idpincho`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-USE `G44_ZOTZ` ;
-
--- -----------------------------------------------------
--- Placeholder table for view `G44_ZOTZ`.`vista_establecimiento`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`vista_establecimiento` (`nombre` INT, `direccion` INT, `telefono` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `G44_ZOTZ`.`vista_concurso`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`vista_concurso` (`edicion` INT, `nombrepincho` INT, `fotopincho` INT, `descripcionpincho` INT, `ingredientesp` INT, `precio` INT);
-
--- -----------------------------------------------------
--- View `G44_ZOTZ`.`vista_establecimiento`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `G44_ZOTZ`.`vista_establecimiento`;
-USE `G44_ZOTZ`;
-CREATE  OR REPLACE VIEW `vista_establecimiento` AS (
-select nombre,direccion,telefono from establecimiento order by 1
-);
-
--- -----------------------------------------------------
--- View `G44_ZOTZ`.`vista_concurso`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `G44_ZOTZ`.`vista_concurso`;
-USE `G44_ZOTZ`;
-CREATE  OR REPLACE VIEW `vista_concurso` AS (
-select concurso.edicion,nombrepincho,fotopincho,descripcionpincho,ingredientesp,precio from concurso inner join pincho on concurso.edicion=pincho.concurso_edicion order by 1 desc,2 asc
-);
-CREATE USER 'zotz' IDENTIFIED BY 'zotz';
-
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `G44_ZOTZ`.* TO 'zotz';
-GRANT SELECT, INSERT, TRIGGER ON TABLE `G44_ZOTZ`.* TO 'zotz';
-GRANT SELECT ON TABLE `G44_ZOTZ`.* TO 'zotz';
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-
-
 -- Insertar Organizador
 
 INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('carmen', 'orgpass', 'lchousal@gmail.com', 'org');
@@ -292,12 +95,12 @@ INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpinc
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Pimientos del piquillo con salsa de ostras', 'pincho_3_tiacarmucha.jpg', 'Pimientos del piquillo con salsa de ostras que están para mojar pan.', 'Pimientos, ostras', '2', 'A', 3, 'tiacarmucha');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Patatas a la importancia', 'pincho_3_elreydelamesa.jpg', 'Es un plato popular y bastante conocido. Mi madre las preparaba a menudo, aunque en casa nunca se denominaron patatas a la importancia. En casa eran simplemente patatas rebozadas, que tendremos que reconocer que a pesar de describir muy bien lo que es el plato en sí es un nombre con mucho menos empaque.', 'Patatas, cebolla, ajo, perejil, azafrán, vino blanco, aceite, huevo, harina, sal e pimienta', '3.50', 'A', 3, 'elreydelamesa');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Minipiza vegetariana', 'pincho_3_elplato.jpg', 'Para aquellos que disfrutan con las buenaz pizzas y les encantan los vegetales no pueden perderse este pincho elaborado en horno de leña y con ingredientes de primera calidad.', 'Harina, aceite, sal, levadura,alcachofa, mozzarela de búfala, setas, tomates cherry, albahaca, ajo y queso parmesano', '4.55', 'A', 3, 'elplato');
-INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Paté de berenjena', 'pincho_3_brasa.jpg', 'Este Paté de berenjena está inspirado en dos platos típicos de la cocina árabe, el Baba Ganush y el Mutabal (Mtabbal bathenjan), ambos pensados para el disfrute de los sentidos.', 'Berenjena, ajo, limón, tahini, aceite, semillas de sésamo, comino en polvo y yogurt desnatado cremoso.', '2.65', 'D', 3, 'brasa');
+INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Paté de berenjena', 'pincho_3_brasa.jpg', 'Este Paté de berenjena está inspirado en dos platos típicos de la cocina árabe, el Baba Ganush y el Mutabal (Mtabbal bathenjan), ambos pensados para el disfrute de los sentidos.', 'Berenjena, ajo, limón, tahini, aceite, semillas de sésamo, comino en polvo y yogurt desnatado cremoso.', '2.65', 'A', 3, 'brasa');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Salsa de pimientos asados', 'pincho_3_tapitas.jpg', 'Esta salsa de pimientos es una auténtica delicia, ideal para acompañar aperitivos, pinchos, para aderezar bocadillos y si acompañamos con ella un trozo de tortilla, nos lleva a la gloria. Os invito a hacerla, les gustará', 'Pimiento rojo, aceite, vinagre, pimentón comino, ajo, sal y pimienta', '1.50', 'A', 3, 'tapitas');
 
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Sardinas', 'pincho_4_elplato.jpg', 'Sardinas fritas', 'Sardinas', '3.50', 'A', 4, 'elplato');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Pincho de anchoas y pepinillo', 'pincho_4_recuncho.jpg', 'Anchoas y pimiento sobre una rodaja de pepino', 'Pepino largo, cebolleta fresca, pimiento rojo, sal, aceite, pimiento y terneta' ,'1.85', 'A', 4, 'recuncho');
-INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Patatas rellenas de carne', 'pincho_4_comecome.jpg', 'Explosión de sabores. Manjar de dioses.', 'Patatas, carne, ajo, cebolla, perejil, azafrán, aceita, sal, pimienta,harina y huevo.', '6.50', 'N', 4, 'comecome');
+INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Patatas rellenas de carne', 'pincho_4_comecome.jpg', 'Explosión de sabores. Manjar de dioses.', 'Patatas, carne, ajo, cebolla, perejil, azafrán, aceita, sal, pimienta,harina y huevo.', '6.50', 'A', 4, 'comecome');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Jamón de pato al cacao con vinagreta ahumada de naranja', 'pincho_4_tiacarmucha.jpg', 'Juego de sabores muy acertado porque por un lado está la jugosidad y dulzor de la fruta, y por el otro un jamón curado con una tendencia salada', 'Jamón de pato, cacao, mango, vinagreta, naranja', '2.5', 'A', 4, 'tiacarmucha');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Mejillones Tigres Rabiosos', 'pincho_4_elreydelamesa.jpg', 'Mejillones as vapor cubiertos en salsa de tomate con cebolla aderezada con oregano, pimienta negra y pimentón.', 'Mejillones, cebolla, salsa de tomate, ajo, laurel, guindilla, pimiento choricero, vino blanco, orégano, pimienta negra y pimentón picante.', '4.50', 'A', 4, 'elreydelamesa');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Pincho de atún a la plancha al aroma de mostaza', 'pincho_4_tapitas.jpg', 'Lomos de atún a la plancha aderezados con mostraza importada de Francia', 'Atún, aceie, vinagre, mostaza, sal y pimienta blanca', '4.55', 'A', 4, 'tapitas');
@@ -308,8 +111,11 @@ INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpinc
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Cocidito', 'pincho_5_tiacarmucha.jpg', 'Degustacion en miniatur de un codido', 'Garbanzos, repollo,chorizo,lacon', '3.80', 'A', 5, 'tiacarmucha');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Multiarroz', 'pincho_5_recuncho.jpg', 'Arroz con polo y verduras', 'Pollo, arroz, calabazin, guisantes', '2.25', 'A', 5, 'recuncho');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Ensalada de brotes de espinacas, queso y frutos secos', 'pincho_5_peregrinus.jpg', 'Para chuparse los dedos. Combinación de ingredientes asombroso.', 'espinacas, queso de cabra, frutos secos, panceta, azúcar, binagre, aceite y sal', '2.60', 'A', 5, 'peregrinus');
-INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Berenjena a la parmesana', 'pincho_5_centolo.jpg', 'De las verduras más sabrosas y ricas que existen adornada con queso parmesano y mozzarela.', 'Berenjena, harina, aceite, mozzarela, queso parmesano, tomat, cebolla, ajo, primiento verde, albahaca, sal y pimienta.', '3.60', 'N', 5, 'centolo');
+INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Berenjena a la parmesana', 'pincho_5_centolo.jpg', 'De las verduras más sabrosas y ricas que existen adornada con queso parmesano y mozzarela.', 'Berenjena, harina, aceite, mozzarela, queso parmesano, tomat, cebolla, ajo, primiento verde, albahaca, sal y pimienta.', '3.60', 'A', 5, 'centolo');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Albóndiga de carne y queso', 'pincho_5_millenium.jpg', 'Albóndiga de carne y queso presentada sobre una cama de lechuga.', 'Carne de ternera, cebolla, queso emental, eneldo, perejil, arroz, sal y pimienta.', '2.50', 'A', 5, 'millenium');
-INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Patatas al horno con pasta de soja y guindilla ', 'pincho_5_casapepe.jpg', 'Patatas al horno con pasta de soja fermentada y guindilla, una pasta coreana conocida como Gochu Jang con un toque picante.', 'Patatas, soja y guindilla ', '2.5', 'D', 5, 'casapepe');
+INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Patatas al horno con pasta de soja y guindilla ', 'pincho_5_casapepe.jpg', 'Patatas al horno con pasta de soja fermentada y guindilla, una pasta coreana conocida como Gochu Jang con un toque picante.', 'Patatas, soja y guindilla ', '2.5', 'A', 5, 'casapepe');
 INSERT INTO `pincho` (`idpincho`, `nombrepincho`, `fotopincho`, `descripcionpincho`, `ingredientesp`, `precio`, `aceptado`, `concurso_edicion`, `establecimiento_usuarios_login`) VALUES(null, 'Patatas bravas', 'pincho_5_elplato.jpg', 'Clásico de la cocina madrileña, las patatas bravas con auténtica salsa elaborada.', 'Patatas, salsa brava', '2.5', 'A', 5, 'elplato');
+
+
+
 

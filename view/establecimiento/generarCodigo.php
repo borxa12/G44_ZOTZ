@@ -1,6 +1,7 @@
 <?php
     session_start();
     ob_start();
+    ini_set('display_errors',1);
     include_once("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
@@ -19,7 +20,7 @@
                                 <h4>Código</h4>
                             </div>
                             <div>
-                                <?php 
+                                <?php
                                     //$concurso = new Concurso();
                                     $res = concursoActual();
                                     $data = mysqli_fetch_assoc($res);

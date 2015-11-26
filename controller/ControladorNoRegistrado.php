@@ -7,6 +7,7 @@
 	loadclasses("model","JuradoProfesional.php");
 	loadclasses("model","Pincho.php");
 	loadclasses("model","Usuarios.php");
+	loadclasses("model","VotaProfesional.php");
 
 	/* Lista los establecimientos, incluyendo identificador y atributos.
 	*  Return: Devuelve los datos del concurso sin tratar o FALSE en caso de error.
@@ -67,6 +68,17 @@
 		return $res['gastromapa'];
 	}
 
+	/* Funcion que recupera la información del pincho al que esta asociado $cod (codigopincho).
+	Parámetros:
+		$cod: es el código del pincho que se quiere consultar.
+	Return: devuelve la información de dicho pincho.
+	*/
+	function recuperarPincho($cod) {
+			$pincho = new Pincho();
+			$res = $pincho->recuperar($cod);
+			return $res;
+	}
+
 	/*  Obtiene el folleto de una edicion del concurso.
 	*   Parametros:
 	*       $edicion - Atributo a comprobar, edicion de la cual se quiere recuperar el folleto.
@@ -86,6 +98,29 @@
 		$votopro = new VotaProfesional();
 		$res = $votopro->recuperarFinalistas();
 		return $res;
+	}
+
+	function recuperarDatosEstablecimiento($login) {
+			$usuario = new Usuarios();
+			$establecimento = new Establecimiento();
+			$res1 = $usuario->recuperar($login);
+			if($res1===0) return false;
+			$res2 = $establecimento->recuperar($login);
+			if($res2===0) return false;
+			$aux1 = mysqli_fetch_assoc($res1);
+			$aux2 = mysqli_fetch_assoc($res2);
+			$result = array(
+							"login" => $login,
+							"password" => $aux1["password"],
+							"email" => $aux1["email"],
+							"nombre" => $aux2["nombre"],
+							"direccion" => $aux2["direccion"],
+							"telefono" => $aux2["telefono"],
+							"web" => $aux2["web"],
+							"horario" => $aux2["horario"],
+							"descripcion" => $aux2["descripcionestablecimiento"]
+					);
+			return $result;
 	}
 
 ?>
