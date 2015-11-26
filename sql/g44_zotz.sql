@@ -42,12 +42,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`establecimiento` (
   `usuarios_login` VARCHAR(20) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `direccion` VARCHAR(45) NOT NULL,
-  `telefono` VARCHAR(45) NOT NULL,
-  `web` VARCHAR(45) NOT NULL,
-  `horario` VARCHAR(20) NOT NULL,
-  `descripcionestablecimiento` VARCHAR(100) NOT NULL,
+  `nombre` VARCHAR(90) NOT NULL,
+  `direccion` VARCHAR(90) NOT NULL,
+  `telefono` VARCHAR(20) NOT NULL,
+  `web` VARCHAR(45) NULL,
+  `horario` VARCHAR(15) NOT NULL,
+  `descripcionestablecimiento` VARCHAR(200) NOT NULL,
   INDEX `fk_establecimiento_usuarios1_idx` (`usuarios_login` ASC),
   PRIMARY KEY (`usuarios_login`),
   CONSTRAINT `fk_establecimiento_usuarios1`
@@ -63,10 +63,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`pincho` (
   `idpincho` INT NOT NULL AUTO_INCREMENT,
-  `nombrepincho` VARCHAR(50) NOT NULL,
+  `nombrepincho` VARCHAR(100) NOT NULL,
   `fotopincho` VARCHAR(50) NOT NULL,
-  `descripcionpincho` VARCHAR(100) NOT NULL,
-  `ingredientesp` VARCHAR(150) NOT NULL,
+  `descripcionpincho` VARCHAR(500) NOT NULL,
+  `ingredientesp` VARCHAR(250) NOT NULL,
   `precio` VARCHAR(5) NOT NULL,
   `aceptado` VARCHAR(1) NULL,
   `concurso_edicion` INT NOT NULL,
@@ -94,7 +94,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`juradoprofesional` (
   `usuarios_login` VARCHAR(20) NOT NULL,
   `fotojuradoprofesional` VARCHAR(50) NULL,
-  `nombrejuradoprofesional` VARCHAR(50) NOT NULL,
+  `nombrejuradoprofesional` VARCHAR(60) NOT NULL,
   `reconocimientos` VARCHAR(1000) NULL,
   INDEX `fk_juradoprofesional_usuarios1_idx` (`usuarios_login` ASC),
   PRIMARY KEY (`usuarios_login`),
