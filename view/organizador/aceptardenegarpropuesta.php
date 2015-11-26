@@ -22,12 +22,12 @@
 				echo "<h4>Ingredientes: ".$fila["ingredientesp"]."</h4>";
 				echo "<h4>Descripcion: ".$fila["descripcionpincho"]."</h4>";
 				echo "<h4>Precio: ".$fila["precio"]."</h4>";
+	      echo "<div class=''>";
+	      echo "<h4> Foto: </h4>";
+	      echo "<a href='#''><img src='../../img/pinchos/".$fila['fotopincho']."' alt='image' class='img'/></a>";
+	      echo "</div>";
 
 				?>
-	<div class="">
-	<h4> Foto: </h4>
-	<a href="#"><img src="#" alt="image" class="img"/></a>
-	</div>
 	<div class="button">
 		<form id="aceptarpincho" method="POST">
 		<input type="hidden" name="idpincho" value="<?php echo $id?>">
