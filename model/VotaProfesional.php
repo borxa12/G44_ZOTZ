@@ -107,7 +107,7 @@
             $res1 = mysqli_query($db->connection,$sentencia1);
             if(mysqli_num_rows($res1) == 0) return false;
             while($r = mysqli_fetch_assoc($res1)) {
-                $sentencia2 = "UPDATE `votaprofesional` SET `finalista`=1 WHERE `pincho_idpincho`=".$r['pincho_idpincho'];
+                $sentencia2 = "UPDATE `votaprofesional` SET `finalista`=1 WHERE `pincho_idpincho`='".$r['pincho_idpincho']."'";
                 $res2 = mysqli_query($db->connection,$sentencia2);
             }
             $db->desconectar();
