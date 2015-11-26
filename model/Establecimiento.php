@@ -87,7 +87,7 @@
             $db = new BD();
             //$param = array($objeto->pincho_idpincho, $objeto->codigopincho, $objeto->like, $objeto->establecimiento_usuarios_login);
            // $res = $db->consulta("UPDATE codigopincho SET pincho_idpincho=?, codigopincho=?, like=?, establecimiento_usuarios_login=?",'ssis', $param);
-            $sentencia = "UPDATE establecimiento SET nombre='".$nombre."', direccion='".$direccion."', telefono='".$telefono."', web='".$web."', horario='".$horario."', descripcionestablecimento='".$descripcionestablecimiento."' WHERE usuarios_login='".$login."'";
+            $sentencia = "UPDATE establecimiento SET nombre='".$nombre."', direccion='".$direccion."', telefono='".$telefono."', web='".$web."', horario='".$horario."', descripcionestablecimiento='".$descripcionestablecimiento."' WHERE usuarios_login='".$login."'";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
