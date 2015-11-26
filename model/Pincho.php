@@ -59,7 +59,7 @@
         */
         public function recuperarActualEstablecimiento($login, $ed) {
             $db = new BD();
-            $sentencia = "SELECT * FROM pincho WHERE establecimiento_usuarios_login='".$login."' AND concurso_edicion='".$ed."'AND aceptado=1";
+            $sentencia = "SELECT * FROM pincho WHERE establecimiento_usuarios_login='".$login."' AND concurso_edicion='".$ed."'AND aceptado='A'";
             $res = mysqli_query($db->connection,$sentencia);
             if(mysqli_num_rows($res)==0) return false;
             else  return $res;
