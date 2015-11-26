@@ -6,6 +6,7 @@
 	loadclasses("model","CodigoPincho.php");
 	loadclasses("model","Usuarios.php");
 	loadclasses("model","VotaProfesional.php");
+	loadclasses("model","Concurso.php");
 
 /*	public function revisarPinchos() {
 
@@ -61,9 +62,9 @@
 	}
 
 
-		function listarPinchosAceptados(){
+		function listarPinchosAceptados($ed){
 			$pincho = new Pincho();
-			$lista = $pincho->listarAceptados();
+			$lista = $pincho->listarAceptados($ed);
 			return $lista;
 		}
 
@@ -79,6 +80,10 @@
 		if(mysqli_num_rows($res) >= $num) return true;
 		else return false;
     }
+		  function concursoActual(){
+		    $concurso = new Concurso();
+		    return $concurso->recuperarUltimoConcurso();
+		  }
 
     // public function elegirFinalistas() {
 	//
