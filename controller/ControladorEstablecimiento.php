@@ -88,7 +88,7 @@
                 "telefono" => $aux2["telefono"],
                 "web" => $aux2["web"],
                 "horario" => $aux2["horario"],
-                "descripcion" => $aux2["descripcionestablecimento"]
+                "descripcion" => $aux2["descripcionestablecimiento"]
             );
         return $result;
     }
