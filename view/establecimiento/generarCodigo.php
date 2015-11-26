@@ -20,8 +20,8 @@
                             </div>
                             <div>
                                 <?php 
-                                    $concurso = new Concurso();
-                                    $res = $concurso->recuperarUltimoConcurso();
+                                    //$concurso = new Concurso();
+                                    $res = concursoActual();
                                     $data = mysqli_fetch_assoc($res);
                                     $ed = $data['edicion'];
                                     $cod = generarCodigos($_SESSION['login'], $ed);
