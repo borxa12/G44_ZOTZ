@@ -115,13 +115,13 @@
             $db->desconectar();
             return $res;
         }
-        
+
         /*Funcion que lista aquellos pinchos que estean sin gestionar, es decir que tengan el campo aceptado a N.
         Son todos aquellos pinchos que el organizador tiene que revisar para aceptar o denegar.
         Sin parámetros.
         Return: devuelve un array con los pinchos sin gestionar.
         */
-        
+
         public function listarSinGestionar(){
 			$db = new BD();
             $sentencia = "SELECT * FROM pincho WHERE aceptado='N'";
@@ -129,20 +129,20 @@
 			$db->desconectar();
             if(mysqli_num_rows($res)==0) return false;
             else  return $res;
-            
+
 	}
-	
-	
-            public function listarAceptados(){
+
+
+            public function listarAceptados($ed){
     			$db = new BD();
-                $sentencia = "SELECT * FROM pincho WHERE aceptado='A'";
+                $sentencia = "SELECT * FROM pincho WHERE aceptado='A' AND concurso_edicion='".$ed."'";
                 $res = mysqli_query($db->connection,$sentencia);
     			$db->desconectar();
                 if(mysqli_num_rows($res)==0) return false;
                 else  return $res;
 
     		}
-	
+
 	/* Comprueba el número de pinchos que tiene registrados un estableciemiento dado en una edición dada del concurso.
 	Parámetros
 		$edicion: es la edición del concurso para la que se quiere comprobar los pinchos registrados por el establecimiento.
