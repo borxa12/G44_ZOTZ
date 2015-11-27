@@ -9,19 +9,19 @@
     // session_start(); // Cuidado
     // if(isset($_SESSION['login'])) header("Location: http://localhost/Zotz/login.php"); // Cuidado
     if(isset($_SESSION['tipo'])) {
-        header("Location: http://localhost/Zotz/index.php"); // Cuidado
+        header("Location: ../../index.php"); // Cuidado
     } else {
 ?>
 
 <h1>Acceso Personal</h1>
 
 <form id="registrarse" method="post">
-    <button name="registrarseusuario" type="submit" formaction="http://localhost/Zotz/view/noregister/registro.php" class="btn btn-default button">Registrarse como nuevo usuario</button>
-    <button name="registrarseestablecimiento" type="submit" formaction="http://localhost/Zotz/view/noregister/registrarestablecimiento.php" class="btn btn-default button">Registrarse como nuevo establecimiento</button>
+    <button name="registrarseusuario" type="submit" formaction="./registro.php" class="btn btn-default button">Registrarse como nuevo usuario</button>
+    <button name="registrarseestablecimiento" type="submit" formaction="./registrarestablecimiento.php" class="btn btn-default button">Registrarse como nuevo establecimiento</button>
     <br/><br/><br/>
 </form>
 
-<form id="login" action="http://localhost/Zotz/login.php" method="post">
+<form id="login" action="../../login.php" method="post">
     <div id=templatemo_form>
         <div>
             <label for="login">Login</label>

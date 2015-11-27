@@ -7,9 +7,9 @@
     loadclasses("controller","ControladorJuradoPopular.php");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
-    
+
     if($_SESSION['tipo'] != 'jpop') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
 ?>
 			<!-- <div id="contenido" class="col-xs-12 col-sm-9 col-md-9">  action="http://localhost/Zotz/view/juradopopular/votarpincho.php" -->
@@ -56,17 +56,17 @@
 									$data3 = mysqli_fetch_assoc($res3);
 									$id3 = $data3['pincho_idpincho'];
      					?>
-					<?php	
+					<?php
 									if($id1!=$id2 && $id3!=$id2){
-										header("Location: http://localhost/Zotz/view/juradopopular/votarpincho.php?cod1=$c1&cod2=$c2&cod3=$c3");
+										header("Location: ./votarpincho.php?cod1=$c1&cod2=$c2&cod3=$c3");
 									}else{
-													
+
 										echo '<script> alert("Los codigos deben ser de pinchos diferentes");</script>';
-										echo '<script> window.location="http://localhost/Zotz/view/juradopopular/votarjuradopopular.php";</script>';
+										echo '<script> window.location="./votarjuradopopular.php";</script>';
 									}
-								}else { 
-									echo '<script> alert("Algun codigo no es valido");</script>';
-						            echo '<script> window.location="http://localhost/Zotz/view/juradopopular/votarjuradopopular.php";</script>';
+								}else {
+									echo '<script> alert("Algun codigo no es válido");</script>';
+						            echo '<script> window.location="./votarjuradopopular.php";</script>';
 						        }
    							}
    					?>

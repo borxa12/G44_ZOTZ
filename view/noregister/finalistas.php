@@ -54,7 +54,7 @@
                         echo "<button name='btnver' type='submit' class='btn btn-default button'>Ver</button>";
                     echo "</form>";
                         if(isset($_POST['btnver'])) {
-                            header("Location: http://localhost/Zotz/view/noregister/datospincho.php?pincho=".$r['idpincho']);
+                            header("Location: ./datospincho.php?pincho=".$r['idpincho']);
                         }
                 echo "</div>";
 

@@ -10,7 +10,7 @@
 
     ini_set('display_errors',1);
     if($_SESSION['tipo'] != 'est') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
       $res = concursoActual();
       $concurso = mysqli_fetch_assoc($res);

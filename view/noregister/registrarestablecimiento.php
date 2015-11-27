@@ -34,56 +34,56 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nombre</label>
-                            <input type="text" name="nombreestablecimiento" maxlength=90 require/>
+                            <input type="text" name="nombreestablecimiento" maxlength=90 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="direccionestablecimiento">Dirección</label>
-                            <input type="text" name="direccionestablecimiento" maxlength=90 require/>
+                            <input type="text" name="direccionestablecimiento" maxlength=90 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="horarioestablecimiento">Horario</label>
-                            <input type="text" name="horarioestablecimiento" maxlength=15 require/>
+                            <input type="text" name="horarioestablecimiento" maxlength=15 required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="telefonoestablecimiento">Teléfono</label>
                             <input type="tel" maxlength=20 pattern=[0-9]{9,45} name="telefonoestablecimiento"
-                                title="Número de 9 dígitos que empieza por 6, 7, 8 o 9" require/>
+                                title="Número de 9 dígitos que empieza por 6, 7, 8 o 9" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="webestablecimiento">Web</label>
-                            <input type="text" name="webestablecimiento" maxlength=45 require/>
+                            <input type="text" name="webestablecimiento" maxlength=45/>
                             <br></br>
                         </div>
                         <div>
                             <label for="loginestablecimiento">Login</label>
-                            <input type="text" name="loginestablecimiento" maxlength=20 require/>
+                            <input type="text" name="loginestablecimiento" maxlength=20 required/>
                             <br></br>
                             </div>
                         <div>
                             <label for="emailestablecimiento">Email</label>
                             <input type="email" maxlength=50 name="emailestablecimiento"
-                                title="example@example.com" require/>
+                                title="example@example.com" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordestablecimiento">Password</label>
                             <input type="password" maxlength=45 pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
-                                name="passwordestablecimiento" title="Letras números y caracteres especiales como - _ @ #" require/>
+                                name="passwordestablecimiento" title="Letras números y caracteres especiales como - _ @ #" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="repetirpasswordestablecimiento">Repetir Password</label>
                             <input type="password" maxlength=45 pattern="[^ñÑ´`áéíóúàèìòù]{1,45}"
-                                name="repetirpasswordestablecimiento" require/>
+                                name="repetirpasswordestablecimiento" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionestablecimiento">Descripción</label>
-                            <textarea rows="4" maxlength=200 name="descripcionestablecimiento"></textarea>
+                            <textarea rows="4" maxlength=200 name="descripcionestablecimiento" required></textarea>
                             <br></br>
                         </div>
                     </div>
@@ -93,14 +93,15 @@
 
                 <?php
                     if(isset($_POST['altaest'])) {
-                        if($_POST['nombreestablecimiento'] == "" || $_POST['direccionestablecimiento'] == "" ||
-                            $_POST['horarioestablecimiento'] == "" || $_POST['telefonoestablecimiento'] == "" ||
-                            $_POST['webestablecimiento'] == "" || $_POST['loginestablecimiento'] == "" ||
-                            $_POST['emailestablecimiento'] == "" || $_POST['passwordestablecimiento'] == "" ||
-                            $_POST['repetirpasswordestablecimiento'] == "" || $_POST['descripcionestablecimiento'] == "") {
-                                echo '<script> alert("Debe rellenar todos los campos");</script>';
-                                echo '<script> window.location="http://localhost/Zotz/view/noregister/registrarestablecimiento.php";</script>';
-                        } else if(strcmp($_POST['passwordestablecimiento'],$_POST['repetirpasswordestablecimiento'])) {
+                    //     if($_POST['nombreestablecimiento'] == "" || $_POST['direccionestablecimiento'] == "" ||
+                    //         $_POST['horarioestablecimiento'] == "" || $_POST['telefonoestablecimiento'] == "" ||
+                    //         $_POST['webestablecimiento'] == "" || $_POST['loginestablecimiento'] == "" ||
+                    //         $_POST['emailestablecimiento'] == "" || $_POST['passwordestablecimiento'] == "" ||
+                    //         $_POST['repetirpasswordestablecimiento'] == "" || $_POST['descripcionestablecimiento'] == "") {
+                    //             echo '<script> alert("Debe rellenar todos los campos");</script>';
+                    //             echo '<script> window.location="http://localhost/Zotz/view/noregister/registrarestablecimiento.php";</script>';
+                    //     } else
+                        if(strcmp($_POST['passwordestablecimiento'],$_POST['repetirpasswordestablecimiento'])) {
                             echo '<script> alert("Las contraseñas no coinciden");</script>';
                             echo '<script> window.location="./registrarestablecimiento.php";</script>';
                         } else {
@@ -108,7 +109,7 @@
                                 $_POST['emailestablecimiento'],$_POST['nombreestablecimiento'],$_POST['direccionestablecimiento'],
                                 $_POST['telefonoestablecimiento'],$_POST['webestablecimiento'],$_POST['horarioestablecimiento'],
                                 $_POST['descripcionestablecimiento'])) {
-                                    header("Location: http://localhost/Zotz/view/noregister/registro_login.php");
+                                    header("Location: ./registro_login.php");
                                 } else {
                                     echo '<script> alert("O login xa existe. Tenteo con outro.");</script>';
                                     echo '<script> window.location="./registrarestablecimiento.php";</script>';

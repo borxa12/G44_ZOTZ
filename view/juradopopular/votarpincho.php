@@ -8,7 +8,7 @@
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
     if($_SESSION['tipo'] != 'jpop') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
 		//if(isset($_POST["votar"])){
 
@@ -50,17 +50,17 @@
 					<form id="votojuradopopular" method="post">
 						<div class="product_box">
 							<input type="radio" name="pincho" value="<?php echo $c1; ?>"><?php echo $datap1['nombrepincho']; ?><br>
-							<a href="" class="pirobox"><img src="<?php echo "./img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
+							<a href="" class="pirobox"><img src="<?php echo "../../img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap1['descripcionpincho']; ?></p>
 						</div>
 						<div class="product_box">
 							<input type="radio" name="pincho" value="<?php echo $c2; ?>"><?php echo $datap2['nombrepincho']; ?><br>
-							<a href="" class="pirobox"><img src="<?php echo "./img/pinchos/".$datap2['fotopincho']; ?>" class="img"/></a>
+							<a href="" class="pirobox"><img src="<?php echo "../../img/pinchos/".$datap2['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap2['descripcionpincho']; ?></p>
 						</div>
 						<div class="product_box">
 							<input type="radio" name="pincho" value="<?php echo $c3; ?>"><?php echo $datap3['nombrepincho']; ?><br>
-							<a href="" class="pirobox"><img src="<?php echo "./img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
+							<a href="" class="pirobox"><img src="<?php echo "../../img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap3['descripcionpincho']; ?></p>
 						</div>
                         <button type="submit" name="enviarvoto" class="btn btn-default button" >Enviar Voto</button>
@@ -85,7 +85,7 @@
                         				$cp->modificar($c3,1);
                         				break;
                         		}
-                        		header("Location: http://localhost/Zotz/view/juradopopular/index.php");
+                        		header("Location: ./index.php");
                         }
                         ?>
 					</form>
@@ -101,11 +101,11 @@
 <?php loadclasses("view","footer.html"); ?>
 
 !-- Confirmación Modal Page -->
-<div class="modal fade" id="confirmacionVotoPincho" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="confirmacionVotoPincho" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <!-- Contenido de la página modal -->
+             Contenido de la página modal
             <div class="modal-body">
                 <form  id="nfinalistas" method="post">
                     <div class="row">
@@ -114,7 +114,7 @@
                                 <h4>Confirmación</h4>
                             </div>
                             <div>
-                                <h2>¿Está seguro de querer votar a este pincho? <?php echo $cod;?></h2>
+                                 <h2>¿Está seguro de querer votar a este pincho? //<//?//php //echo $cod;//?//></h2> 
                             </div>
                             <p class="help-block text-danger"></p>
                         </div>
@@ -124,12 +124,12 @@
 
             <div class="modal-footer">
                 <form id="confirmacion" method="post">
-                    <button type="button" name="no"formaction="http://localhost/Zotz/view/juradopopular/votarpincho.php"class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" name="no"formaction="./votarpincho.php"class="btn btn-default" data-dismiss="modal">No</button>
                     <button type="submit" name="si" class="btn btn-register">Si</button>
-                    
+
 
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div> -->

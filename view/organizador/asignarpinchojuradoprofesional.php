@@ -10,7 +10,7 @@
     //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
       $ed = concursoActual();
       $concurso = mysqli_fetch_assoc($ed);

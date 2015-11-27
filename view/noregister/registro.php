@@ -8,7 +8,7 @@
     //require_once '../../menus/nomenu.html';
     loadclasses("controller","ControladorNoRegistrado.php");
     if(isset($_SESSION['tipo'])) {
-        header("Location: http://localhost/Zotz/index.php"); // Cuidado
+        header("Location: ../../index.php"); // Cuidado
     } else {
 ?>
 
@@ -52,7 +52,7 @@
         } else {
             if (alta($_POST['loginjuradopopular'],$_POST['passwordjuradopopular'],
                 $_POST['emailjuradopopular'],'jpop')) {
-                    header("Location: http://localhost/Zotz/view/noregister/registro_login.php");
+                    header("Location: ./registro_login.php");
                 } else {
                     echo '<script> alert("O login xa existe. Tenteo con outro.");</script>';
                     echo '<script> window.location="./registro.php";</script>';

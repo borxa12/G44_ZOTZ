@@ -9,7 +9,7 @@
     loadclasses("controller","ControladorOrganizador.php");
 
     if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
     	$id = $_GET["idpincho"];
 	$datos = datosPropuestaGastronomica($id);

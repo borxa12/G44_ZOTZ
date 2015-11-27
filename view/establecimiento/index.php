@@ -9,10 +9,10 @@
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
     if($_SESSION['tipo'] != 'est') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
       if(isset($_GET['eliminar'])){
-        if(bajaEstablecimiento($_SESSION['login'])) header("Location: http://localhost/Zotz/logout.php");
+        if(bajaEstablecimiento($_SESSION['login'])) header("Location: ../../logout.php");
       }
 ?>
 <!-- Contenido principal de la página -->

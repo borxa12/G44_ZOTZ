@@ -10,7 +10,7 @@
     //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
 ?>
                 <h1>Registrar Jurado Profesional</h1>
@@ -64,7 +64,7 @@
 							$login = $_POST['loginjuradoprofesional'];
                             if($_FILES['fotojuradoprofesional']['name']) {
                                 $foto = $_FILES['fotojuradoprofesional'];
-								
+
 								move_uploaded_file($_FILES['fotojuradoprofesional']['tmp_name'],"../../img/juradoprofesional/".$login.".jpg");
                             } else {
                                 $foto = null;
@@ -72,13 +72,13 @@
                             if (registrarJuradoProfesional($_POST['loginjuradoprofesional'],$_POST['passwordjuradoprofesional'],
                                 $_POST['emailjuradoprofesional'],$_POST['nombrejuradoprofesional'],$login.".jpg",
                                 $_POST['reconocimientosjuradoprofesional'])) {
-                                    header("Location: http://localhost/Zotz/view/noregister/juradoprofesional.php");
+                                    header("Location: ../noregister/juradoprofesional.php");
                                 } else {
                                     echo '<script> alert("O login xa existe. Tenteo con outro.");</script>';
                                     // echo '<script> window.location="./registrarestablecimiento.php";</script>';
                                 }
                         }
-						
+
                     }
                 ?>
 

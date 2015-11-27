@@ -9,7 +9,7 @@
     //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
 ?>
                 <h1>Selección de Finalistas</h1>
@@ -40,7 +40,7 @@
             // header("Location: http://localhost/Zotz/view/organizador/seleccionarFinalistas.php");
             $res = seleccionarFinalistas($_POST['nfinalistas']);
             // header("Location: http://localhost/Zotz/view/noregister/finalistas.php?nfinalistas=".$_POST['nfinalistas']);
-            header("Location: http://localhost/Zotz/view/noregister/finalistas.php");
+            header("Location: ../noregister/finalistas.php");
         } else {
             echo '<script> alert("Excedeu o número de participantes.");</script>';
             // echo '<script> window.location="";</script>';

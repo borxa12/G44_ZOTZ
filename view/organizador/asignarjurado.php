@@ -10,7 +10,7 @@
     //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
 
       $id = $_GET['idpincho'];
@@ -22,7 +22,7 @@
         $jurados = $_POST['jurado'];
         asignarPinchosJuradoProfesional($id,$jurados);
         }
-        header("Location: http://localhost/Zotz/view/organizador/asignarpinchojuradoprofesional.php");
+        header("Location: ./asignarpinchojuradoprofesional.php");
 }
 
 ?>

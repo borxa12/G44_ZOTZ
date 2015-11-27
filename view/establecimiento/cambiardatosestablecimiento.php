@@ -9,7 +9,7 @@
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
     if($_SESSION['tipo'] != 'est') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
       $establecimiento = recuperarDatosEstablecimiento($_SESSION['login']);
 ?>

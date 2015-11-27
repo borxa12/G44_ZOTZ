@@ -9,7 +9,7 @@
     //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
-        header("Location: http://localhost/Zotz/index.php");
+        header("Location: ../../index.php");
     } else {
     if(isset($_POST["idpincho"])){
 
