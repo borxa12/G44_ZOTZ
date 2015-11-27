@@ -1,13 +1,11 @@
 <?php
     session_start();
     ob_start();
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","nomenu.html");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
-    // session_start(); // Cuidado
-    // if(isset($_SESSION['login'])) header("Location: http://localhost/Zotz/login.php"); // Cuidado
+
     if(isset($_SESSION['tipo'])) {
         header("Location: ../../index.php"); // Cuidado
     } else {
@@ -25,12 +23,12 @@
     <div id=templatemo_form>
         <div>
             <label for="login">Login</label>
-            <input name="login" type="text" autocomplete="off"/>
+            <input name="login" type="text" title="No se admiten Ñ ni acentos" pattern="[^ñáéíóú`´]{1,20}" maxlength=20 required/>
             <br></br>
         </div>
         <div>
             <label for="login">Password</label>
-            <input name="password" type="password" autocomplete="off"/>
+            <input name="password" type="password" title="No se admiten Ñ ni acentos" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
             <br></br>
         </div>
     </div>

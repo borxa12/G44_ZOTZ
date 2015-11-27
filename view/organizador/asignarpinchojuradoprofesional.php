@@ -1,13 +1,13 @@
 <?php
     session_start();
     ob_start();
+
     ini_set('display_errors',1);
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuorganizador.html");
     loadclasses("controller","ControladorOrganizador.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
         header("Location: ../../index.php");
@@ -16,7 +16,7 @@
       $concurso = mysqli_fetch_assoc($ed);
       $lista = listarPinchosAceptados($concurso['edicion']);
 ?>
-				 <h1>Pinchos</h1>
+        <h1>Pinchos</h1>
 
           <?php
                if($lista){
@@ -33,6 +33,7 @@
          	}
 
            ?>
+
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
 </div>
@@ -40,4 +41,5 @@
 <?php
     }
 ?>
+
 <?php loadclasses("view","footer.html"); ?>

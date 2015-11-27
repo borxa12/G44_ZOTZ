@@ -1,12 +1,11 @@
 <?php
     session_start();
     ob_start();
+
     include("../../loader.php");
     loadclasses("view","header.php");
-    // loadclasses("menus","nomenu.html");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
     loadclasses("controller","ControladorEstablecimiento.php");
+
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -21,9 +20,6 @@
             case 'est':
                 loadclasses("menus","menuestablecimiento.html");
                 break;
-            // default:
-            //     loadclasses("menus","nomenu.html");
-            //     break;
         }
     } else {
         loadclasses("menus","nomenu.html");
@@ -93,25 +89,18 @@
 
                 <?php
                     if(isset($_POST['altaest'])) {
-                    //     if($_POST['nombreestablecimiento'] == "" || $_POST['direccionestablecimiento'] == "" ||
-                    //         $_POST['horarioestablecimiento'] == "" || $_POST['telefonoestablecimiento'] == "" ||
-                    //         $_POST['webestablecimiento'] == "" || $_POST['loginestablecimiento'] == "" ||
-                    //         $_POST['emailestablecimiento'] == "" || $_POST['passwordestablecimiento'] == "" ||
-                    //         $_POST['repetirpasswordestablecimiento'] == "" || $_POST['descripcionestablecimiento'] == "") {
-                    //             echo '<script> alert("Debe rellenar todos los campos");</script>';
-                    //             echo '<script> window.location="http://localhost/Zotz/view/noregister/registrarestablecimiento.php";</script>';
-                    //     } else
                         if(strcmp($_POST['passwordestablecimiento'],$_POST['repetirpasswordestablecimiento'])) {
-                            echo '<script> alert("Las contraseñas no coinciden");</script>';
+                            echo '<script> alert("Las contrase\u00f1as no coinciden");</script>';
                             echo '<script> window.location="./registrarestablecimiento.php";</script>';
                         } else {
-                            if (altaEstablecimiento($_POST['loginestablecimiento'],$_POST['passwordestablecimiento'],
-                                $_POST['emailestablecimiento'],$_POST['nombreestablecimiento'],$_POST['direccionestablecimiento'],
-                                $_POST['telefonoestablecimiento'],$_POST['webestablecimiento'],$_POST['horarioestablecimiento'],
-                                $_POST['descripcionestablecimiento'])) {
+                            if (altaEstablecimiento(htmlentities($_POST['loginestablecimiento'],ENT_QUOTES),htmlentities($_POST['passwordestablecimiento'],ENT_QUOTES),
+                                htmlentities($_POST['emailestablecimiento'],ENT_QUOTES),htmlentities($_POST['nombreestablecimiento'],ENT_QUOTES),
+                                htmlentities($_POST['direccionestablecimiento'],ENT_QUOTES), htmlentities($_POST['telefonoestablecimiento'],ENT_QUOTES),
+                                htmlentities($_POST['webestablecimiento'],ENT_QUOTES),htmlentities($_POST['horarioestablecimiento'],ENT_QUOTES),
+                                htmlentities($_POST['descripcionestablecimiento'],ENT_QUOTES))) {
                                     header("Location: ./registro_login.php");
                                 } else {
-                                    echo '<script> alert("O login xa existe. Tenteo con outro.");</script>';
+                                    echo '<script> alert("O login xa existe. Intenteo con outro.");</script>';
                                     echo '<script> window.location="./registrarestablecimiento.php";</script>';
                                 }
                         }

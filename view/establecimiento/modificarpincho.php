@@ -1,20 +1,20 @@
 <?php
     session_start();
     ob_start();
+
     ini_set("display_errors",1);
+    
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
     loadclasses("controller","ControladorEstablecimiento.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'est') {
         header("Location: ../../index.php");
     } else {
-      $id = $_GET['idpincho'];
-      $res = recuperarDatosPincho($id);
-      $pincho = mysqli_fetch_assoc($res);
+        $id = $_GET['idpincho'];
+        $res = recuperarDatosPincho($id);
+        $pincho = mysqli_fetch_assoc($res);
 ?>
 					<form id="registropincho" method="post" enctype="multipart/form-data">
                         <div>

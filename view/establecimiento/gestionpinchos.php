@@ -12,20 +12,19 @@
     if($_SESSION['tipo'] != 'est') {
         header("Location: ../../index.php");
     } else {
-      if(isset($_POST['inscribirpincho'])){
-        $concurso = $_POST['concurso'];
-        $nombre = $_POST['nombrepincho'];
-        $descripcionpincho = $_POST['descripcionpincho'];
-        $ingredientespincho = $_POST['ingredientespincho'];
-        $precio = $_POST['precio'];
-        $trozos = explode(".", $_FILES['fotopincho']['name']);
-        $extension = end($trozos);
-        $foto = "pincho_".$concurso."_".$_SESSION['login'].".".$extension;
-        move_uploaded_file($_FILES['fotopincho']['tmp_name'], "../../img/pinchos/".$foto);
-
-        enviarPropuestaGatronomica($nombre, $foto, $descripcionpincho, $ingredientespincho, $precio, $concurso, $_SESSION['login']);
-      }
-      $listapinchos = listarPinchos($_SESSION['login']);
+        if(isset($_POST['inscribirpincho'])) {
+            $concurso = htmlentities($_POST['concurso'],ENT_QUOTES);
+            $nombre = htmlentities($_POST['nombrepincho'],ENT_QUOTES);
+            $descripcionpincho = htmlentities($_POST['descripcionpincho'],ENT_QUOTES);
+            $ingredientespincho = htmlentities($_POST['ingredientespincho'],ENT_QUOTES);
+            $precio = htmlentities($_POST['precio'],ENT_QUOTES);
+            $trozos = explode(".", $_FILES['fotopincho']['name']);
+            $extension = end($trozos);
+            $foto = "pincho_".$concurso."_".$_SESSION['login'].".".$extension;
+            move_uploaded_file($_FILES['fotopincho']['tmp_name'], "../../img/pinchos/".$foto);
+            enviarPropuestaGatronomica($nombre, $foto, $descripcionpincho, $ingredientespincho, $precio, $concurso, $_SESSION['login']);
+        }
+        $listapinchos = listarPinchos($_SESSION['login']);
 ?>
 				<h1>Pinchos</h1>
 
@@ -36,7 +35,7 @@
                     $nump = mysqli_fetch_assoc($res);
                     if($nump['contador']==0){
                       echo "<div class='registrarestablecimiento'>";
-                      echo "<a href='inscribirpincho.php'>Inscribir pincho para la proxima edicion</a>";
+                      echo "<a href='inscribirpincho.php'>Inscribir pincho para la proxima edici&oacute;n</a>";
                       echo "</div>";
                     }
                     ?>
@@ -46,7 +45,7 @@
                 echo "<div class='product_box'>";
                     echo "<a href='datospincho.php?idpincho=".$linea['idpincho']."'  class='pirobox'><img src='../../img/pinchos/".$linea['fotopincho']."' alt='image' class='img' /></a>";
                     echo "<h4>".$linea['nombrepincho']."</h4>";
-                    echo "<p> ".$linea['concurso_edicion']." </p>";
+                    echo "<p>Edición: ".$linea['concurso_edicion']." </p>";
                     echo "<form id='verpincho' method='post'>";
                         echo "<button type='submit' formaction='datospincho.php?idpincho=".$linea['idpincho']."' class='btn btn-default button'>Ver</button>";
                     echo "</form>";
@@ -62,4 +61,5 @@
 <?php
     }
 ?>
+
 <?php loadclasses("view","footer.html"); ?>

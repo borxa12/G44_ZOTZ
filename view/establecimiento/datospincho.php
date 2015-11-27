@@ -1,37 +1,37 @@
 <?php
     session_start();
     ob_start();
+
     ini_set("display_errors",1);
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
     loadclasses("controller","ControladorEstablecimiento.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'est') {
         header("Location: ../../index.php");
     } else {
-      $id = $_GET['idpincho'];
-      if(isset($_POST['modificar'])){
-        $nombre = $_POST['nombrepincho'];
-        $descripcion = $_POST['descripcionpincho'];
-        $ingredientes = $_POST['ingredientespincho'];
-        $precio = $_POST['precio'];
+        $id = $_GET['idpincho'];
+        if(isset($_POST['modificar'])) {
+            $nombre = htmlentities($_POST['nombrepincho'],ENT_QUOTES);
+            $descripcion = htmlentities($_POST['descripcionpincho'],ENT_QUOTES);
+            $ingredientes = htmlentities($_POST['ingredientespincho'],ENT_QUOTES);
+            $precio = htmlentities($_POST['precio'],ENT_QUOTES);
+            $res = recuperarDatosPincho($id);
+            $pincho = mysqli_fetch_assoc($res);
+            $foto = $pincho['fotopincho'];
+            if($_FILES['fotopincho']['name']!=''){
+                $concurso=$pincho['concurso_edicion'];
+                $trozos = explode(".", $_FILES['fotopincho']['name']);
+                $extension = end($trozos);
+                $foto = "pincho_".$concurso."_".$_SESSION['login'].".".$extension;
+                move_uploaded_file($_FILES['fotopincho']['tmp_name'], "../../img/pinchos/".$foto);
+            }
+            modificarDatosPincho($id, $nombre, $foto, $descripcion, $ingredientes, $precio);
+        }
         $res = recuperarDatosPincho($id);
         $pincho = mysqli_fetch_assoc($res);
-        $foto = $pincho['fotopincho'];
-        if($_FILES['fotopincho']['name']!=''){
-          $concurso=$pincho['concurso_edicion'];
-          $trozos = explode(".", $_FILES['fotopincho']['name']);
-          $extension = end($trozos);
-          $foto = "pincho_".$concurso."_".$_SESSION['login'].".".$extension;
-          move_uploaded_file($_FILES['fotopincho']['tmp_name'], "../../img/pinchos/".$foto);
-        }
-        modificarDatosPincho($id, $nombre, $foto, $descripcion, $ingredientes, $precio);
-      }
-      $res = recuperarDatosPincho($id);
-      $pincho = mysqli_fetch_assoc($res);
 ?>
 		<form id="registropincho" method="post">
             <div id=templatemo_form>
@@ -63,8 +63,9 @@
 		    </div>
             <button type="submit" formaction="gestionpinchos.php" class="btn btn-default button">Volver</button>
             <?php
-              if($pincho['aceptado']=='N')echo "<button type='submit' formaction='modificarpincho.php?idpincho=".$pincho['idpincho']."' class='btn btn-default button'>Modificar</button>";
-             ?>
+                if($pincho['aceptado'] == 'N')
+                    echo "<button type='submit' formaction='modificarpincho.php?idpincho=".$pincho['idpincho']."' class='btn btn-default button'>Modificar</button>";
+            ?>
         </form>
         <div class="cleaner"></div>
 </div>
@@ -75,4 +76,5 @@
 <?php
     }
 ?>
+
 <?php loadclasses("view","footer.html"); ?>

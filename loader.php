@@ -13,9 +13,5 @@
         return "$ruta/$archivo";
     }
 
-	// function absolutepath($ruta, $archivo) {
-	// 	return __DIR__."/$ruta/$archivo";
-	// }
-
 	spl_autoload_register("loadclasses");
 ?>

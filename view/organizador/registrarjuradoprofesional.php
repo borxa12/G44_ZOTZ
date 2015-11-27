@@ -1,20 +1,20 @@
 <?php
     session_start();
     ob_start();
+
 	ini_set("display_errors",1);
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuorganizador.html");
     loadclasses("controller","ControladorOrganizador.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'org') {
         header("Location: ../../index.php");
     } else {
 ?>
                 <h1>Registrar Jurado Profesional</h1>
-                <form id="registrojuradoprofesional" method="post" enctype="multipart/form-data"> <!-- action="ControladorOrganizador.php" -->
+                <form id="registrojuradoprofesional" method="post" enctype="multipart/form-data">
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nombre</label>
@@ -58,7 +58,7 @@
                 <?php
                     if(isset($_POST['btnaltaprofesional'])) {
                         if(strcmp($_POST['passwordjuradoprofesional'],$_POST['repetirpasswordjuradoprofesional'])) {
-                            echo '<script> alert("Las contraseñas no coinciden");</script>';
+                            echo '<script> alert("Las contrase\u00f1as no coinciden");</script>';
                             // echo '<script> window.location="./registrarestablecimiento.php";</script>';
                         } else {
 							$login = $_POST['loginjuradoprofesional'];
@@ -74,7 +74,7 @@
                                 $_POST['reconocimientosjuradoprofesional'])) {
                                     header("Location: ../noregister/juradoprofesional.php");
                                 } else {
-                                    echo '<script> alert("O login xa existe. Tenteo con outro.");</script>';
+                                    echo '<script> alert("O login xa existe. Intenteo con outro.");</script>';
                                     // echo '<script> window.location="./registrarestablecimiento.php";</script>';
                                 }
                         }

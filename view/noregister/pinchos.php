@@ -1,12 +1,11 @@
 <?php
     session_start();
     ob_start();
+
     include("../../loader.php");
     loadclasses("view","header.php");
-    // loadclasses("menus","nomenu.html");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
     loadclasses("controller","ControladorNoRegistrado.php");
+
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -21,9 +20,6 @@
             case 'est':
                 loadclasses("menus","menuestablecimiento.html");
                 break;
-            // default:
-            //     loadclasses("menus","nomenu.html");
-            //     break;
         }
     } else {
         loadclasses("menus","nomenu.html");
@@ -31,10 +27,11 @@
 ?>
 
 <h1>Lista de pinchos</h1>
+
 <?php
     $pinchos = listarPinchosUltimaEdicion();
     if(mysqli_num_rows($pinchos) == 0) {
-        echo '<h4>Aínda non se rexistraron pinchos :(</h4>';
+        echo '<h4>A&iacute;nda non se rexistraron pinchos U+1F622</h4>';
     } else {
         while($r = mysqli_fetch_assoc($pinchos)) {
             // $r = recuperarDatosEstablecimiento($f['establecimiento_usuarios_login']);

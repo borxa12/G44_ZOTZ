@@ -1,10 +1,13 @@
 <?php
     session_start();
     ob_start();
+
     ini_set('display_errors',1);
+
     include("../../loader.php");
     loadclasses("view","header.php");
 	loadclasses("controller","ControladorNoRegistrado.php");
+
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -19,19 +22,16 @@
             case 'est':
                 loadclasses("menus","menuestablecimiento.html");
                 break;
-            // default:
-            //     loadclasses("menus","nomenu.html");
-            //     break;
         }
     } else {
         loadclasses("menus","nomenu.html");
     }
 
 	$lista= listaJuradoProfesional();
-
 ?>
 
 <h1>Miembros del jurado profesional</h1>
+
 <?php
 	if($lista){
 		while ($fila = mysqli_fetch_assoc($lista)) {
@@ -44,8 +44,10 @@
 		}
 	}
 ?>
+
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
 </div>
+
 <?php loadclasses("view","footer.html"); ?>

@@ -1,11 +1,10 @@
 <?php
     session_start();
     ob_start();
+
     include("../../loader.php");
     loadclasses("view","header.php");
-    // loadclasses("menus","nomenu.html");
-    // require_once '../header.php';
-    // require_once '../../menus/nomenu.html';
+
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -20,9 +19,6 @@
             case 'est':
                 loadclasses("menus","menuestablecimiento.html");
                 break;
-            // default:
-            //     loadclasses("menus","nomenu.html");
-            //     break;
         }
     } else {
         loadclasses("menus","nomenu.html");

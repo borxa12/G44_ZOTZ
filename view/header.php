@@ -1,17 +1,3 @@
-<?php
-    // session_start();
-    // ob_start();
-    // include_once("../loader.php");
-    // loadclasses("view","header.php");
-    // loadclasses("menus","menujuradoprofesional.html");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
-    // if($_SESSION['tipo'] != 'jpro') {
-    //     header("Location: http://localhost/Zotz/index.php");
-    // } else {
-	// include_once("./loader.php");
-	// loadclasses("controller","ControladorOrganizador.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,8 +40,8 @@
 				<!-- Menú Principal -->
 				<div id="mini_menu" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="http://localhost/Zotz/view/noregister/pinchos.php">Pinchos</a></li> <!-- http://127.0.0.1/Zotz/view/noregister/pinchos.php -->
-						<li><a href="http://localhost/Zotz/view/noregister/establecimientos.php">Establecimientos</a></li> <!-- ./view/noregister/establecimientos.html -->
+						<li><a href="http://localhost/Zotz/view/noregister/pinchos.php">Pinchos</a></li>
+						<li><a href="http://localhost/Zotz/view/noregister/establecimientos.php">Establecimientos</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/juradoprofesional.php">Jurado Profesional</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/finalistas.php">Finalistas</a></li>
 						<li><a href="http://localhost/Zotz/view/noregister/mapa.php">Gastromapa</a></li>
@@ -69,7 +55,6 @@
 								<?php
 							}
 						?>
-						<!-- <li><a href="#" data-toggle="modal" data-target="#login">Registrarse</a></li> -->
 					</ul>
 
 					<!-- Buscador -->
@@ -96,168 +81,3 @@
 
 <!-- </body>
 </html> -->
-
-<!-- Login Modal Page -->
-<!-- <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <a href="http://localhost/Zotz/view/noregister/registro.php">
-					<button type="button" class="btn btn-register">Registrarse</button>
-				</a>
-                <h4 class="modal-title osSansFont" id="myModalLabel">Registro</h4>
-            </div> -->
-
-            <!-- Contenido de la página modal -->
-            <!-- <div class="modal-body">
-                <form id="loginForm" action="../login.php" method="POST">
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Login</label>
-                            <input name="login" type="text" class="form-control" placeholder="Login" required data-validation-required-message="Introduzca su login">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Contraseña</label>
-                            <input name	="password" type="password" class="form-control" placeholder="Contraseña" required data-validation-required-message="Introduzca su contraseña">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button id="conectarse" type="submit" class="btn-login">Iniciar sesion</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- Generar Códigos Modal Page -->
-<!-- <div class="modal fade" id="generarCodigos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            < Contenido de la página modal
-            <div class="modal-body">
-                <form  id="codigos" method="post">
-                    <div class="row">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <div>
-                                <h4>Código</h4>
-                            </div>
-                            <div>
-                                <h1 id="code">ASFKJ777</h1>
-                            </div>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- Seleccionar Finalistas Modal Page -->
-<!-- <div class="modal fade" id="seleccionarFinalistas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <Contenido de la página modal -
-			<form  id="nfinalistas" method="post">
-	            <div class="modal-body">
-
-	                    <div class="row">
-	                        <div class="form-group col-xs-12 floating-label-form-group controls">
-	                            <div>
-	                                <h4>Número de Finalistas</h4>
-	                            </div>
-	                            <input name="nfinalista" type="number" class="form-control" placeholder="Número de Finalistas"
-									required data-validation-required-message="Intruduzca el número de finalistas">
-	                            <p class="help-block text-danger"></p>
-	                        </div>
-	                    </div>
-
-	            </div>
-
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	                <!- <a href="seleccionarfinalistas.php">
-						<button name="btnfinalistas" type="submit" class="btn btn-register">Seleccionar Finalistas</button>
-					<!- </a>
-	            </div>
-			</form>
-        </div>
-    </div>
-</div> -->
-
-<!-- Confirmación Voto Pincho Modal Page -->
-<!-- <div class="modal fade" id="confirmacionVotoPincho" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <! Contenido de la página modal
-            <div class="modal-body">
-                <form  id="nfinalistas" method="post">
-                    <div class="row">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <div>
-                                <h4>Confirmación</h4>
-                            </div>
-                            <div>
-                                <h2>¿Está seguro de querer votar a este pincho?</h2>
-                            </div>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <form id="confirmacion" method="post">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="submit" formaction="http://localhost/Zotz/view/juradopopular/votarjuradopopular.php" class="btn btn-register">Si</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- Confirmación Eliminar Establecimiento Modal Page -->
-<!-- <div class="modal fade" id="eliminarestablecimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <! Contenido de la página modal
-            <div class="modal-body">
-                <form  id="nfinalistas" method="post">
-                    <div class="row">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <div>
-                                <h4>Confirmación</h4>
-                            </div>
-                            <div>
-                                <h2>¿Está seguro de borrar tu establecimiento del sistema?</h2>
-                            </div>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <form id="confirmacion" method="post">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="submit" formaction="http://localhost/Zotz/index.php" class="btn btn-register">Si</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->

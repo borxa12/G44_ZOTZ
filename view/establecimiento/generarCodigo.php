@@ -27,7 +27,7 @@
                                     $ed = $data['edicion'];
                                     $cod = generarCodigos($_SESSION['login'], $ed);
                                     if($cod == false){
-                                        echo "<h1> No tienes ningún pincho aceptado en la edición actual</h1>";
+                                        echo "<h1> No tienes ning&uacute;n pincho aceptado en la edici&oacute;n actual</h1>";
                                     }
                                 ?>
                                 <h1 id="code"><?php echo $cod;?></h1>
@@ -45,4 +45,5 @@
 <?php
     }
 ?>
+
 <?php loadclasses("view","footer.html"); ?>

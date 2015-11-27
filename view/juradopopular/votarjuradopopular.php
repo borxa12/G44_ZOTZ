@@ -5,8 +5,6 @@
     loadclasses("view","header.php");
     loadclasses("menus","menujuradopopular.html");
     loadclasses("controller","ControladorJuradoPopular.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'jpop') {
         header("Location: ../../index.php");
@@ -61,11 +59,11 @@
 										header("Location: ./votarpincho.php?cod1=$c1&cod2=$c2&cod3=$c3");
 									}else{
 
-										echo '<script> alert("Los codigos deben ser de pinchos diferentes");</script>';
+										echo '<script> alert("Los c\u00f3digos deben ser de pinchos diferentes");</script>';
 										echo '<script> window.location="./votarjuradopopular.php";</script>';
 									}
 								}else {
-									echo '<script> alert("Algun codigo no es válido");</script>';
+									echo '<script> alert("Alg\u00fan c\u00f3digo no es v\u00e1lido");</script>';
 						            echo '<script> window.location="./votarjuradopopular.php";</script>';
 						        }
    							}

@@ -1,14 +1,14 @@
 <?php
     session_start();
     ob_start();
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","nomenu.html");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
     loadclasses("controller","ControladorNoRegistrado.php");
+
     if(isset($_SESSION['tipo'])) {
-        header("Location: ../../index.php"); // Cuidado
+        header("Location: ../../index.php");
     } else {
 ?>
 
@@ -17,7 +17,7 @@
     <div id=templatemo_form>
         <div>
             <label for="loginjuradopopular">Login</label>
-            <input type="text" maxlength=20 name="loginjuradopopular"/>
+            <input name="loginjuradopopular" type="text" autocomplete="off" title="No se admiten Ñ ni acentos" pattern="[^ñáéíóú`´]{1,20}" maxlength=20 required/>
             <br></br>
         </div>
         <div>
@@ -27,12 +27,12 @@
         </div>
         <div>
             <label for="passwordjuradopopular">Password</label>
-            <input type="password" maxlength=45 name="passwordjuradopopular"/>
+            <input name="passwordjuradopopular" type="password" autocomplete="off" title="No se admiten Ñ ni acentos" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
             <br></br>
         </div>
         <div>
             <label for="repetirpasswordjuradopopular">Repetir Password</label>
-            <input type="password" maxlength=45 name="repetirpasswordjuradopopular"/>
+            <input name="repetirpasswordjuradopopular" type="password" autocomplete="off" title="No se admiten Ñ ni acentos" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
             <br></br>
         </div>
     </div>
@@ -47,7 +47,7 @@
                 echo '<script> alert("Debe rellenar todos los campos");</script>';
                 echo '<script> window.location="./registro.php";</script>';
         } else if(strcmp($_POST['passwordjuradopopular'],$_POST['repetirpasswordjuradopopular'])) {
-            echo '<script> alert("Las contraseñas no coinciden");</script>';
+            echo '<script> alert("Las contrase\u00f1as no coinciden");</script>';
             echo '<script> window.location="./registro.php";</script>';
         } else {
             if (alta($_POST['loginjuradopopular'],$_POST['passwordjuradopopular'],
@@ -72,4 +72,5 @@
 <?php
     }
 ?>
+
 <?php loadclasses("view","footer.html"); ?>

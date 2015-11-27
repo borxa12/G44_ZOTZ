@@ -6,8 +6,6 @@
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
     loadclasses("controller","ControladorEstablecimiento.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     if($_SESSION['tipo'] != 'est') {
         header("Location: ../../index.php");
@@ -62,16 +60,17 @@
                     <form id="actionestablecimientodeletemodify" method="post">
                        <input name="concurso" hidden="true" value="<?php echo $establecimiento['login'];?>"type = "text"/>
                         <button type="submit" formaction="cambiardatosestablecimiento.php" class="btn btn-default button">Modificar</button>
-                        <button type="button" onclick="confirmar()" class="btn btn-default button" data-toggle="modal" data-target="#eliminarestablecimiento">Eliminar</button>
+                        <button type="button" onclick="confirmar()" class="btn btn-default button">Eliminar</button>
                     </form>
+
                     <script>
-                    function confirmar() {
-                        var r = confirm("¿Esta seguro de eliminar el establecimiento?");
-                        if (r == true) {
-                            window.location="index.php?eliminar=true";
+                        function confirmar() {
+                            var r = confirm("¿Esta seguro de eliminar el establecimiento?");
+                            if (r == true) {
+                                window.location="index.php?eliminar=true";
+                            }
                         }
-                      }
-                      </script>
+                    </script>
 
                 <div class="cleaner"></div>
 </div>
@@ -82,4 +81,5 @@
 <?php
     }
 ?>
+
 <?php loadclasses("view","footer.html"); ?>

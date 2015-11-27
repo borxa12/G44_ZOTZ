@@ -1,14 +1,13 @@
 <?php
     session_start();
     ob_start();
+
     ini_set('display_errors',1);
+
     include("../../loader.php");
     loadclasses("view","header.php");
-    // loadclasses("menus","menuorganizador.html");
-    // loadclasses("menus","nomenu.html");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
     loadclasses("controller","ControladorNoRegistrado.php");
+
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -23,9 +22,6 @@
             case 'est':
                 loadclasses("menus","menuestablecimiento.html");
                 break;
-            // default:
-            //     loadclasses("menus","nomenu.html");
-            //     break;
         }
     } else {
         loadclasses("menus","nomenu.html");
@@ -33,6 +29,7 @@
 ?>
 
 <h1>Finalistas</h1>
+
 <?php
     $finalistas = recuperarFinalistas();
     if(mysqli_num_rows($finalistas) == 0) {
@@ -47,21 +44,16 @@
                     echo "<p>";
                             $est = recuperarDatosEstablecimiento($r['establecimiento_usuarios_login']);
                             echo $est['nombre'];
-
                     echo "</p>";
                     echo "<p>Nota: ".$f['media']."</p>";
                     echo "<form name='verfinalista' method='post' action='./datospincho.php?pincho=".$r['idpincho']."'>";
                         echo "<button name='btnver' type='submit' class='btn btn-default button'>Ver</button>";
                     echo "</form>";
-                        // if(isset($_POST['btnver'])) {
-                        //     header("Location: ./datospincho.php?pincho=".$r['idpincho']);
-                        // }
                 echo "</div>";
-
         }
     }
 ?>
-<!-- </div> -->
+
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>

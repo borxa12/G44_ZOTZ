@@ -1,12 +1,11 @@
 <?php
     session_start();
     ob_start();
+    
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
     loadclasses("controller","ControladorEstablecimiento.php");
-    //require_once '../header.php';
-    //require_once '../../menus/nomenu.html';
 
     ini_set('display_errors',1);
     if($_SESSION['tipo'] != 'est') {
@@ -15,7 +14,7 @@
       $res = concursoActual();
       $concurso = mysqli_fetch_assoc($res);
 ?>
-				<form name="registropincho" method="post" action="gestionpinchos.php" enctype="multipart/form-data">
+			<form name="registropincho" method="post" action="gestionpinchos.php" enctype="multipart/form-data">
               <input name="concurso" hidden="true" value="<?php echo $concurso['edicion'];?>"type = "text"/>
                         <div>
                             <label for="nombrepincho">Nombre</label>
