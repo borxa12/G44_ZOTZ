@@ -50,12 +50,12 @@
 
                     echo "</p>";
                     echo "<p>Nota: ".$f['media']."</p>";
-                    echo "<form name='verfinalista' method='post'>";
+                    echo "<form name='verfinalista' method='post' action='./datospincho.php?pincho=".$r['idpincho']."'>";
                         echo "<button name='btnver' type='submit' class='btn btn-default button'>Ver</button>";
                     echo "</form>";
-                        if(isset($_POST['btnver'])) {
-                            header("Location: ./datospincho.php?pincho=".$r['idpincho']);
-                        }
+                        // if(isset($_POST['btnver'])) {
+                        //     header("Location: ./datospincho.php?pincho=".$r['idpincho']);
+                        // }
                 echo "</div>";
 
         }

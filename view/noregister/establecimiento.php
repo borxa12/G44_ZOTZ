@@ -6,6 +6,7 @@
     // loadclasses("menus","nomenu.html");
     //require_once '../header.php';
     //require_once '../../menus/nomenu.html';
+    loadclasses("controller","ControladorEstablecimiento.php");
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
             case 'org':
@@ -27,6 +28,8 @@
     } else {
         loadclasses("menus","nomenu.html");
     }
+    $res = recuperarDatosEstablecimiento($_GET['establecimiento']);
+    // while($res) {
 ?>
 				<h1>Datos Establecimiento</h1>
                 <div class="cleaner_h40"></div>
@@ -34,43 +37,46 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nombre: </label>
-							<h5>Nombre Establecimiento</h5>
+							<h5><?php echo $res['nombre'] ?></h5>
                             </br>
                         </div>
                         <div>
                             <label for="direccionestablecimiento">Dirección</label>
-                            <h4>Direccion Establecimiento</h4>
+                            <h4><?php echo $res['direccion'] ?></h4>
                             </br>
                         </div>
                         <div>
                             <label for="telefonoestablecimiento">Teléfono</label>
-                            <h4>Teléfono Establecimiento</h4>
+                            <h4>Tlf.: <?php echo $res['telefono'] ?></h4>
                             </br>
                         </div>
                         <div>
                             <label for="webestablecimiento">Web</label>
-                            <h4>Web Establecimiento</h4>
+                            <h4>Web: <?php echo $res['web'] ?></h4>
                             </br>
                         </div>
                         <div>
                             <label for="emailestablecimiento">Email</label>
-                            <h4>Email Establecimiento</h4>
+                            <h4>Email: <?php echo $res['email'] ?></h4>
                             </br>
                         </div>
                         <div>
                             <label  for="horarioestablecimiento">Horario</label>
-                            <h4>Horario Establecimiento</h4>
+                            <h4>Horario: <?php echo $res['horario'] ?></h4>
                             </br>
                         </div>
                         <div>
                             <label for="descripcionestablecimiento">Descripción</label>
-                            <h4>Descripción Establecimiento<h4>
+                            <h4><?php echo $res['descripcion'] ?><h4>
                             </br>
                         </div>
                     </div>
                     <form id="volverestablecimientos" method="post">
                         <button type="submit" formaction="establecimientos.php" class="btn btn-default button">Volver</button>
                     </form>
+            <?php
+                // }
+            ?>
                 <div class="cleaner"></div>
 </div>
 </div>

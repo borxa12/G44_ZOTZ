@@ -55,7 +55,8 @@
                     <br></br>
                 </div>
 		    </div>
-            <button type="submit" formaction="finalistas.php" class="btn btn-default button">Volver</button>
+            <button type="submit" formaction="pinchos.php" class="btn btn-default button">Ir a Pinchos</button>
+            <button type="submit" formaction="finalistas.php" class="btn btn-default button">Ir a Pinchos Finalistas</button>
         </form>
     <?php
         }

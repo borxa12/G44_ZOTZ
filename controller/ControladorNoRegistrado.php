@@ -17,6 +17,16 @@
 		return $establecimiento->listar();
 	}
 
+	/* Lista los establecimientos de la última edición disponible.
+	*  Sin parametros.
+	*  Return: Devuelve los datos del último concurso o FALSE en caso contrario.
+	*/
+	function listarPinchosUltimaEdicion() {
+		$establecimientos = new Pincho();
+		return $establecimientos->listarUltimos();
+	}
+
+
 	/* Lista los identificadores de los pinchos y sus atributos.
 	*  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
 	*/

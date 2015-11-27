@@ -23,6 +23,25 @@
              else  return $res;
             $db->desconectar();
         }
+
+        /* Lista los pinchos de la última edición disponible.
+    	*  Sin parametros.
+    	*  Return: Devuelve los datos de los últimos pinchos o FALSE en caso contrario.
+    	*/
+        public function listarUltimos() {
+            $db = new BD();
+            $sentencia = "SELECT * FROM concurso ORDER BY edicion DESC LIMIT 1";
+            $res = mysqli_query($db->connection,$sentencia);
+            if(mysqli_num_rows($res) == 0) return false;
+            else {
+                $res2 = mysqli_fetch_assoc($res);
+                $sentencia2 = "SELECT * FROM pincho WHERE concurso_edicion='".$res2['edicion']."'";
+                $res3 = mysqli_query($db->connection,$sentencia2);
+                if(mysqli_num_rows($res3) == 0) return false;
+                return $res3;
+            }
+        }
+
         /* Lista los identificadores de los pinchos y sus atributos segun el establecimiento.
         *  Sin parametros.
         *  Return: Devuelve los datos del pincho sin tratar o FALSE en caso de error.
