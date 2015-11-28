@@ -13,37 +13,44 @@
         header("Location: ../../index.php");
     } else {
 ?>
-				 <form  id="codigos" method="post">
-                    <div class="row">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
+    <h1>Generar Códigos</h1>
+                <div class="product_box">
+                    <h4>Número de códigos</h4>
+                    <form name="generarcodigos" method="post">
+                    <!-- Introcucir el número de códigos a generar -->
+                        <div id=templatemo_form>
                             <div>
-                                <h4>Código</h4>
+                                <input name="numcod" type="number" required/>
+                                <br></br>
                             </div>
-                            <div>
-                                <?php
-                                    //$concurso = new Concurso();
-                                    $res = concursoActual();
-                                    $data = mysqli_fetch_assoc($res);
-                                    $ed = $data['edicion'];
-                                    $cod = generarCodigos($_SESSION['login'], $ed);
-                                    if($cod == false){
-                                        echo "<h1> No tienes ning&uacute;n pincho aceptado en la edici&oacute;n actual</h1>";
-                                    }
-                                ?>
-                                <h1 id="code"><?php echo $cod;?></h1>
-                            </div>
-                            <p class="help-block text-danger"></p>
                         </div>
-                    </div>
-                </form>
-                <div class="cleaner"></div>
-</div>
+                        <button name="btncod" type="submit" class="btn btn-default button">Generar códigos</button>
+                        <?php
+                            if(isset($_POST['btncod'])){
+                                $num = $_POST['numcod'];
+                                //recuperar la edición actual
+                                $res = concursoActual();
+                                $data = mysqli_fetch_assoc($res);
+                                $ed = $data['edicion'];
+                                //generar los códigos
+                                $cod = generarCodigos($_SESSION['login'], $ed, $num);
+                                if($cod == false){
+                                    //Si no hay un picnho aceptado para la edición actual
+                                    echo "<h1> No tienes ningún pincho aceptado en la edición actual</h1>";
+                                }else{
+                                    //mostrar los códigos por pantalla
+                                    for ($i=0; $i<count($cod); $i++){
+                                        echo "<h1> $cod[$i]</h1>";
+                                    }
+                                }
+                            }
+                        ?>
+                    </form>
+                </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
 </div>
-
 <?php
     }
 ?>
-
 <?php loadclasses("view","footer.html"); ?>

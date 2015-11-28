@@ -135,20 +135,29 @@
         return $pincho->modificar($idpincho, $nombrepincho, $fotopincho, $descripcionpincho, $ingredientesp, $precio, 'N');
     }
 
-	/* Esta funcion llama a codigoAleatorio() para generar un código nuevo.
-	*  Si el código no es válido vuelve a generar otro, así hasta que encuentre uno válido.
-	*  Llama a relacionarCodigo para añadirlo a la BD.
-	*/
-    function generarCodigos($estlogin, $ed) {
-        do{
-            $codigo = codigoAleatorio();
-        } while (validarCodigo($codigo) == false);
-        $res = relacionarCodigo($estlogin, $codigo, $ed);
+    /* Genera varios códigos aleatorios y los inserta en la bd
+    *  Parametros:
+    *       $estlogin - Atributo a comprobar, login del estalecimiento que genera el codigo.
+    *       $ed - Atributo a comprobar, edición en la que se encuentra el pincho.
+    *       $numcod - Número de códigos que se quieren generar.
+
+    *  Return: Devuelve un array de códigos o false si no puede insertarlos.
+    */
+    function generarCodigos($estlogin, $ed, $numcod) {
+        $codigos = array();
+        for($i=$numcod; $i>0; $i--){
+            do{
+                $cod =codigoAleatorio();
+            } while (validarCodigo($cod) == false );
+            array_push($codigos, $cod);
+            $res = relacionarCodigo($estlogin, $cod, $ed);
+        }
         if ($res == false) return false;
-        else return $codigo;
+        else return $codigos;
     }
 
-	/* Función que genera un código aleatoriode 6 dígitos alfanuméricos
+	/* Genera un código aleatoriode 6 dígitos alfanuméricos.
+    *  Return: Código aleatorio
 	*/
     function codigoAleatorio() {
         $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -159,8 +168,10 @@
         return $codigo;
     }
 
-	/* Comprueba si el códogo ($cod) que se le pasa por parámetro es válido,
-	*  si el código está en la BD devuelve false si no devuelve true
+	/* Comprueba que el código ($cod) es válido
+    *  Parámetros:
+    *       $cod - Código que se quiere comprobar
+    *   Return: Devuelve TRUE si el código es válido y FALSE si no lo es
 	*/
     function validarCodigo($cod) {
         $codPincho = new CodigoPincho();
@@ -169,10 +180,14 @@
         else return false;
     }
 
-	/* Esta funcion llama a la función insertar de la clase CodigoPincho para añadir el nuev código
-	*  con el login del establecimiento y el id del pincho al que está asociado.
-	*  Por defecto el campo likes está a null.
-	*/
+    /* Inserta uncódigo en la tabla codigopincho de la bd
+    *  Parametros:
+    *       $estlogin - Atributo a comprobar, login del estalecimiento que genera el codigo, se utiliza para recuperar el idpincho del pincho.
+    *       $ed - Atributo a comprobar, edición en la que se encuentra el pincho, se utiliza para recuperar el idpincho del pincho para esa edición.
+    *       $cod - Código a insertar.
+
+    *  Return: Devuelve un array de códigos o false si no puede insertarlos.
+    */
     function relacionarCodigo($estlogin, $cod, $ed) {
         $codigopincho = new CodigoPincho();
         $pincho = new Pincho();
@@ -190,11 +205,13 @@
      $pincho = new Pincho();
      return $pincho->listarPorEstablecimiento($login);
 	}
-
-  function concursoActual(){
-    $concurso = new Concurso();
-    return $concurso->recuperarUltimoConcurso();
-  }
+    /* Recupera el último concurso realizado.
+    *  Return: Devuelve la información del oncurso
+    */
+    function concursoActual(){
+        $concurso = new Concurso();
+        return $concurso->recuperarUltimoConcurso();
+    }
 
   function comprobarPropuestasEstablecimiento($edicion,$est){
     $pincho = new Pincho();
