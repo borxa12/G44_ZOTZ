@@ -93,17 +93,17 @@
         *  Por defecto el campo likes está a null.
         *  Parametros:
         *       $codigopincho - Atributo a insertar, clave primario del codigo pincho (codigopincho).
-        *       $establecimiento_usuarios_login - Atributo a insertar, establecimiento propietario del pincho y que genera los codigos.
         *       (integer) $pincho_idpincho - Atributo a insertar, identificar del pincho.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function insertar($codigopincho, $establecimiento_usuarios_login, $pincho_idpincho) {
+        public function insertar($codigopincho, $pincho_idpincho) {
             $db = new BD();
-            $sentencia = "INSERT INTO codigopincho (codigopincho, establecimiento_usuarios_login, pincho_idpincho)
-                VALUES('".$codigopincho."', '".$establecimiento_usuarios_login."','".$pincho_idpincho."')";
+            $sentencia = "INSERT INTO codigopincho (codigopincho, pincho_idpincho)
+                VALUES('".$codigopincho."','".$pincho_idpincho."')";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
     }
 ?>
+
