@@ -195,7 +195,7 @@
         else {
             $data = mysqli_fetch_assoc($res);
             $id = $data['idpincho'];
-            return $codigopincho->insertar($cod, $estlogin, $id);
+            return $codigopincho->insertar($cod, $id);
         }
     }
 
