@@ -2,19 +2,11 @@
 -- 12/10/15 23:07:35
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -----------------------------------------------------
--- Schema G44_ZOTZ
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema G44_ZOTZ
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `G44_ZOTZ` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `G44_ZOTZ` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `G44_ZOTZ` ;
 
 -- -----------------------------------------------------
@@ -61,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`establecimiento` (
   `telefono` VARCHAR(20) NOT NULL,
   `web` VARCHAR(45) NULL,
   `horario` VARCHAR(15) NOT NULL,
-  `descripcionestablecimento` VARCHAR(200) NOT NULL,
+  `descripcionestablecimiento` VARCHAR(200) NOT NULL,
   INDEX `fk_establecimiento_usuarios1_idx` (`usuarios_login` ASC),
   PRIMARY KEY (`usuarios_login`),
   CONSTRAINT `fk_establecimiento_usuarios1`
@@ -82,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`pincho` (
   `descripcionpincho` VARCHAR(500) NOT NULL,
   `ingredientesp` VARCHAR(300) NOT NULL,
   `precio` VARCHAR(5) NOT NULL,
-  `aceptado` TINYINT(1) NULL,
+  `aceptado` CHAR NULL,
   `concurso_edicion` INT NOT NULL,
   `establecimiento_usuarios_login` VARCHAR(20) NOT NULL,
   INDEX `precio_idx` (`precio` ASC),
@@ -190,12 +182,12 @@ USE `G44_ZOTZ` ;
 -- -----------------------------------------------------
 -- Placeholder table for view `G44_ZOTZ`.`vista_establecimiento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`vista_establecimiento` (`id` INT);
+CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`vista_establecimiento` (`nombre` INT, `direccion` INT, `telefono` INT);
 
 -- -----------------------------------------------------
 -- Placeholder table for view `G44_ZOTZ`.`vista_concurso`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`vista_concurso` (`id` INT);
+CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`vista_concurso` (`edicion` INT, `nombrepincho` INT, `fotopincho` INT, `descripcionpincho` INT, `ingredientesp` INT, `precio` INT);
 
 -- -----------------------------------------------------
 -- View `G44_ZOTZ`.`vista_establecimiento`
@@ -228,18 +220,17 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-
 -- Insertar Organizador
 
 INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('carmen', 'orgpass', 'lchousal@gmail.com', 'org');
 
 -- Insertar Concurso
 
-INSERT INTO `concurso` (`edicion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(5,  '2015-11-11', '2015-12-28', 'carmen');
-INSERT INTO `concurso` (`edicion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(4, '2014-10-05', '2014-11-13', 'carmen');
-INSERT INTO `concurso` (`edicion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(3,  '2014-03-11', '2014-04-07', 'carmen');
-INSERT INTO `concurso` (`edicion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(2, '2013-09-10', '2014-10-02', 'carmen');
-INSERT INTO `concurso` (`edicion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(1,  '2013-02-11', '2015-03-20', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(5, 'V Concurso',  'V Concurso',  '2015-11-11', '2015-12-28', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(4, 'IV Concurso', 'IV Concurso', '2014-10-05', '2014-11-13', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(3, 'III Concurso', 'III Concurso',  '2014-03-11', '2014-04-07', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(2, 'II Concurso', 'II Concurso', '2013-09-10', '2014-10-02', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(1, 'I Concurso', 'I Concurso',  '2013-02-11', '2015-03-20', 'carmen');
 
 
 -- Insertat Usuarios
