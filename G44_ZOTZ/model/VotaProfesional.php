@@ -18,6 +18,17 @@
             return $res;
         }
 
+        /*  Lista los pinchos finalistas
+        *   Return: Devuelve la lista con los datos.
+        */
+        public function listarFinalistas() {
+            $db = new BD();
+            $sentencia = "SELECT * FROM votaprofesional WHERE finalista = 1";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
         /*  Recupera los datos de la asignacione de pincho a jurado profesional
         *   Parametros:
         *        $id - id del pincho de la asignacion a recuperar.
@@ -33,11 +44,23 @@
 
         /*  Recupera los identificadores de pincho finalistas.
         *   Sin parametros.
-        *   Return: Devuelve los datos de vota profesional para los finalistas, en caso contrario, FALSE.
+        *   Return: Devuelve los datos de vota profesional para los finalistas.
         */
         public function recuperarFinalistas() {
             $db = new BD();
-            $sentencia = "SELECT `pincho_idpincho`, AVG(`votoprofesional`) AS media FROM `votaprofesional` WHERE `finalista`=1 GROUP BY `pincho_idpincho` ORDER BY 2 DESC";
+            $sentencia = "SELECT `pincho_idpincho`, AVG(`voto1round`) AS media FROM `votaprofesional` WHERE `finalista`=1 GROUP BY `pincho_idpincho` ORDER BY 2 DESC";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
+        /*  Recupera los identificadores de pincho ganadores.
+        *   Sin parametros.
+        *   Return: Devuelve los datos de vota profesional para los ganadores.
+        */
+        public function recuperarGanadores() {
+            $db = new BD();
+            $sentencia = "SELECT `pincho_idpincho`, AVG(`voto2round`) AS media FROM `votaprofesional` WHERE `ganador`=1 GROUP BY `pincho_idpincho` ORDER BY 2 DESC";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
@@ -85,18 +108,36 @@
             return $res;
         }
 
-        /*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional.
+        /*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional en primera ronda.
         *   Parametros:
         *        $num - Número máximo de finalistas.
         *   Return: Devuelve un conjunto de datos y en caso contrario FALSE.
         */
         public function eleccionFinalistas($num) {
             $db = new BD();
-            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`votoprofesional`) AS media FROM votaprofesional GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
+            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`voto1round`) AS media FROM votaprofesional GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
             $res1 = mysqli_query($db->connection,$sentencia1);
             if(mysqli_num_rows($res1) == 0) return false;
             while($r = mysqli_fetch_assoc($res1)) {
-                $sentencia2 = "UPDATE `votaprofesional` SET `finalista`=1 WHERE `pincho_idpincho`='".$r['pincho_idpincho']."'";
+                $sentencia2 = "UPDATE `votaprofesional` SET `finalista` = 1 WHERE `pincho_idpincho`='".$r['pincho_idpincho']."'";
+                $res2 = mysqli_query($db->connection,$sentencia2);
+            }
+            $db->desconectar();
+            return true;
+        }
+
+        /*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional en segunda ronda.
+        *   Parametros:
+        *        $num - Número máximo de finalistas.
+        *   Return: Devuelve un conjunto de datos y en caso contrario FALSE.
+        */
+        public function eleccionGanadores($num) {
+            $db = new BD();
+            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`voto2round`) AS media FROM votaprofesional WHERE `finalista` = 1 GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
+            $res1 = mysqli_query($db->connection,$sentencia1);
+            if(mysqli_num_rows($res1) == 0) return false;
+            while($r = mysqli_fetch_assoc($res1)) {
+                $sentencia2 = "UPDATE `votaprofesional` SET `ganador` = 1 WHERE `pincho_idpincho`='".$r['pincho_idpincho']."'";
                 $res2 = mysqli_query($db->connection,$sentencia2);
             }
             $db->desconectar();

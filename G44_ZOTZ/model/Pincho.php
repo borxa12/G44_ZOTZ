@@ -37,7 +37,7 @@
             if(mysqli_num_rows($res) == 0) return false;
             else {
                 $res2 = mysqli_fetch_assoc($res);
-                $sentencia2 = "SELECT * FROM pincho WHERE concurso_edicion='".$res2['edicion']."'";
+                    $sentencia2 = "SELECT * FROM pincho WHERE aceptado = 'A' AND concurso_edicion='".$res2['edicion']."'";
                 $res3 = mysqli_query($db->connection,$sentencia2);
                 if(mysqli_num_rows($res3) == 0) return false;
                 return $res3;

@@ -58,7 +58,7 @@
 			return $lista;
 	}
 
-    /*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional.
+    /*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional en primera ronda.
     *   Parametros:
     *        $num - Número máximo de finalistas.
     *   Return: Devuelve un conjunto de datos y en caso contrario FALSE.
@@ -66,6 +66,17 @@
     function seleccionarFinalistas($num) {
 		$vpro = new VotaProfesional();
 		$res = $vpro->eleccionFinalistas($num);
+		return $res;
+	}
+
+	/*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional en segunda ronda.
+    *   Parametros:
+    *        $num - Número máximo de ganadores.
+    *   Return: Devuelve un conjunto de datos y en caso contrario FALSE.
+    */
+    function seleccionarGanadores($num) {
+		$vpro = new VotaProfesional();
+		$res = $vpro->eleccionGanadores($num);
 		return $res;
 	}
 
@@ -81,12 +92,24 @@
 		else return false;
     }
 
+	/*  Comprueba que el $num no excecde al numero de finalistas.
+    *   Parametros:
+    *        $num - Número a comprobar.
+    *   Return: Devuelve TRUE si $num excede al numero de finalistas, FALSO en caso contrario
+    */
+    function comprobarFinalistas($num) {
+		$voto = new VotaProfesional();
+		$res = $voto->listarFinalistas();
+		if(mysqli_num_rows($res) >= $num) return true;
+		else return false;
+    }
+
     /*  Recupera la informacion del ultimo concurso realizado.
     *   Return: Devuelve la informaion del ultimo concurso.
     */
 	function concursoActual(){
-		    $concurso = new Concurso();
-		    return $concurso->recuperarUltimoConcurso();
+		$concurso = new Concurso();
+		return $concurso->recuperarUltimoConcurso();
 	}
 
     /*  Inserta un nuevo miembro al jurado profesional

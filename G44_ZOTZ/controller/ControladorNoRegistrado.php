@@ -21,8 +21,8 @@
 	*  Return: Devuelve los datos del último concurso o FALSE en caso contrario.
 	*/
 	function listarPinchosUltimaEdicion() {
-		$establecimientos = new Pincho();
-		return $establecimientos->listarUltimos();
+		$pincho = new Pincho();
+		return $pincho->listarUltimos();
 	}
 
 
@@ -105,6 +105,15 @@
 	function recuperarFinalistas(){
 		$votopro = new VotaProfesional();
 		$res = $votopro->recuperarFinalistas();
+		return $res;
+	}
+
+	/*  Recupera los pinchos ganadores.
+	*   Return: Devuelve los pinchos finalistas, FALSE en caso contrario.
+	*/
+	function recuperarGanadores(){
+		$votopro = new VotaProfesional();
+		$res = $votopro->recuperarGanadores();
 		return $res;
 	}
 
