@@ -117,6 +117,15 @@
 		return $res;
 	}
 
+	/*  Recupera los pinchos favoritos.
+	*   Return: Devuelve los pinchos favoritos, FALSE en caso contrario.
+	*/
+	function recuperarFavoritos(){
+		$codpincho = new CodigoPincho();
+		$res = $codpincho->recuperarFavoritos();
+		return $res;
+	}
+
 	/*  Obtiene los datos de un establecimiento por su login.
 	*   Parametros:
 	*       $login - Atributo a comprobar, establecimiento del que se quieren recuerar los datos.

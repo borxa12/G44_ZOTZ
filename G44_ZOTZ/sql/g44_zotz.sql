@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`codigopincho` (
   `codigopincho` VARCHAR(6) NOT NULL,
   `likes` TINYINT(1) NULL,
   `pincho_idpincho` INT NOT NULL,
+  `favorito` TINYINT(1) NULL,
   PRIMARY KEY (`codigopincho`, `pincho_idpincho`),
   INDEX `fk_codigopincho_pincho1_idx` (`pincho_idpincho` ASC),
   CONSTRAINT `fk_codigopincho_pincho1`

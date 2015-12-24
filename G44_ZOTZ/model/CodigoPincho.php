@@ -35,17 +35,22 @@
             $db->desconectar();
         }
 
-        /* Agrupa los pinchos por pincho_idpincho y suma la columa likes. Los resultados se devuelven en orden descendiente por likes.
-        *  Sin Parametros.
-        *  Return: Devuelve los datos sin tratar sin tratar o FALSE en caso de error.
+        /*  Recupera los favoritos de la BD, es decir, los pinchos más populares según el jurado popular.
+        *   Parametros:
+        *        $num - Número máximo de favoritos.
+        *   Return: Devuelve un conjunto de datos y en caso contrario FALSE.
         */
-        public function listarLikes($num) {
+        public function eleccionFavoritos($num) {
             $db = new BD();
-            $sentencia = "SELECT `pincho_idpincho`, SUM(`likes`) FROM `codigopincho` GROUP BY `pincho_idpincho` ORDER BY 2 DESC LIMIT $num";
-            $res = mysqli_query($db->connection,$sentencia);
-            if(mysqli_num_rows($res) == 0) return false;
-            else return $res;
+            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`likes`) AS media FROM codigopincho GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
+            $res1 = mysqli_query($db->connection,$sentencia1);
+            if(mysqli_num_rows($res1) == 0) return false;
+            while($r = mysqli_fetch_assoc($res1)) {
+                $sentencia2 = "UPDATE `codigopincho` SET `favorito` = 1 WHERE `pincho_idpincho`='".$r['pincho_idpincho']."'";
+                $res2 = mysqli_query($db->connection,$sentencia2);
+            }
             $db->desconectar();
+            return true;
         }
 
         /* Lista los codigos de pincho filtrados por codigo.
@@ -60,6 +65,18 @@
             if(mysqli_num_rows($res)==0) return false;
             else  return $res;
             $db->desconectar();
+        }
+
+        /*  Recupera los identificadores de pincho favoritos.
+        *   Sin parametros.
+        *   Return: Devuelve los datos de codigo pincho para los favoritos.
+        */
+        public function recuperarFavoritos() {
+            $db = new BD();
+            $sentencia = "SELECT `pincho_idpincho`, SUM(`likes`) AS media FROM `codigopincho`  WHERE `favorito` = 1 GROUP BY `pincho_idpincho` ORDER BY 2 DESC";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
         }
 
         /* Elimina una tupla de codigo pincho con el codigo indicado.
@@ -106,4 +123,3 @@
         }
     }
 ?>
-

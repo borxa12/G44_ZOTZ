@@ -45,6 +45,7 @@
 						<li><a href="http://localhost/G44_ZOTZ/view/noregister/juradoprofesional.php">Xurado Profesional</a></li>
 						<li><a href="http://localhost/G44_ZOTZ/view/noregister/finalistas.php">Finalistas</a></li>
 						<li><a href="http://localhost/G44_ZOTZ/view/noregister/ganadores.php">Ganadores</a></li>
+						<li><a href="http://localhost/G44_ZOTZ/view/noregister/favoritos.php">Favoritos</a></li>
 						<li><a href="http://localhost/G44_ZOTZ/view/noregister/mapa.php">Gastromapa</a></li>
 						<li><a href="http://localhost/G44_ZOTZ/view/noregister/folleto.php">Folleto</a></li>
 						<?php

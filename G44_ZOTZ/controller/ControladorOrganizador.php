@@ -69,6 +69,17 @@
 		return $res;
 	}
 
+	/*  Recupera los favoritos de la BD, es decir, los pinchos con mejor puntuación según el jurado popular.
+    *   Parametros:
+    *        $num - Número máximo de favoritos.
+    *   Return: Devuelve un conjunto de datos y en caso contrario FALSE.
+    */
+    function seleccionarFavoritos($num) {
+		$fav = new CodigoPincho();
+		$res = $fav->eleccionFavoritos($num);
+		return $res;
+	}
+
 	/*  Recupera los finalistas de la BD, es decir, los pinchos con mejor media de las notas del jurado profesional en segunda ronda.
     *   Parametros:
     *        $num - Número máximo de ganadores.
