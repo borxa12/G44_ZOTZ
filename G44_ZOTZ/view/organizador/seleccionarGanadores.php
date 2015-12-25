@@ -39,7 +39,7 @@
             $res = seleccionarGanadores($_POST['nganadores']);
             header("Location: ../noregister/ganadores.php");
         } else {
-            echo '<script> alert("Excedeu o n\u00famero de participantes.");</script>';
+            echo '<script> alert("Excedeu o n\u00famero de finalistas.");</script>';
             // echo '<script> window.location="";</script>';
         }
     }
