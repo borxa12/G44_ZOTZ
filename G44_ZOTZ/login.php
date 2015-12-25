@@ -9,7 +9,7 @@
 
     if(isset($_POST['iniciarsesion'])) {
         $user = new Usuarios();
-        $res = $user->login($login,$pass);
+        $res = $user->login($login,md5($pass));
         if($res) {
             session_start();
             $datos = mysqli_fetch_assoc($res);

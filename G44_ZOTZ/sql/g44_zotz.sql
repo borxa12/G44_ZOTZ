@@ -224,7 +224,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- Insertar Organizador
 
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('carmen', 'orgpass', 'lchousal@gmail.com', 'org');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('carmen', '543febad5d04815bcb21a5a3aa86035e', 'lchousal@gmail.com', 'org');
 
 -- Insertar Concurso
 
