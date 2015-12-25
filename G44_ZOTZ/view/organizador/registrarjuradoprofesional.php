@@ -68,7 +68,7 @@
                             } else {
                                 $foto = null;
                             }
-                            if (registrarJuradoProfesional($_POST['loginjuradoprofesional'],$_POST['passwordjuradoprofesional'],
+                            if (registrarJuradoProfesional($_POST['loginjuradoprofesional'],md5($_POST['passwordjuradoprofesional']),
                                 $_POST['emailjuradoprofesional'],$_POST['nombrejuradoprofesional'],$login.".jpg",
                                 $_POST['reconocimientosjuradoprofesional'])) {
                                     header("Location: ../noregister/juradoprofesional.php");

@@ -93,7 +93,7 @@
                             echo '<script> alert("Las contrase\u00f1as no coinciden");</script>';
                             echo '<script> window.location="./registrarestablecimiento.php";</script>';
                         } else {
-                            if (altaEstablecimiento(htmlentities($_POST['loginestablecimiento'],ENT_QUOTES),htmlentities($_POST['passwordestablecimiento'],ENT_QUOTES),
+                            if (altaEstablecimiento(htmlentities($_POST['loginestablecimiento'],ENT_QUOTES),md5(htmlentities($_POST['passwordestablecimiento'],ENT_QUOTES)),
                                 htmlentities($_POST['emailestablecimiento'],ENT_QUOTES),htmlentities($_POST['nombreestablecimiento'],ENT_QUOTES),
                                 htmlentities($_POST['direccionestablecimiento'],ENT_QUOTES), htmlentities($_POST['telefonoestablecimiento'],ENT_QUOTES),
                                 htmlentities($_POST['webestablecimiento'],ENT_QUOTES),htmlentities($_POST['horarioestablecimiento'],ENT_QUOTES),

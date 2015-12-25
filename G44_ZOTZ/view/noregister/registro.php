@@ -50,7 +50,7 @@
             echo '<script> alert("Las contrase\u00f1as no coinciden");</script>';
             echo '<script> window.location="./registro.php";</script>';
         } else {
-            if (alta($_POST['loginjuradopopular'],$_POST['passwordjuradopopular'],
+            if (alta($_POST['loginjuradopopular'],md5($_POST['passwordjuradopopular']),
                 $_POST['emailjuradopopular'],'jpop')) {
                     header("Location: ./registro_login.php");
                 } else {

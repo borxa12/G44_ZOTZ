@@ -14,7 +14,7 @@ USE `G44_ZOTZ` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`usuarios` (
   `login` VARCHAR(20) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(32) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `tipo` VARCHAR(4) NOT NULL,
   PRIMARY KEY (`login`))
@@ -237,36 +237,36 @@ INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, 
 
 -- Insertat Usuarios
 
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('millenium', 'milleniumpass', 'millenium@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('peregrinus', 'peregrinuspass', 'peregrinus@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('casapepe', 'casapepepass', 'casapepe@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('comecome', 'comecomepass', 'comecome@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('tapitas', 'tapitaspass', 'tapitas@gmai.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('recuncho', 'recunchopass', 'recuncho@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('brasa', 'brasapass', 'brasapass@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('centolo', 'centolopass', 'centolopass@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('tiacarmucha', 'tiacarmuchapass', 'tiacarmucha@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('lareira', 'lareirapass', 'lareira@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('atarazana', 'atarazanapass', 'atarazana@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('elplato', 'elplatopass', 'elplato@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('treboles', 'trebolespass', 'treboles@gmail.com', 'est');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('elreydelamesa', 'elreydelamesapass', 'elreydelamesa@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('millenium', 'c7b9de0c5eeebe1c135e31b051ff304b', 'millenium@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('peregrinus', 'c01d132f2f6851756ab0df3b764d16ff', 'peregrinus@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('casapepe', 'fe1f349d484c26b9122fe7f97337e637', 'casapepe@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('comecome', '2115bcca3e78a58cdb68e6c6cd727e9d', 'comecome@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('tapitas', '21b74f3bef48782dd2cd70a0a5566d1c', 'tapitas@gmai.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('recuncho', '2d105ac3ebeed9aa43f1637b42e8eb29', 'recuncho@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('brasa', 'fe3d1031764be7af110273a6ad0c28a0', 'brasapass@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('centolo', '8ab74ec2e46e47784b054e89fcf470cb', 'centolopass@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('tiacarmucha', 'c4fa7bb827d9999fc937283112652ab6', 'tiacarmucha@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('lareira', 'daaa2021c6c76c19897c85e15070ce35', 'lareira@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('atarazana', '3499cfd6577d979262d79ff04d4caf48', 'atarazana@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('elplato', '91b85cd9d09d1f3e26fcb36cdd739944', 'elplato@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('treboles', '2f7083c2e20575178d4635af765f5195', 'treboles@gmail.com', 'est');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('elreydelamesa', '48c0af5e8bb9371eb9b9e1adbb6544fa', 'elreydelamesa@gmail.com', 'est');
 
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('mariano', 'marianopass', 'mariano@gmail.com', 'jpro');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('maria', 'mariapass', 'maria@gmail.com', 'jpro');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('paloma', 'palomapass', 'paloma@gmail.com', 'jpro');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('jose', 'josepass', 'jose@gmail.com', 'jpro');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('alberto', 'albertopass', 'alberto@gmail.com', 'jpro');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('mariano', '8206b9f5c5c08e5677edf64e526ed7ae', 'mariano@gmail.com', 'jpro');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('maria', '5cce2530700f759259ed721d414c4d05', 'maria@gmail.com', 'jpro');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('paloma', '93e40c1a4e82df96f894bd1cf7dc2e1e', 'paloma@gmail.com', 'jpro');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('jose', 'a3f6f4b40b24e2fd61f08923ed452f34', 'jose@gmail.com', 'jpro');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('alberto', '06bb5f294135e7c94b0472efeac5eb9f', 'alberto@gmail.com', 'jpro');
 
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('jaime', 'jaimepass', 'jaime@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('laura', 'laurapass', 'laura@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('german', 'germanpass', 'german@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('clara', 'clarapass', 'clara@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('sergio', 'sergiopass', 'sergio@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('ramon', 'ramonpass', 'ramon@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('marcos', 'marcospass', 'macos@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('patricia', 'patriciapass', 'patricia@gmail.com', 'jpop');
-INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('josemiguel', 'josemiguelpass', 'josemiguel@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('jaime', '45f2400018e22823694cfce8cc52db97', 'jaime@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('laura', 'eab2e780b6c0a48ca3e46738d64073eb', 'laura@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('german', '08a7820892dd15f343100b927e337f80', 'german@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('clara', '25ea66ab26b8f6894fde4cfa98371d75', 'clara@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('sergio', '3c707e4d355951e30bf5d8dfef4e0204', 'sergio@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('ramon', 'c818246591e3c7b64f2fc1f0d3b5570c', 'ramon@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('marcos', '0fb85c11d06080c7104f2848b1fc1b05', 'macos@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('patricia', 'a1c14802770f66fba057890b18da89b3', 'patricia@gmail.com', 'jpop');
+INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('josemiguel', 'd7cb9131d9c43c5b24b159e4787ddae3', 'josemiguel@gmail.com', 'jpop');
 
 -- Insertar Establecimientos
 
