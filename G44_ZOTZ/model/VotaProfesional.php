@@ -28,7 +28,7 @@
             $db->desconectar();
             return $res;
         }
-
+        
         /*  Recupera los datos de la asignacione de pincho a jurado profesional
         *   Parametros:
         *        $id - id del pincho de la asignacion a recuperar.
@@ -144,5 +144,60 @@
             return true;
         }
 
+        /*  Modifica una tupla en la tabla votaprofesional
+        *   Parametros:
+        *        $nota - nota que se le va asignar al campo voto1round
+        *        $id - id del pincho a votar
+        *        $login - login del jurado que ha votado
+        *   Return: Devuelve TRUE si se han podido modificar los datos.
+        */
+        public function votar1Ronda($nota, $login, $id) {
+            $db = new BD();
+            $sentencia = "UPDATE votaprofesional SET voto1round='".$nota."' WHERE pincho_idpincho='".$id."' AND juradoprofesional_usuarios_login='".$login."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
+        /*  Lista los pinchos asignados a un jurado
+        *   Parametros:
+        *        $login -login del jurado del que se quieren recuperar sus pinchos.
+        *   Return: Devuelve la lista con los datos.
+        */
+        public function listarPorJurado1Ronda($login) {
+            $db = new BD();
+            $sentencia = "SELECT * FROM votaprofesional WHERE juradoprofesional_usuarios_login = '".$login."' AND (finalista=0 OR finalista IS NULL)AND (ganador=0 OR ganador IS NULL) AND voto1round IS NULL AND voto2round IS NULL";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
+        /*  Modifica una tupla en la tabla votaprofesional
+        *   Parametros:
+        *        $nota - nota que se le va asignar al campo voto2round
+        *        $id - id del pincho a votar
+        *        $login - login del jurado que ha votado
+        *   Return: Devuelve TRUE si se han podido modificar los datos.
+        */
+        public function votar2Ronda($nota, $login, $id) {
+            $db = new BD();
+            $sentencia = "UPDATE votaprofesional SET voto2round='".$nota."' WHERE pincho_idpincho='".$id."' AND juradoprofesional_usuarios_login='".$login."'";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
+        /*  Lista los pinchos asignados a un jurado
+        *   Parametros:
+        *        $login -login del jurado del que se quieren recuperar sus pinchos.
+        *   Return: Devuelve la lista con los datos.
+        */
+        public function listarPorJurado2Ronda($login) {
+            $db = new BD();
+            $sentencia = "SELECT * FROM votaprofesional WHERE juradoprofesional_usuarios_login = '".$login."' AND finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto1round IS NOT NULL AND voto2round IS NULL";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
     }
 ?>

@@ -3,6 +3,7 @@
 	include_once("../../loader.php");
 	loadclasses("model","Usuarios.php");
 	loadclasses("model","JuradoProfesional.php");
+	loadclasses("model","VotaProfesional.php");
 	loadclasses("model","Pincho.php");
 	loadclasses("model","BD.php");
 
@@ -48,5 +49,51 @@
 	function recuperarPincho($id){
 		$pincho = new Pincho();
 		return $pincho->recuperar($id);
+	}
+
+	/*  Obtiene una lista con los pinchos que el jurado puede votar en la 1º ronda.
+	*   Parametros:
+	*       $login - Atributo a comprobar, login del jurado que va a votar.
+	*   Return:devuelve una lista las tuplas de votaprofesional que coincidan.
+	*/
+	function listar1Ronda($login){
+		$vp = new VotaProfesional();
+		return $vp->listarPorJurado1Ronda($login);
+
+	}
+
+	/*  Modifica el valor del campo voto1round de la tupla que coincida.
+	*   Parametros:
+	*       $id - Atributo a comprobar, id del pincho a votar.
+	*       $login - Atributo a comprobar, login del jurado que va a votar.
+	*       $nota - Atributo a modificar, nota que se le va asignar al campo voto1round.
+	*   Return: Devuelve true si se realiza la modificación, false en caso contrario.
+	*/
+	function votar1Ronda($nota, $login, $id) {
+		$vp = new VotaProfesional();
+		return $vp->votar1Ronda($nota, $login, $id);
+	}
+
+		/*  Obtiene una lista con los pinchos que el jurado puede votar en la 2º ronda.
+	*   Parametros:
+	*       $login - Atributo a comprobar, login del jurado que va a votar.
+	*   Return:devuelve una lista las tuplas de votaprofesional que coincidan.
+	*/
+	function listar2Ronda($login){
+		$vp = new VotaProfesional();
+		return $vp->listarPorJurado2Ronda($login);
+
+	}
+
+	/*  Modifica el valor del campo voto2round de la tupla que coincida.
+	*   Parametros:
+	*       $id - Atributo a comprobar, id del pincho a votar.
+	*       $login - Atributo a comprobar, login del jurado que va a votar.
+	*       $nota - Atributo a modificar, nota que se le va asignar al campo voto2round.
+	*   Return: Devuelve true si se realiza la modificación, false en caso contrario.
+	*/
+	function votar2Ronda($nota, $login, $id) {
+		$vp = new VotaProfesional();
+		return $vp->votar2Ronda($nota, $login, $id);
 	}
 ?>
