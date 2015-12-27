@@ -79,9 +79,9 @@
 	*       $login - Atributo a comprobar, login del jurado que va a votar.
 	*   Return:devuelve una lista las tuplas de votaprofesional que coincidan.
 	*/
-	function listar2Ronda($login){
+	function listar2Ronda(){
 		$vp = new VotaProfesional();
-		return $vp->listarPorJurado2Ronda($login);
+		return $vp->listarPorJurado2Ronda();
 
 	}
 

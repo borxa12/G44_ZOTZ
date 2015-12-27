@@ -192,9 +192,9 @@
         *        $login -login del jurado del que se quieren recuperar sus pinchos.
         *   Return: Devuelve la lista con los datos.
         */
-        public function listarPorJurado2Ronda($login) {
+        public function listarPorJurado2Ronda() {
             $db = new BD();
-            $sentencia = "SELECT * FROM votaprofesional WHERE juradoprofesional_usuarios_login = '".$login."' AND finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto1round IS NOT NULL AND voto2round IS NULL";
+            $sentencia = "SELECT * FROM votaprofesional WHERE finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto1round IS NOT NULL AND voto2round IS NULL";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
