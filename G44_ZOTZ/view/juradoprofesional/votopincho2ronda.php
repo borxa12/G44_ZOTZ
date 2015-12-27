@@ -50,7 +50,7 @@
                     <br></br>
                 </div>
 		    </div>
-            <input name="nota" type="number" step="any" min="0" max="10" required/>
+            <input name="nota" type="number" min="0" max="10" required/>
             <button name="btnvotopincho" type="submit" class="btn btn-default button">Votar</button>
             <?php
                 if(isset($_POST['btnvotopincho'])) {
