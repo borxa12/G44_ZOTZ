@@ -6,6 +6,7 @@
     loadclasses("model","Pincho.php");
     loadclasses("model","Concurso.php");
     loadclasses("model","Establecimiento.php");
+    loadclasses("model","Comentarios.php");
     loadclasses("model","BD.php");
 
 	/* Inserta una tupla de usuario y otra de establecimiento con los parametros indicados.
@@ -227,4 +228,13 @@
 	    $pincho = new Pincho();
 	    return $pincho->comprobarPropuestas($edicion,$est);
   	}
+  	/*  Obtiene los comentarios para un pincho por su id.
+    *   Parametros:
+    *       $idpincho - Atributo a comprobar, id del pincho del que se quiere recuperar sus comentarios.
+    *   Return: Devuelve un array con los comentarios del pincho si tiene alguno.
+    */
+    function obtenerComentarios($idpincho){
+      $comentario = new Comentarios();
+      return $comentario->listarPorPincho($idpincho);
+    }
 ?>
