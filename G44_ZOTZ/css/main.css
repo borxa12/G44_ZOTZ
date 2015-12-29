@@ -272,3 +272,44 @@ textarea {
 	resize: vertical;
 	width: 70vmin;
 }
+
+/*Comentarios*/
+.com_capa_ppal {
+	overflow:hidden;
+	border:1px solid #ddd;
+	background-color:#f6f6f6;
+	padding:5px;
+}
+
+.com_capa_ppal span.usuario {
+	font-weight: bold;
+	color: #000;
+	font-size:12px;
+}
+
+.com_capa_ppal span.fecha {
+	color: #999;
+	font-size:10px;
+	margin-left:10px;
+}
+.com_capa_ppal div.votos {
+	float:right;
+}
+
+.com_capa_ppal div.puntos {
+	display:inline-block;
+	font-size:10px;
+	color:#999;
+}
+.com_capa_ppal div.com_capa_votar {
+	display:inline-block;
+	vertical-align:middle;
+	margin-left:5px;
+}
+
+
+.com_capa_ppal div.cuerpo {
+	padding: 6px;
+	color: #333;
+	margin-top:4px;
+}
