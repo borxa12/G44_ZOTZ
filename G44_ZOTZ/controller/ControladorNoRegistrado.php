@@ -8,6 +8,7 @@
 	loadclasses("model","Pincho.php");
 	loadclasses("model","Usuarios.php");
 	loadclasses("model","VotaProfesional.php");
+	loadclasses("model","Comentarios.php");
 
 	/* Lista los establecimientos, incluyendo identificador y atributos.
 	*  Return: Devuelve los datos del concurso sin tratar o FALSE en caso de error.
@@ -153,5 +154,25 @@
 					);
 			return $result;
 	}
+	/*  Obtiene los comentarios para un pincho por su id.
+	*   Parametros:
+	*       $idpincho - Atributo a comprobar, id del pincho del que se quiere recuperar sus comentarios.
+	*   Return: Devuelve un array con los comentarios del pincho si tiene alguno.
+	*/
+	function obtenerComentarios($idpincho){
+		$comentario = new Comentarios();
+		return $comentario->listarPorPincho($idpincho);
+	}
 
+	/*  Inserta un nuevo comentario en la base de datos
+	*   Parametros:
+	*       $idpincho - Atributo a insertar, id del pincho del del que se quiere insertar el nuevo comentario.
+	*       $login - Atributo a insertar, login del usuario que ha hecho el comentario.
+	*       $comentario - Atributo a insertar, comentario realizado por el usuario.
+	*   Return: Devuelve true si el comentario se ha insertado correctamente.
+	*/
+	function guardarComentario($idpincho,$login,$coment){
+		$comentario = new Comentarios();
+		return $comentario->insertarComentario($idpincho,$login,$coment);
+	}
 ?>
