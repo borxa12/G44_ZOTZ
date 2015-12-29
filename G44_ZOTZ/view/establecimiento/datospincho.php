@@ -67,6 +67,24 @@
                     echo "<button type='submit' formaction='modificarpincho.php?idpincho=".$pincho['idpincho']."' class='btn btn-default button'>Modificar</button>";
             ?>
         </form>
+        <?php
+            $comentarios = obtenerComentarios($pincho['idpincho']);
+            if($comentarios){
+              while($comentario = mysqli_fetch_assoc($comentarios)){
+                echo "<div>";
+                  echo "<div class='com_capa_ppal'>";
+  						          echo "<div class='cabecera'>";
+  			                   echo "<span class='usuario'>".$comentario["usuarios_login"]."</span>";
+                           echo "<span class='fecha'>".$comentario["fecha"]."</span>";
+                  echo "</div>";
+                  echo "<div class='cuerpo'>".$comentario["comentario"]."</div>";
+                  echo "</div>";
+                echo "</div>";
+              }
+            }else{
+              echo "Non hay comentarios sobre este pincho";
+            }
+         ?>
         <div class="cleaner"></div>
 </div>
 </div>
