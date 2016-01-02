@@ -85,7 +85,7 @@
             return $res;
         }
 
-        /* Inerta una tupla de concurso con los parametros indicado.
+          /* Inserta una tupla de concurso con los parametros indicado.
         *  Parametros:
         *       $edicion - Atributo a insertar, clave primario del concurso (edicion).
         *       $folleto - Atributo a insertar, folleto de concurso.
@@ -95,13 +95,15 @@
         *       $usuarios_login - Atributo a insertar, usuario de tipo organizador que gestiona concurso.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-        public function insertar($edicion,$folleto,$gastromapa,$fechac,$fechaf,$usuarios_login) {
-            $db = new BD();
-            $sentencia = "INSERT INTO concurso (edicion, folleto, gastromapa, fechac, fechaf, usuarios_login)
-                VALUES('".$edicion."','".$folleto."','".$gastromapa."','".$fechac."','".$fechaf."','".$usuarios_login."')";
-            $res = mysqli_query($db->connection,$sentencia);
-            $db->desconectar();
-            return $res;
+		
+		function insertarEdicion($ed,$tit,$desc,$foll,$gastr,$fc,$ff,$usr_log) {
+			
+			  $db = new BD();
+			  $sentencia = "INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`)
+				VALUES ('".$ed."', '".$tit."', '".$desc."', '".$foll."',  '".$gastr."',  '".$fc."',  '".$ff."',  '".$usr_log."')";
+			  $res = mysqli_query($db->connection,$sentencia);
+			  $db->desconectar();
+			  return $res;
         }
     }
 
