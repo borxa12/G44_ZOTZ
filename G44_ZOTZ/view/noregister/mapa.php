@@ -4,6 +4,8 @@
 
     include("../../loader.php");
     loadclasses("view","header.php");
+    loadclasses("controller","ControladorOrganizador.php");
+
 
     if(isset($_SESSION['tipo'])) {
         switch ($_SESSION['tipo']) {
