@@ -25,7 +25,7 @@ ENGINE = InnoDB;
 -- Table `G44_ZOTZ`.`concurso`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `G44_ZOTZ`.`concurso` (
-  `edicion` INT NOT NULL,
+  `edicion` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(200) NOT NULL,
   `descripcion` MEDIUMTEXT NOT NULL,
   `folleto` VARCHAR(45) NULL,
@@ -228,11 +228,11 @@ INSERT INTO `usuarios` (`login`, `password`, `email`, `tipo`) VALUES('carmen', '
 
 -- Insertar Concurso
 
-INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(5, 'V Concurso',  'V Concurso',  '2015-11-11', '2015-12-28', 'carmen');
-INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(4, 'IV Concurso', 'IV Concurso', '2014-10-05', '2014-11-13', 'carmen');
-INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(3, 'III Concurso', 'III Concurso',  '2014-03-11', '2014-04-07', 'carmen');
-INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(2, 'II Concurso', 'II Concurso', '2013-09-10', '2014-10-02', 'carmen');
-INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `fechac`, `fechaf`, `usuarios_login`) VALUES(1, 'I Concurso', 'I Concurso',  '2013-02-11', '2015-03-20', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`) VALUES(5, 'V Concurso', 'V Concurso', '5folleto.jpg', '5gastromapa.jpg', '2015-11-11', '2015-12-28', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`) VALUES(4, 'IV Concurso', 'IV Concurso', NULL, NULL, '2014-10-05', '2014-11-13', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`) VALUES(3, 'III Concurso', 'III Concurso',  NULL, NULL, '2014-03-11', '2014-04-07', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`) VALUES(2, 'II Concurso', 'II Concurso', NULL, NULL, '2013-09-10', '2014-10-02', 'carmen');
+INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`) VALUES(1, 'I Concurso', 'I Concurso',  NULL, NULL, '2013-02-11', '2015-03-20', 'carmen');
 
 
 -- Insertat Usuarios

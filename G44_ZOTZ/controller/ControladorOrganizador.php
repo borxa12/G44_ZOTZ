@@ -178,10 +178,11 @@
 		$datos =  $pincho->recuperar($id);
 		return $datos;
 	}
-	
-	/*Registra un nuevo concurso (una nueva edición).LLama al método insertarEdicion de la clase concurso.
+
+	/*Registra un nuevo concurso (una nueva edición).Llama al método insertarEdicion de la clase concurso.
 	Parametros:
         *       $edicion - Atributo a insertar, clave primario del concurso (edicion).
+				*				$descripcion - Atributo a insertar, desciprción del concurso.
         *       $folleto - Atributo a insertar, folleto de concurso.
         *       $gastromapa - Atributo a insertar, gastromapa de concurso.
         *       $fechac - Atributo a insertar, fecha de incio de concurso.
@@ -189,14 +190,41 @@
         *       $usuarios_login - Atributo a insertar, usuario de tipo organizador que gestiona concurso.
     Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
 		*/
-	function registrarEdicion($edicion,$titulo,$descripcion,$folleto,$gastromapa,$fechac,$fechaf,$usuarios_login){
-		
-		if ($folleto!= null && $gastromapa!=null) {
-			move_uploaded_file($_FILES['folleto']['tmp_name'],"../../img/juradoprofesional/".$edicion."folleto.jpg");
-			move_uploaded_file($_FILES['gastromapa']['tmp_name'],"../../img/juradoprofesional/".$edicion."gastromapa.jpg");
-			$concurso = new Concurso();
-			$res1 = $concurso->insertarEdicion($edicion,$titulo,$descripcion,$folleto,$gastromapa,$fechac,$fechaf,$usuarios_login);
-			return ($res1);
-		}
+	function registrarEdicion($titulo,$descripcion,/*$folleto,$gastromapa,*/$fechac,$fechaf,$usuarios_login) {
+		$concurso = new Concurso();
+		$con = $concurso->recuperarUltimoConcurso();
+		$fila = mysqli_fetch_assoc($con);
+		$edicion = $fila['edicion'] + 1;
+
+		move_uploaded_file($_FILES['folleto']['tmp_name'],"../../img/folleto/".$edicion."folleto.jpg");
+		move_uploaded_file($_FILES['gastromapa']['tmp_name'],"../../img/gastromapa/".$edicion."gastromapa.jpg");
+
+		$name_folleto = $edicion."folleto.jpg";
+		$name_gastromapa = $edicion."gastromapa.jpg";
+
+		$res1 = $concurso->insertarEdicion($titulo,$descripcion,$name_folleto,$name_gastromapa,$fechac,$fechaf,$usuarios_login);
+		return ($res1);
 	}
+
+	/* Modificar los datos de la edición actual. Llama al método modificarEdicion de la clase concurso.
+	Parametros:
+        *       $edicion - Atributo a insertar, clave primario del concurso (edicion).
+				*				$descripcion - Atributo a insertar, desciprción del concurso.
+        *       $folleto - Atributo a insertar, folleto de concurso.
+        *       $gastromapa - Atributo a insertar, gastromapa de concurso.
+    Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
+		*/
+	function modificarEdicion($titulo,$descripcion/*,$folleto,$gastromapa*/) {
+		$concurso = new Concurso();
+		$con = $concurso->recuperarUltimoConcurso();
+		$fila = mysqli_fetch_assoc($con);
+		$edicion = $fila['edicion'];
+
+		move_uploaded_file($_FILES['folleto']['tmp_name'],"../../img/folleto/".$fila['folleto']);
+		move_uploaded_file($_FILES['gastromapa']['tmp_name'],"../../img/gastromapa/".$fila['gastromapa']);
+
+		$res1 = $concurso->modificarEdicion($titulo,$descripcion,$edicion);
+		return ($res1);
+	}
+
 ?>

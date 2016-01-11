@@ -175,4 +175,5 @@
 		$comentario = new Comentarios();
 		return $comentario->insertarComentario($idpincho,$login,$coment);
 	}
+	
 ?>

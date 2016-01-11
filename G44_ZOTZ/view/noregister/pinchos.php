@@ -31,7 +31,7 @@
 <?php
     $pinchos = listarPinchosUltimaEdicion();
     if(mysqli_num_rows($pinchos) == 0) {
-        echo '<h4>A&iacute;nda non se rexistraron pinchos U+1F622</h4>';
+        echo '<h4>A&iacute;nda non se rexistraron pinchos</h4>';
     } else {
         while($r = mysqli_fetch_assoc($pinchos)) {
             echo "<div class='product_box'>";

@@ -32,7 +32,6 @@
         public function insertarComentario($idpincho,$login,$coment){
             $db = new BD();
             $sentencia = "INSERT INTO comentarios(pincho_idpincho,usuarios_login,fecha,comentario) VALUES('".$idpincho."','".$login."',NOW(),'".$coment."')";
-            echo $sentencia;
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;

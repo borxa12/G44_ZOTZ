@@ -18,7 +18,7 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nome: </label>
-							<h5><?php echo $establecimiento['nombre'];?></h5>
+							              <h5><?php echo $establecimiento['nombre'];?></h5>
                             </br>
                         </div>
                         <div>

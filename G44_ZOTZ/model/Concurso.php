@@ -15,13 +15,13 @@
         */
         public function recuperarUltimoConcurso(){
           $db = new BD();
-          $sentencia = "SELECT * FROM concurso ORDER BY edicion DESC";
+          $sentencia = "SELECT * FROM concurso ORDER BY edicion DESC LIMIT 1";
           $res = mysqli_query($db->connection,$sentencia);
           $db->desconectar();
               return $res;
 
         }
-        
+
         /* Lista los concursos.
         *  Sin parametros.
         *  Return: Devuelve los datos del concurso sin tratar o FALSE en caso de error.
@@ -95,16 +95,30 @@
         *       $usuarios_login - Atributo a insertar, usuario de tipo organizador que gestiona concurso.
         *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
         */
-		
-		function insertarEdicion($ed,$tit,$desc,$foll,$gastr,$fc,$ff,$usr_log) {
-			
-			  $db = new BD();
-			  $sentencia = "INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`)
-				VALUES ('".$ed."', '".$tit."', '".$desc."', '".$foll."',  '".$gastr."',  '".$fc."',  '".$ff."',  '".$usr_log."')";
-			  $res = mysqli_query($db->connection,$sentencia);
-			  $db->desconectar();
-			  return $res;
+		    function insertarEdicion($tit,$desc,$foll,$gastr,$fc,$ff,$usr_log) {
+  			  $db = new BD();
+  			  $sentencia = "INSERT INTO `concurso` (`edicion`, `titulo`, `descripcion`, `folleto`, `gastromapa`, `fechac`, `fechaf`, `usuarios_login`)
+  				    VALUES (NULL, '".$tit."', '".$desc."', '".$foll."',  '".$gastr."',  '".$fc."',  '".$ff."',  '".$usr_log."')";
+  			  $res = mysqli_query($db->connection,$sentencia);
+  			  $db->desconectar();
+  			  return $res;
         }
+
+        /* Modifica los datos del último concurso según los parámetros indicados.
+      *  Parametros:
+      *       $edicion - Atributo a insertar, clave primario del concurso (edicion).
+      *       $folleto - Atributo a insertar, folleto de concurso.
+      *       $gastromapa - Atributo a insertar, gastromapa de concurso.
+      *  Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
+      */
+      function modificarEdicion($tit,$desc,$ed) {
+        $db = new BD();
+        $sentencia = "UPDATE `concurso` SET `titulo` = '".$tit."', `descripcion` = '".$desc."' WHERE `edicion` = ".$ed;
+        $res = mysqli_query($db->connection,$sentencia);
+        $db->desconectar();
+        return $res;
+      }
+
     }
 
 ?>

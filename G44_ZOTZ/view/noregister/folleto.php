@@ -32,7 +32,7 @@ $concurso = concursoActual();
 $r = mysqli_fetch_assoc($concurso);
 echo "<div>";
 echo "<div class='product_box'>";
-echo "<img onclick='javascript:this.width=720;this.height=438' ondblclick='javascript:this.width=200;this.height=180' src='../../img/folleto/".$r['folleto']."' width='100'</img>";
+echo "<img onclick='javascript:this.width=720;this.height=438' ondblclick='javascript:this.width=200;this.height=180' src='../../img/folleto/".$r['folleto']."' alt='O Folleto non está dispoñible' width='100'</img>";
 echo '<div>';
 echo 'Clic para ampliar';
 ?>
@@ -40,5 +40,7 @@ echo 'Clic para ampliar';
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-1"></div>
-
+</div>
+</div>
+</div>
 <?php loadclasses("view","footer.html"); ?>
