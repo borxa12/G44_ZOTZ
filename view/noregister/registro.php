@@ -37,7 +37,6 @@
         </div>
     </div>
     <button name="btnalta" type="submit" class="btn btn-default button">Darse de alta</button>
-    <button type="submit" formaction="./registro_login.php" class="btn btn-default button">Voltar</button>
 </form>
 
 <?php

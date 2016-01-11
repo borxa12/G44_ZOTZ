@@ -24,5 +24,10 @@
         loadclasses("menus","nomenu.html");
     }
     loadclasses("view/noregister","principal.php");
+?>
+</div>
+</div>
+</div>
+<?php
     loadclasses("view","footer.html");
 ?>

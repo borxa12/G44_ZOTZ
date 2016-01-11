@@ -84,7 +84,6 @@
                         </div>
                     </div>
                     <button name="altaest" type="submit" class="btn btn-default button">Dar de alta</button>
-                    <button type="submit" formaction="establecimientos.php" class="btn btn-default button">Voltar</button>
                 </form>
 
                 <?php
