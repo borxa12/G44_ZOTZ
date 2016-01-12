@@ -53,10 +53,10 @@
             <input name="nota" type="number" min="0" max="10" required/>
             <button name="btnvotopincho" type="submit" class="btn btn-default button">Votar</button>
             <?php
-                if(isset($_POST['btnvotopincho'])) {
-                        votar2Ronda($_POST['nota'], $_SESSION['login'], $_GET['pincho']);
-                        header("Location: votarprofesional2ronda.php");
-                }
+              if(isset($_POST['btnvotopincho'])) {
+                  votar2Ronda($_POST['nota'], $_SESSION['login'], $_GET['pincho']);
+                  header("Location: votarprofesional2ronda.php");
+              }
             ?>
         </form>
     <?php

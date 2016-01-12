@@ -74,15 +74,36 @@
 		return $vp->votar1Ronda($nota, $login, $id);
 	}
 
-		/*  Obtiene una lista con los pinchos que el jurado puede votar en la 2º ronda.
+	/*  Obtiene una lista con los pinchos que el jurado puede votar en la 2º ronda.
 	*   Parametros:
 	*       $login - Atributo a comprobar, login del jurado que va a votar.
 	*   Return:devuelve una lista las tuplas de votaprofesional que coincidan.
 	*/
-	function listar2Ronda(){
+	function listar2Ronda($login){
 		$vp = new VotaProfesional();
-		return $vp->listarPorJurado2Ronda();
+		return $vp->listarPorJurado2Ronda($login);
+	}
 
+	/*  Comprueba que el jurado profesional tenga el pincho asignado.
+	*   Parametros:
+	*       $pincho - Atributo a comprobar, pincho que debería estar asignado.
+	*				$jpro - Atributo a comprobar, jurado profesional que debería tener en pincho asignado.
+	*   Return: devuelve TRUE en caso de que exista dicha asignación y FALSE en caso contrario.
+	*/
+	function comprobarExistenciaVotacion($pincho,$jpro) {
+		$vp = new VotaProfesional();
+		return $vp->comprobarExistenciaPinchoJPro($pincho,$jpro);
+	}
+
+	/*  Inserta una nueva tupla a la tabla votaprofesional
+	*   Parametros:
+	*        $pincho - Atributo a insetar, identificador del pincho.
+	*        $jpro - Atributo a insertar, identificador del jurado profesional.
+	*   Return: Devuelve TRUE si se han podido modificar los datos.
+	*/
+	function insertarJuradoAusente($pincho,$jpro) {
+		$vp = new VotaProfesional();
+		return $vp->insertarJuradoAusente($pincho,$jpro);
 	}
 
 	/*  Modifica el valor del campo voto2round de la tupla que coincida.
@@ -95,5 +116,14 @@
 	function votar2Ronda($nota, $login, $id) {
 		$vp = new VotaProfesional();
 		return $vp->votar2Ronda($nota, $login, $id);
+	}
+
+	/*  Recupera los pinchos finalistas.
+	*   Return: Devuelve los pinchos finalistas, FALSE en caso contrario.
+	*/
+	function recuperarFinalistas(){
+		$votopro = new VotaProfesional();
+		$res = $votopro->recuperarFinalistas();
+		return $res;
 	}
 ?>

@@ -157,8 +157,8 @@
 
 	/*  Inserta una nueva tupla a la tabla votaprofesional por cada jurado asignado a un pincho
 	*   Parametros:
-	*		$idpincho - clave primaria del pincho a asignar.
-	*		$loginsJuradoProfesional - array con los login de cada jurado
+	*				$idpincho - clave primaria del pincho a asignar.
+	*				$loginsJuradoProfesional - array con los login de cada jurado
 	*   Return: Devuelve TRUE si se han podido insertar los datos.
 	*/
 	function asignarPinchosJuradoProfesional($idpincho,$loginsJuradoProfesional) {

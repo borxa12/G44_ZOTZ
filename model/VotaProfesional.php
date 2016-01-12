@@ -191,12 +191,42 @@
         *        $login -login del jurado del que se quieren recuperar sus pinchos.
         *   Return: Devuelve la lista con los datos.
         */
-        public function listarPorJurado2Ronda() {
+        public function listarPorJurado2Ronda($login) {
             $db = new BD();
-            $sentencia = "SELECT * FROM votaprofesional WHERE finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto1round IS NOT NULL AND voto2round IS NULL GROUP BY pincho_idpincho";
+            $sentencia = "SELECT * FROM votaprofesional WHERE finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto2round IS NULL AND juradoprofesional_usuarios_login='".$login."'";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;
         }
+
+        /*  Comprueba que el jurado profesional tenga el pincho asignado.
+      	*   Parametros:
+      	*       $pincho - Atributo a comprobar, pincho que debería estar asignado.
+      	*				$jpro - Atributo a comprobar, jurado profesional que debería tener en pincho asignado.
+      	*   Return: devuelve TRUE en caso de que exista dicha asignación y FALSE en caso contrario.
+      	*/
+        public function comprobarExistenciaPinchoJPro($pincho,$jpro) {
+          $db = new BD();
+          $sentencia = "SELECT * FROM votaprofesional WHERE pincho_idpincho='".$pincho."' AND juradoprofesional_usuarios_login='".$jpro."'";
+          $res = mysqli_query($db->connection,$sentencia);
+          $db->desconectar();
+          if(mysqli_num_rows($res) == 1) return true;
+          else return false;
+        }
+
+        /*  Inserta una nueva tupla a la tabla votaprofesional
+        *   Parametros:
+        *        $pincho - Atributo a insetar, identificador del pincho.
+        *        $jpro - Atributo a insertar, identificador del jurado profesional.
+        *   Return: Devuelve TRUE si se han podido modificar los datos.
+        */
+        public function insertarJuradoAusente($pincho,$jpro) {
+            $db = new BD();
+            $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,finalista) VALUES('".$pincho."','".$jpro."',1)";
+            $res = mysqli_query($db->connection,$sentencia);
+            $db->desconectar();
+            return $res;
+        }
+
     }
 ?>

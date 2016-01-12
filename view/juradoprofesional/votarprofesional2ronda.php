@@ -29,7 +29,13 @@
 <h1>Lista de pinchos finalistas</h1>
 
 <?php
-    $pinchos = listar2Ronda();
+  $finalistas= recuperarFinalistas();
+  while($fin = mysqli_fetch_assoc($finalistas)){
+    if(!comprobarExistenciaVotacion($fin['pincho_idpincho'], $_SESSION['login'])) {
+      insertarJuradoAusente($fin['pincho_idpincho'], $_SESSION['login']);
+    }
+  }
+    $pinchos = listar2Ronda($_SESSION['login']);
     if(mysqli_num_rows($pinchos) == 0) {
         echo '<h4>Non tes pinchos que votar</h4>';
     } else {
