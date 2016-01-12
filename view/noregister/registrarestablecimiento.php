@@ -30,23 +30,26 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombreestablecimiento">Nome</label>
-                            <input type="text" name="nombreestablecimiento" maxlength=90 required/>
+                            <input type="text" name="nombreestablecimiento" maxlength=90
+                                title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="direccionestablecimiento">Dirección</label>
-                            <input type="text" name="direccionestablecimiento" maxlength=90 required/>
+                            <input type="text" name="direccionestablecimiento" maxlength=90
+                                title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="horarioestablecimiento">Horario</label>
-                            <input type="text" name="horarioestablecimiento" maxlength=15 required/>
+                            <input type="text" name="horarioestablecimiento" maxlength=15
+                                title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="telefonoestablecimiento">Teléfono</label>
                             <input type="tel" maxlength=20 pattern=[0-9]{9,45} name="telefonoestablecimiento"
-                                title="Número de 9 dígitos que empieza por 6, 7, 8 o 9" required/>
+                                title="Número de al menos 9 dígitos" required/>
                             <br></br>
                         </div>
                         <div>
@@ -56,7 +59,8 @@
                         </div>
                         <div>
                             <label for="loginestablecimiento">Login</label>
-                            <input type="text" name="loginestablecimiento" maxlength=20 required/>
+                            <input type="text" name="loginestablecimiento" maxlength=20
+                                title="Campo incompleto" required/>
                             <br></br>
                             </div>
                         <div>
@@ -79,7 +83,8 @@
                         </div>
                         <div>
                             <label for="descripcionestablecimiento">Descrición</label>
-                            <textarea rows="4" maxlength=200 name="descripcionestablecimiento" required></textarea>
+                            <textarea rows="4" maxlength=200 name="descripcionestablecimiento"
+                                title="Campo incompleto" required></textarea>
                             <br></br>
                         </div>
                     </div>

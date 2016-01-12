@@ -20,12 +20,12 @@
       <div id=templatemo_form>
           <div>
               <label for="titulo">Titulo</label>
-              <input type="text" name="titulo" maxlength=200 required/>
+              <input type="text" name="titulo" maxlength=200 title="Campo incompleto" required/>
               <br></br>
           </div>
           <div>
               <label for="descripcionconcurso">Descripcion</label>
-              <textarea rows="4" name="descripcion" maxlength=1000 required/></textarea>
+              <textarea rows="4" name="descripcion" maxlength=1000 title="Campo incompleto" required/></textarea>
               <br></br>
           </div>
           <div>
@@ -40,12 +40,16 @@
           </div>
           <div>
               <label for="fecha">Fecha Inicio</label>
-              <input type="date" name="fechainicio" placeholder="AA-MM-DD"  pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" required />
+              <input type="date" name="fechainicio" placeholder="AA-MM-DD"
+                  pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                  title="Campo incompleto" required />
               <br></br>
           </div>
           <div>
               <label for="fechafin">Fecha Fin</label>
-              <input type="date" name="fechafin" placeholder="AA-MM-DD"  pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" required/>
+              <input type="date" name="fechafin" placeholder="AA-MM-DD"
+                  pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                  title="Campo incompleto" required/>
               <br></br>
           </div>
       </div>

@@ -141,11 +141,11 @@
         *	Sin parámetros.
         *	Return: devuelve un array con los pinchos sin gestionar.
         */
-        public function listarSinGestionar(){
-			$db = new BD();
-            $sentencia = "SELECT * FROM pincho WHERE aceptado='N'";
+        public function listarSinGestionar($edicion){
+            $db = new BD();
+            $sentencia = "SELECT * FROM pincho WHERE aceptado='N' AND concurso_edicion='".$edicion."'";
             $res = mysqli_query($db->connection,$sentencia);
-			$db->desconectar();
+			      $db->desconectar();
             if(mysqli_num_rows($res)==0) return false;
             else  return $res;
 

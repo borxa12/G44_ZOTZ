@@ -42,8 +42,12 @@
 	*   Return: Devuelve una lista con los pinchos sin aceptar.
 	*/
 	function listarPinchosSinAceptar(){
+		$concurso = new Concurso();
+		$con = $concurso->recuperarUltimoConcurso();
+		$ed = mysqli_fetch_assoc($con);
+		$edicion = $ed['edicion'];
 		$pincho = new Pincho();
-		$lista = $pincho->listarSinGestionar();
+		$lista = $pincho->listarSinGestionar($edicion);
 		return $lista;
 	}
 
