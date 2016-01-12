@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-    
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menujuradopopular.html");
@@ -45,7 +45,7 @@
 					<h2>Selecciona un favorito</h2>
 					<form id="votojuradopopular" method="post">
 						<div class="product_box">
-							<input type="radio" name="pincho" value="<?php echo $c1; ?>"><?php echo $datap1['nombrepincho']; ?><br>
+							<input type="radio" name="pincho" value="<?php echo $c1; ?>" checked ><?php echo $datap1['nombrepincho']; ?><br>
 							<a href="" class="pirobox"><img src="<?php echo "../../img/pinchos/".$datap1['fotopincho']; ?>" class="img"/></a>
 							<p><?php echo $datap1['descripcionpincho']; ?></p>
 						</div>

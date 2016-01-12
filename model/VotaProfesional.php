@@ -28,7 +28,7 @@
             $db->desconectar();
             return $res;
         }
-        
+
         /*  Recupera los datos de la asignacione de pincho a jurado profesional
         *   Parametros:
         *        $id - id del pincho de la asignacion a recuperar.
@@ -100,8 +100,7 @@
         */
         public function insertar($objeto) {
             $db = new BD();
-
-            $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login,votoprofesional) VALUES('".$objeto->pincho_idpincho."','".$objeto->juradoprofesional_usuarios_login."',null)";
+            $sentencia = "INSERT INTO votaprofesional(pincho_idpincho,juradoprofesional_usuarios_login) VALUES('".$objeto->pincho_idpincho."','".$objeto->juradoprofesional_usuarios_login."')";
             $res = mysqli_query($db->connection,$sentencia);
             echo $sentencia;
             $db->desconectar();
@@ -115,7 +114,7 @@
         */
         public function eleccionFinalistas($num) {
             $db = new BD();
-            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`voto1round`) AS media FROM votaprofesional GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
+            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`voto1round`) AS media FROM votaprofesional WHERE voto1round IS NOT NULL GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
             $res1 = mysqli_query($db->connection,$sentencia1);
             if(mysqli_num_rows($res1) == 0) return false;
             while($r = mysqli_fetch_assoc($res1)) {
@@ -133,7 +132,7 @@
         */
         public function eleccionGanadores($num) {
             $db = new BD();
-            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`voto2round`) AS media FROM votaprofesional WHERE `finalista` = 1 GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
+            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`voto2round`) AS media FROM votaprofesional WHERE `finalista` = 1 AND voto2round IS NOT NULL GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
             $res1 = mysqli_query($db->connection,$sentencia1);
             if(mysqli_num_rows($res1) == 0) return false;
             while($r = mysqli_fetch_assoc($res1)) {
@@ -194,7 +193,7 @@
         */
         public function listarPorJurado2Ronda() {
             $db = new BD();
-            $sentencia = "SELECT * FROM votaprofesional WHERE finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto1round IS NOT NULL AND voto2round IS NULL";
+            $sentencia = "SELECT * FROM votaprofesional WHERE finalista=1 AND (ganador=0 OR ganador IS NULL) AND voto1round IS NOT NULL AND voto2round IS NULL GROUP BY pincho_idpincho";
             $res = mysqli_query($db->connection,$sentencia);
             $db->desconectar();
             return $res;

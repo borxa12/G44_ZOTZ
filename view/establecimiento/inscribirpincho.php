@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-    
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
@@ -18,27 +18,27 @@
               <input name="concurso" hidden="true" value="<?php echo $concurso['edicion'];?>"type = "text"/>
                         <div>
                             <label for="nombrepincho">Nome</label>
-                            <input name="nombrepincho" maxlength=100 type="text"/>
+                            <input name="nombrepincho" maxlength=100 type="text" title="Campo incompleto" required />
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionpincho">Descrición</label>
-                            <textarea name="descripcionpincho" maxlength=500 rows="4" cols="50" ></textarea>
+                            <textarea name="descripcionpincho" maxlength=500 rows="4" cols="50" title="Campo incompleto" required ></textarea>
                             <br></br>
                         </div>
                         <div>
                             <label for="ingredientespincho">Ingredientes</label>
-                            <textarea name="ingredientespincho" rows="4" maxlength=250 cols="50"></textarea>
+                            <textarea name="ingredientespincho" rows="4" maxlength=250 cols="50" title="Campo incompleto" required ></textarea>
                             <br></br>
                         </div>
                         <div>
                             <label for="precio">Prezo</label>
-                            <input name="precio" maxlength=5 type="text"/>
+                            <input name="precio" maxlength=5 type="text" title="Campo incompleto" required />
                             <br></br>
                         </div>
                         <div>
                             <label for="foto">Foto</label>
-                            <input name="fotopincho" type="file"/>
+                            <input name="fotopincho" type="file" title="Campo incompleto" required />
                             <br></br>
                         </div>
                         <button name="inscribirpincho" type="submit" class="btn btn-default button">Inscribir Pincho</button>

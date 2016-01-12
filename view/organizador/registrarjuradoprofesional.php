@@ -18,27 +18,27 @@
                     <div id=templatemo_form>
                         <div>
                             <label for="nombrejuradoprofesional">Nome</label>
-                            <input type = "text" name="nombrejuradoprofesional" maxlength=60 required />
+                            <input type = "text" name="nombrejuradoprofesional" maxlength=60 title="Campo incompleto" required />
                             <br></br>
                         </div>
                         <div>
                             <label for="loginjuradoprofesional">Login</label>
-                            <input type="text" name="loginjuradoprofesional" maxlength=20 required/>
+                            <input type="text" name="loginjuradoprofesional" maxlength=20 title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="emailjuradoprofesional">Email</label>
-                            <input title= "mail@example.com" type="email" name="emailjuradoprofesional" maxlength=50 required/>
+                            <input title= "mail@example.com" type="email" name="emailjuradoprofesional" maxlength=50 title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="passwordjuradoprofesional">Contrasinal</label>
-                            <input title="No se admiten Ñ ni acentos" type="password" name="passwordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
+                            <input title="No se admiten Ñ ni acentos" type="password" name="passwordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>
                             <label for="repetirpasswordjuradoprofesional">Repetir Contrasinal</label>
-                            <input title="No se admiten Ñ ni acentos" type="password" name="repetirpasswordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 required/>
+                            <input title="No se admiten Ñ ni acentos" type="password" name="repetirpasswordjuradoprofesional" pattern="[^ñáéíóú`´]{1,45}" maxlength=45 title="Campo incompleto" required/>
                             <br></br>
                         </div>
                         <div>

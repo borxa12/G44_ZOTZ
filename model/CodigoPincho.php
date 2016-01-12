@@ -42,7 +42,7 @@
         */
         public function eleccionFavoritos($num) {
             $db = new BD();
-            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`likes`) AS media FROM codigopincho GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
+            $sentencia1 = "SELECT `pincho_idpincho`, AVG(`likes`) AS media FROM codigopincho WHERE likes IS NOT NULL AND likes <> 0 GROUP BY 1 ORDER BY 2 DESC LIMIT $num";
             $res1 = mysqli_query($db->connection,$sentencia1);
             if(mysqli_num_rows($res1) == 0) return false;
             while($r = mysqli_fetch_assoc($res1)) {

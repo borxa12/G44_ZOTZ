@@ -42,7 +42,7 @@
                 echo "<h4>".$data['nombrepincho']."</h4>";
                 echo "</p>";
                 echo "<form name='btnverpincho' method='post' action='./votopincho2ronda.php?pincho=".$data['idpincho']."'>";
-                    echo "<button name='btnverpincho' type='submit' class='btn btn-default button'>Votar</button>";
+                echo "<button name='btnverpincho' type='submit' class='btn btn-default button'>Votar</button>";
                 echo "</form>";
             echo "</div>";
 

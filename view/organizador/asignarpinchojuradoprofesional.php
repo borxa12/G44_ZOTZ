@@ -27,7 +27,7 @@
          			echo "<p>".$fila["descripcionpincho"]."</p>";
               echo "<form id='asignarpincho' method='post'>";
          			echo "<button type='submit' formaction='asignarjurado.php?idpincho=".$fila['idpincho']."' class='btn btn-default button'>Asignar</button>";
-         	        echo "</div>";
+         	    echo "</div>";
               echo "</form>";
          		}
          	}

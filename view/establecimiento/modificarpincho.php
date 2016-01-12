@@ -3,7 +3,7 @@
     ob_start();
 
     ini_set("display_errors",1);
-    
+
     include("../../loader.php");
     loadclasses("view","header.php");
     loadclasses("menus","menuestablecimiento.html");
@@ -19,22 +19,22 @@
 					<form id="registropincho" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="nombrepincho">Nome</label>
-                            <?php echo "<input type = 'text' name='nombrepincho' placeholder='Nome Pincho' value='".$pincho['nombrepincho']."'/>";?>
+                            <?php echo "<input type = 'text' name='nombrepincho' placeholder='Nome Pincho' value='".$pincho['nombrepincho']."' title='Campo incompleto' required />";?>
                             <br></br>
                         </div>
                         <div>
                             <label for="descripcionpincho">Descrición</label>
-                            <?php echo "<textarea rows='4' cols='50' name='descripcionpincho' placeholder='Descrición Pincho'>".$pincho['descripcionpincho']."</textarea>"; ?>
+                            <?php echo "<textarea rows='4' cols='50' name='descripcionpincho' placeholder='Descrición Pincho' title='Campo incompleto' required >".$pincho['descripcionpincho']."</textarea>"; ?>
                             <br></br>
                         </div>
                         <div>
                             <label for="ingrdientespincho">Ingredientes</label>
-                            <?php echo "<textarea rows='4' cols='50' name='ingredientespincho' placeholder='Ingredientes Pincho'>".$pincho['ingredientesp']."</textarea>"; ?>
+                            <?php echo "<textarea rows='4' cols='50' name='ingredientespincho' placeholder='Ingredientes Pincho' title='Campo incompleto' required >".$pincho['ingredientesp']."</textarea>"; ?>
                             <br></br>
                         </div>
                         <div>
                             <label for="precio">Prezo</label>
-                            <?php echo "<input type = 'text' name='precio' placeholder='Prezo Pincho' value='".$pincho['precio']."'/>";?>
+                            <?php echo "<input type = 'text' name='precio' placeholder='Prezo Pincho' value='".$pincho['precio']."' title='Campo incompleto' required />";?>
                             <br></br>
                         </div>
                         <div>
