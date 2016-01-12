@@ -218,7 +218,7 @@
         *       $gastromapa - Atributo a insertar, gastromapa de concurso.
     Return: Devuelve TRUE si la tupla se modifica correctamente o FALSE en caso contrario.
 		*/
-	function modificarEdicion($titulo,$descripcion/*,$folleto,$gastromapa*/) {
+	function modificarEdicion($titulo,$descripcion) {
 		$concurso = new Concurso();
 		$con = $concurso->recuperarUltimoConcurso();
 		$fila = mysqli_fetch_assoc($con);
